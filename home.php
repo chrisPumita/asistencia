@@ -1,6 +1,6 @@
 <?php
 $titulo = "HOME - Profesor";
-$path = "../"
+$path = "./"
 ?>
 
 <!doctype html>

@@ -1,3 +1,7 @@
+:root {
+    --c-primario: #1a168d;
+}
+
 html,
 body {
     position: relative;
@@ -11,4 +15,23 @@ body {
     color: #000;
     margin: 0;
     padding: 0;
+}
+
+/*SOBRE ESCRITURA A STILOS DE BOOSTRAP*/
+
+.bg-primary{
+    background-color: var(--c-primario) !important;
+}
+
+.text-primary{
+    color: var(--c-primario) !important;
+}
+
+
+
+
+/*MIS EATILOS*/
+
+.bg-blanco{
+    background-color: #ffffff;
 }
