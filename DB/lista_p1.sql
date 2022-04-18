@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2022 a las 21:42:04
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.0.13
+-- Tiempo de generación: 18-04-2022 a las 04:47:46
+-- Versión del servidor: 10.1.37-MariaDB
+-- Versión de PHP: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,7 +32,7 @@ CREATE TABLE `alumno` (
   `id_alumno` int(10) NOT NULL,
   `id_persona_fk` bigint(20) NOT NULL,
   `no_cta` int(10) NOT NULL,
-  `account_confirm` varchar(32) NOT NULL
+  `account_confirm` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -46,10 +47,10 @@ CREATE TABLE `asistencia` (
   `confirmada` tinyint(2) NOT NULL,
   `check_retardo` tinyint(2) DEFAULT NULL,
   `value` decimal(4,2) NOT NULL,
-  `url_justificante` text DEFAULT NULL,
+  `url_justificante` text,
   `upload_date_justificante` datetime DEFAULT NULL,
   `estatus_rev_just` tinyint(2) DEFAULT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `log` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -66,11 +67,13 @@ CREATE TABLE `grupo` (
   `carrera` varchar(30) NOT NULL,
   `materia` varchar(50) NOT NULL,
   `porcentaje_min` int(3) NOT NULL,
+  `dias` varchar(50) NOT NULL COMMENT 'Enumerar con 1,2,3,4,5,6,7 y separar con SPPLOT en JS',
+  `is_porcentual` tinyint(2) NOT NULL COMMENT 'Manejar Porcentual o Decimal Sobre 10 o sobre 100',
   `puntaje_final` int(3) NOT NULL,
   `tipo_puntaje` tinyint(2) NOT NULL,
   `retardo_is_falta` int(3) NOT NULL,
   `no_clases` int(3) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `codigo_invitacion` varchar(30) NOT NULL,
   `link_invitacion` text NOT NULL,
   `estatus` tinyint(2) NOT NULL
@@ -86,7 +89,7 @@ CREATE TABLE `grupoalumno` (
   `id_grupo_fk` int(5) NOT NULL,
   `id_alumno_fk` int(10) NOT NULL,
   `estatus` tinyint(2) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -98,9 +101,9 @@ CREATE TABLE `grupoalumno` (
 CREATE TABLE `paselista` (
   `id_pase` bigint(20) NOT NULL,
   `id_grupo_fk` int(5) NOT NULL,
-  `fecha_hora` datetime NOT NULL,
+  `fecha` date NOT NULL,
   `notas` text NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -111,8 +114,8 @@ CREATE TABLE `paselista` (
 
 CREATE TABLE `periodo` (
   `id_periodo` int(5) NOT NULL,
-  `id_profesor` int(10) NOT NULL,
-  `semestre` varchar(10) NOT NULL,
+  `id_profesor` int(5) NOT NULL,
+  `nombre_periodo` varchar(10) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL,
   `tipo` varchar(10) NOT NULL,
@@ -135,7 +138,7 @@ CREATE TABLE `persona` (
   `user_name` varchar(20) NOT NULL,
   `avatar` text NOT NULL,
   `pw` text NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -149,7 +152,7 @@ CREATE TABLE `profesor` (
   `id_persona_fk` bigint(20) NOT NULL,
   `grado_academico` varchar(32) DEFAULT NULL,
   `carrera_esp` varchar(32) DEFAULT NULL,
-  `account_confirm` varchar(32) NOT NULL
+  `account_confirm` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -167,6 +170,7 @@ ALTER TABLE `alumno`
 -- Indices de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
+  ADD PRIMARY KEY (`id_pase_fk`,`id_alumno_fk`),
   ADD KEY `id_pase_fk` (`id_pase_fk`),
   ADD KEY `id_alumno_fk` (`id_alumno_fk`);
 
@@ -181,6 +185,7 @@ ALTER TABLE `grupo`
 -- Indices de la tabla `grupoalumno`
 --
 ALTER TABLE `grupoalumno`
+  ADD PRIMARY KEY (`id_grupo_fk`,`id_alumno_fk`),
   ADD KEY `id_grupo_fk` (`id_grupo_fk`),
   ADD KEY `id_alumno_fk` (`id_alumno_fk`);
 
