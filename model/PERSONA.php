@@ -1,5 +1,5 @@
 <?php
-
+include_once "PDODB.php";
 class PERSONA extends PDODB
 {
     private $id_persona;
@@ -171,5 +171,16 @@ class PERSONA extends PDODB
     public function setCreateAt($create_at)
     {
         $this->create_at = $create_at;
+    }
+    /**** QUERYS CRUD*****/
+    function queryInsertPersona(){
+        $query="INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `sexo`, `email`, `user_name`, `avatar`, `pw`, `create_at`) 
+        VALUES ('".$this->getIdPersona()."', '".$this->getNombre()."', '".$this->getApp()."', '".$this->getApm()."',
+        '".$this->getSexo()."', '".$this->getEmail()."', '".$this->getUserName()."', '".$this->getAvatar()."', 
+        '".$this->getPw()."', current_timestamp())";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }
