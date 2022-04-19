@@ -183,4 +183,12 @@ class PERSONA extends PDODB
         $this->close();
         return $result;
     }
+
+    function queryUpdatePersona(){
+        $query="UPDATE `persona` SET `nombre` = '".$this->getNombre()."', `app` = '".$this->getApp()."', `apm` = '".$this->getApm()."', `sexo` = '".$this->getSexo()."', `email` = '".$this->getEmail()."' WHERE `persona`.`id_persona` = ".$this->getIdPersona()."";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
