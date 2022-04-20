@@ -1,6 +1,7 @@
 <?php
+include_once "PERSONA.php";
 
-class ALUMNO extends PDODB
+class ALUMNO extends PERSONA
 {
     private $id_alumno;
     private $id_persona_fk;
@@ -69,5 +70,13 @@ class ALUMNO extends PDODB
     public function setAccountConfirm($account_confirm)
     {
         $this->account_confirm = $account_confirm;
+    }
+
+    function queryInsertAlumno(){
+        $query="INSERT INTO `alumno` (`id_alumno`, `id_persona_fk`, `no_cta`, `account_confirm`) VALUES ('".$this->getIdAlumno()."', '".$this->getIdPersonaFk()."', '".$this->getNoCta()."', '".$this->getAccountConfirm()."')";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }

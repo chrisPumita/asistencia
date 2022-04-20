@@ -28,7 +28,4 @@ function updatePersona($params){
     $PERSONA->setEmail($params['email']);
     return $PERSONA->queryUpdatePersona();
 }
-
-
-
 ?>
