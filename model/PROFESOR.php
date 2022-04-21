@@ -1,6 +1,6 @@
 <?php
-
-class PROFESOR extends PDODB
+include_once "PERSONA.php";
+class PROFESOR extends PERSONA
 {
     private $id_profesor;
     private $id_persona_fk;
@@ -86,5 +86,22 @@ class PROFESOR extends PDODB
     public function setAccountConfirm($account_confirm)
     {
         $this->account_confirm = $account_confirm;
+    }
+
+    function queryInsertProfesor(){
+        $query="INSERT INTO `profesor` (`id_profesor`, `id_persona_fk`, `grado_academico`, `carrera_esp`, `account_confirm`) 
+        VALUES ('".$this->getIdProfesor()."', '".$this->getIdPersonaFk()."', '".$this->getGradoAcademico()."', '".$this->getCarreraEsp()."', '".$this->getAccountConfirm()."')";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryUpdateProfesor(){
+        $query="UPDATE `profesor` SET `grado_academico` = '".$this->getGradoAcademico()."', `carrera_esp` = '".$this->getCarreraEsp()."' WHERE `profesor`.`id_profesor` = ".$this->getIdProfesor();
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }
