@@ -35,3 +35,14 @@ body {
 .bg-blanco{
     background-color: #ffffff;
 }
+
+.avatar {
+    vertical-align: middle;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+}
+
+.btnAsist{
+    width: 80px !important;
+}
