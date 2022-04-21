@@ -23,4 +23,18 @@ function insertAlumno($params){
     }
 }
 
+
+function updateAlumno($params){
+    include_once "../model/ALUMNO.php";
+    $ALUMNO = new ALUMNO();
+    //Ver como hacer verificacion de sesión
+    $id=1;
+    $ALUMNO->setIdPersona($id);
+    $ALUMNO->setNombre($params['nombre']);
+    $ALUMNO->setApp($params['app']);
+    $ALUMNO->setApm($params['apm']);
+    $ALUMNO->setSexo($params['sexo']);
+    $ALUMNO->setEmail($params['email']);
+    return $ALUMNO->queryUpdatePersona();
+}
 ?>
