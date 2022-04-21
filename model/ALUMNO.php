@@ -80,9 +80,12 @@ class ALUMNO extends PERSONA
         return $result;
     }
 
-    function getDatosBasicosAlumno($idAlumno){
+    function queryDatosPerfilesAlumno(){
         //funcion que trae los datos personales y no Cta del alumno
-        $query="SELECT per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`sexo`, per.`email`, per.`user_name`, per.`avatar`, per.`pw`, per.`create_at`, al.id_alumno, al.no_cta FROM `persona` per, alumno al WHERE per.id_persona=al.id_persona_fk AND al.id_alumno=".$idAlumno;
+        $filterIdAlumno= $this->getIdAlumno()>0? " AND al.id_alumno=".$this->getIdAlumno() : "";
+        $query="SELECT per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`sexo`, per.`email`,
+         per.`user_name`, per.`avatar`, per.`pw`, per.`create_at`, al.id_alumno, al.no_cta 
+         FROM `persona` per, alumno al WHERE per.id_persona=al.id_persona_fk  ".$filterIdAlumno;
         $this->connect();
         $result=$this->getData($query);
         $this->close();

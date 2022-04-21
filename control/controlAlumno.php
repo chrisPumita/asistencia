@@ -38,9 +38,5 @@ function updateAlumno($params){
     return $ALUMNO->queryUpdatePersona();
 }
 
-function datosBasicosAlumno($idAlumno){
-    include_once "../model/ALUMNO.php";
-    $ALUMNO = new ALUMNO();
-    return json_encode($ALUMNO->getDatosBasicosAlumno($idAlumno));
-}
+
 ?>
