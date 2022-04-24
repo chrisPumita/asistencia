@@ -20,7 +20,7 @@ $path = "./"
                 </div>
                 <div class="card shadow-lg">
                     <div class="card-body p-5">
-                        <h1 class="fs-4 card-title fw-bold mb-4 text-center">Iniciar Sesión</h1>
+                        <h1 class="fs-4 card-title fw-bold mb-4 text-center" style="color: darkblue;">Registrarme como Profesor</h1>
                         <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
                             <div class="mb-3">
                                 <label class="mb-2 text-muted" for="name">Nombre</label>
@@ -34,21 +34,80 @@ $path = "./"
                                 <label class="mb-2 text-muted" for="name">Segundo Apellido</label>
                                 <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
                             </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="mb-2 text-muted" for="name">Sexo</label>
+                                        <select class="form-select" aria-label=".form-select-sm example">
+                                            <option selected></option>
+                                            <option value="1">Hombre</option>
+                                            <option value="2">Mujer</option>
+                                            <option value="3">Otro</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                     <div class="mb-3">
+                                        <label class="mb-2 text-muted" for="name">Usuario</label>
+                                        <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="mb-2 text-muted" for="name">Grado académico</label>
+                                        <select class="form-select" aria-label=".form-select-sm example">
+                                            <option selected></option>
+                                            <option value="1">Basica</option>
+                                            <option value="2">Media</option>
+                                            <option value="3">Media Superior</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                     <div class="mb-3">
+                                        <label class="mb-2 text-muted" for="name">Carrera/Especialidad</label>
+                                        <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
                             <div class="mb-3">
-                                <label class="mb-2 text-muted" for="email">E-Mail Address</label>
+                                <label class="mb-2 text-muted" for="email">Correo electrónico</label>
                                 <input id="email" type="email" class="form-control" name="email" value="" required>
                                 <div class="invalid-feedback">
-                                    Email is invalid
+                                    Correo electrónico no válido.
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="mb-2 text-muted" for="password">Password</label>
-                                <input id="password" type="password" class="form-control" name="password" required>
-                                <div class="invalid-feedback">
-                                    Password is required
+                             <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="mb-2 text-muted" for="password">Contraseña</label>
+                                        <input id="password" type="password" class="form-control" name="password" required>
+                                        <div class="invalid-feedback">
+                                            La contraseña es requerida
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="col">
+                                     <div class="mb-3">
+                                        <label class="mb-2 text-muted" for="password">Repetir contraseña</label>
+                                        <input id="password" type="password" class="form-control" name="password" required>
+                                        <div class="invalid-feedback">
+                                            La contraseña es requerida
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
+
+                            
 
                             <p class="form-text text-muted mb-3">
                                 <input class="form-check-input" type="checkbox" value="" id="chkTerms">
@@ -57,9 +116,9 @@ $path = "./"
                                 </label>
                             </p>
 
-                            <div class="align-items-center d-flex">
+                            <div class="" style="text-align: center;">
                                 <button type="submit" class="btn btn-primary ms-auto">
-                                    Registrar
+                                    Suscribirse
                                 </button>
                             </div>
                         </form>
