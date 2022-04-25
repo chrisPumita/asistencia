@@ -76,7 +76,14 @@
             <label class="text-muted" for="name">Tipo:</label>
           </div>
           <div class="col-9">
-            <input type="text" class="form-control" id="carrera_nva" placeholder="">
+              <select class="form-select" aria-label="Default select example">
+                  <option value="1" selected>Semestre</option>
+                  <option value="2">Anual</option>
+                  <option value="3">Trimestre</option>
+                  <option value="3">Cuatrimestre</option>
+                  <option value="3">Mensual</option>
+                  <option value="3">N/A</option>
+              </select>
           </div>
         </div>
 

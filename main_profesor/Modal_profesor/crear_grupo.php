@@ -11,19 +11,6 @@
           <form id="frm_new_grpo">
               <div class="row mt-2 mb-3">
                   <div class="col-2 creargrupo_center">
-                      <label class="text-muted" for="name">Periodo:</label>
-                  </div>
-                  <div class="col-10">
-                      <select class="form-select" aria-label="Default select example">
-                          <option selected>   - Seleccione el periodo -   </option>
-                          <option value="1">Semestre 2022</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                      </select>
-                  </div>
-              </div>
-              <div class="row mt-2 mb-3">
-                  <div class="col-2 creargrupo_center">
                       <label class="text-muted" for="name">Carrera:</label>
                   </div>
                   <div class="col-10">
@@ -54,49 +41,31 @@
                   </div>
               </div>
               <hr class="text-muted">
-              <div class="row creargrupo_center mb-3">
-                  <div class="col-12 col-md-5">
-                      <label class="text-muted " for="name">% Minimo de asistencia:</label>
+              <div class="row">
+                  <div class="col-12 col-md-8 ">
+                      <label class="text-muted" for="name">% Minimo de asistencia:</label><br>
+                      <cite class="text-info small" for="name">Si no hay minimo dejar 0</cite>
                   </div>
-                  <div class="col-12 col-md-7">
-                      <div class="row">
-                          <div class="col-6">
-                              <input type="number" class="form-control" id="min_asis_nvo" placeholder="">
-                          </div>
-                          <div class="col-6 creargrupo_center">
-                              <label class="text-muted small" for="name">Si no hay minimo dejar 0</label>
-                          </div>
-                      </div>
+                  <div class="col-12 col-md-4">
+                      <input type="number" class="form-control" id="min_asis_nvo" placeholder="">
                   </div>
               </div>
-              <div class="row creargrupo_center mb-3">
-                  <div class="col-12 col-md-5">
-                      <label class="text-muted " for="name">Retardos que hacen falta:</label>
+              <div class="row">
+                  <div class="col-12 col-md-8 ">
+                      <label class="text-muted" for="name">Retardos que hacen falta:</label><br>
+                      <cite class="text-info small" for="name">Dejar 1, el retardo se cuenta como falta. 0 no hay tolerancia de retardo</cite>
                   </div>
-                  <div class="col-12 col-md-7">
-                      <div class="row">
-                          <div class="col-6 creargrupo_center">
-                              <input type="number" class="form-control" id="ret_falta_nvo" placeholder="">
-                          </div>
-                          <div class="col-6 creargrupo_center">
-                              <cite class="text-muted small" for="name">Dejar 1, el retardo se cuenta como falta. 0 no hay tolerancia de retardo</cite>
-                          </div>
-                      </div>
+                  <div class="col-12 col-md-4">
+                      <input type="number" class="form-control" id="min_asis_nvo" placeholder="">
                   </div>
               </div>
-              <div class="row creargrupo_center mb-3">
-                  <div class="col-12 col-md-5">
-                      <label class="text-muted " for="name">Clases estimadas:</label>
+              <div class="row">
+                  <div class="col-12 col-md-8 ">
+                      <label class="text-muted" for="name">Clases estimadas:</label><br>
+                      <cite class="text-info small" for="name">0 para calcular sobre pase de lista realizados</cite>
                   </div>
-                  <div class="col-12 col-md-7">
-                      <div class="row">
-                          <div class="col-6 creargrupo_center">
-                              <input type="number" class="form-control" id="min_asis_nvo" placeholder="">
-                          </div>
-                          <div class="col-6 creargrupo_center">
-                              <label class="text-muted small" for="name">0 para calcular sobre pase de lista realizados</label>
-                          </div>
-                      </div>
+                  <div class="col-12 col-md-4">
+                      <input type="number" class="form-control" id="min_asis_nvo" placeholder="">
                   </div>
               </div>
               <hr class="text-muted">
@@ -191,15 +160,11 @@
                   </div>
               </div>
               <div class="row creargrupo_center mb-3">
-                  <div class="col-12 col-md-4">
+                  <div class="col-12">
                       <label class="text-muted " for="name">Link de invitación:</label>
                   </div>
-                  <div class="col-7 col-md-8">
-
-                      <div class="col-12 col-md-12 creargrupo_center">
-                          <input type="text" class="form-control" id="materia_nva" placeholder="">
-                      </div>
-
+                  <div class="col-12">
+                      <input type="text" class="form-control" id="materia_nva" placeholder="">
                   </div>
               </div>
               <div class="row">
@@ -216,7 +181,6 @@
                       <button type="button" class="btn btn-success">Crear grupo</button>
                       <button type="button" class="btn btn-success">Crear y enviar invitaciones</button>
                   </div>
-
               </div>
           </form>
       </div>

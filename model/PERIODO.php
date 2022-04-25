@@ -121,4 +121,24 @@ class PERIODO extends PDODB
     {
         $this->estado = $estado;
     }
+
+    function queryConsultaPeriodos($filtro){
+        $condicion = "";
+        switch ($filtro){
+            case "LAST":
+                $condicion = " AND estado > 0";
+                break;
+        }
+        $query = "select id_periodo, id_profesor, nombre_periodo, fecha_inicio, fecha_fin, tipo, estado 
+                from periodo where id_profesor = ". $this->getIdProfesor()." ".$condicion." order by fecha_inicio desc";
+        return $this->ejecutarSQL($query);
+    }
+
+    function queryCreaPeriodo(){
+        $query = "INSERT INTO `periodo` (`id_periodo`, `id_profesor`, `nombre_periodo`, `fecha_inicio`, 
+                       `fecha_fin`, `tipo`, `estado`) 
+VALUES (NULL, '".$this->getIdProfesor()."', '".$this->getNombrePeriodo()."', '".$this->getFechaFin().
+            "', '".$this->getFechaFin()."', '".$this->getTipo()."', '1')";
+        return $this->ejecutarSQL($query);
+    }
 }
