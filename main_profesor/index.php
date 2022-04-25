@@ -1,45 +1,71 @@
 <?php
 $titulo = "HOME - Profesor";
-$path = "../"
+$path = "../";
+session_start();
+$_SESSION["idSesion"] = session_id();
+if(!isset($_SESSION['name_user']))
+{
+        header('Location: ../');
+}
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
     <?php include $path."includes_general/header.php"?>
-
 </head>
     <body>
         <div class="container-fluid">
             <div class="row">
                 <?php include $path."includes_general/sidebar.php"?>
-                <div class="col-sm pt-0 min-vh-100 bg-blanco">
+                <div class="col-sm pt-0 min-vh-100 bg-blanco m-0 p-0">
                     <!-- content -->
                     <div class="container-fluid bg-primary">
                         <div class="container p-3 text-light">
-                            <h3>Hola buenas tardes</h3>
-                            <h2>Juan Perez</h2>
+                            <div class="row">
+                                <div class="col">
+                                    <h3>¡Hola buenas tardes <strong><?php echo $_SESSION['name_complete'] ?></strong>!</h3>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center align-items-center">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="<?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="menuPerfil">
+                                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a></li>
+                                            <li><a class="dropdown-item" href="#">Acerca de</a></li>
+                                            <hr>
+                                            <li><a class="dropdown-item" href="../c_logout.php">Salir</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="container">
                         <div class="row pt-3">
-                            <div class="col-12 col-md-8">
-                                <h5>Asistencia General</h5>
+                            <div class="col-12 col-md-7 py-3">
+                                <h5 class="text-center">Asistencia General</h5>
                                 <div id="chart"></div>
                                 
                             </div>
-                            <div class="col-12 col-md-4">
-                                <h5>Inscripcion General</h5>
-                                <img src="../assets/img/CUYO.png" width="200" alt="">
+                            <div class="col-12 col-md-5 align-content-center py-3">
+                                <div class="row">
+                                    <h5 class="text-center">Inscripcion General</h5>
+                                </div>
+                                <div class="row h-100">
+                                    <div id="circularGrapfic" class="d-flex align-content-center m-auto"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="row pt-3">
-                            <div class="col col-md-8">
+                            <div class="col-12 col-md-8">
                                 <h5>Seleccione un grupo para pasar lista</h5>
                                 <div class="row row-cols-1 row-cols-md-3 g-4">
-
                                     <?php for($i = 0; $i<4; $i++){ ?>
-                                        <div class="col">
+                                        <div class="col-12 card_inicia_pase" role="button" onlClick="star_pase_lista();">
                                             <div class="card h-100">
                                                 <div class="card-body">
                                                     <h5 class="card-title">GRUPO {NoGrupo}</h5>
@@ -52,7 +78,7 @@ $path = "../"
                                 <hr>
                             </div>
 
-                            <div class="col col-md-4">
+                            <div class="col-12 col-md-4">
                                 <h5>Ultimos pases de lista</h5>
                                 <div class="list-group">
                                     <?php for($i = 0; $i<2; $i++){ ?>
@@ -151,43 +177,6 @@ $path = "../"
                     </div>
                 </div>
             </div>
-<script>
-var options = {
-series: [{
-name: "Desktops",
-data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-}],
-chart: {
-height: 350,
-type: 'line',
-zoom: {
-enabled: false
-}
-},
-dataLabels: {
-enabled: false
-},
-stroke: {
-curve: 'straight'
-},
-title: {
-text: 'Product Trends by Month',
-align: 'left'
-},
-grid: {
-row: {
-colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-opacity: 0.5
-},
-},
-xaxis: {
-categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
-</script>
         </body>
 
         
@@ -195,6 +184,89 @@ chart.render();
         <?php include "../main_profesor/Modal_profesor/periodos_registrados.php"; ?>
         <?php include $path."includes_general/js.php"?>
 
-        <script src="services/template.js"></script>
-        <!-- Initialize Swiper -->
-        </html>
+        <script src="../services/profesor/dashboard.js"></script>
+
+<script>
+    var options = {
+        series: [{
+            name: 'ASISTENCIAS',
+            data: [44, 55, 41, 67, 22, 43]
+        }, {
+            name: 'INASISTENCIAS',
+            data: [13, 23, 20, 8, 13, 27]
+        }, {
+            name: 'RETARDOS',
+            data: [11, 17, 15, 15, 21, 14]
+        }],
+        colors: ['#15850d', '#ce2121', '#dbea1a'],
+        chart: {
+            type: 'bar',
+            height: 350,
+            stacked: true,
+            toolbar: {
+                show: true
+            },
+            zoom: {
+                enabled: true
+            }
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                borderRadius: 10
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT',
+                '01/05/2011 GMT', '01/06/2011 GMT'
+            ],
+        },
+        legend: {
+            position: 'right',
+            offsetY: 40
+        },
+        fill: {
+            opacity: 1
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+
+    var options = {
+        series: [44, 55, 13],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        labels: ['ASISTENCIAS', 'FALTAS', 'RETARDOS'],
+        colors: ['#15850d', '#ce2121', '#dbea1a'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var chart = new ApexCharts(document.querySelector("#circularGrapfic"), options);
+    chart.render();
+    </script>
+
+</html>

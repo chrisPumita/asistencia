@@ -29,39 +29,7 @@
                     <i class="fas fa-file"></i>
                 </a>
             </li>
-            <!--  MENU SOLO VISIBLE EN MOBILE-->
-            <li class="d-block d-sm-none">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="menuMobile" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="menuMobile">
-                        <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a></li>
-                        <li><a class="dropdown-item" href="#">Acerca de</a></li>
-                        <hr>
-                        <li><a class="dropdown-item" href="#">Salir</a></li>
-                    </ul>
-                </div>
-            </li>
-            <!--  MENU SOLO VISIBLE EN MOBILE-->
         </ul>
-    </div>
-    <div class="row">
-        <div class="position-absolute bottom-0 end-0 pb-3">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-home"></i>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="menuPerfil">
-                    <li><a class="dropdown-item" href="#">Perfil</a></li>
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a></li>
-                    <li><a class="dropdown-item" href="#">Acerca de</a></li>
-                    <hr>
-                    <li><a class="dropdown-item" href="#">Salir</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>
 

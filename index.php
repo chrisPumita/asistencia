@@ -1,8 +1,26 @@
 <?php
-$titulo = "HOME - Profesor";
-$path = "./"
-?>
+$titulo = "HOME - Iniciar Sesion";
+$path = "./";
+session_start();
+$_SESSION["idSesion"] = session_id();
+if(isset($_SESSION['name_user']))
+{
+    //Si ya existe una sesion reedirecciona a home segun cuenta
+    //alumno
+    //profesor
+    if($_SESSION['tipo'] == "profesor")
+        header('Location: ./main_profesor/');
+    else
+        header('Location: ./main_alumno/');
+}
 
+?>
+<!-- ----- VERSION DEL DOCUMENTO ---------
+    VERSION 1.04.1 BUILD 25/04/2022
+    @autor: ReCkrea StuDios
+    @website: reckreastudios.com
+    @webdevs: ChrisRCGS, Fernando HL, Emanuel Mtz. Zuri Hinojosa.
+    -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,21 +37,33 @@ $path = "./"
                     </a>
                 </div>
                 <div class="card shadow-lg">
+
                     <div class="card-body p-5">
                         <h1 class="fs-4 card-title fw-bold mb-4 text-center">Iniciar Sesión</h1>
-                        <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+                        <form id="frm_login" class="needs-validation" novalidate="" autocomplete="off">
+                            <div id="resp"></div>
                             <div class="mb-3">
                                 <label class="mb-2 text-muted" for="email">E-Mail</label>
-                                <input id="email" type="email" class="form-control" name="email" value="" required>
+                                <input id="email" type="email" class="form-control" name="email" required>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 text-muted" for="password">Contraseña</label>
                                 <input id="password" type="password" class="form-control" name="password" required>
                             </div>
+                            <div class="mb-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="rdo_accoun" id="rdo_accoun1" value="alumno" checked>
+                                    <label class="form-check-label" for="rdo_accoun1">Alumno</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="rdo_accoun" id="rdo_accoun2" value="profesor">
+                                    <label class="form-check-label" for="rdo_accoun2">Profesor</label>
+                                </div>
+                            </div>
                             <div class="align-items-center d-flex">
-                                <a href="./main_profesor" class="btn btn-primary" type="submit" class="btn btn-primary ms-auto">
+                                <button type="submit" class="btn btn-primary ms-auto">
                                     Iniciar
-                                </a>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -62,6 +92,6 @@ $path = "./"
 
 <?php include $path."includes_general/js.php"?>
 
-<script src="services/template.js"></script>
+<script src="services/login.js"></script>
 <!-- Initialize Swiper -->
 </html>

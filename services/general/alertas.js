@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    console.log("soy un template ");
+    console.log("ALERTAS F(X)");
 });
 
 

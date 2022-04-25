@@ -104,4 +104,13 @@ class PROFESOR extends PERSONA
         $this->close();
         return $result;
     }
+
+    function consultaCuentaProfesor(){
+        $query = "select prof.id_profesor, prof.grado_academico, prof.carrera_esp, prof.account_confirm,
+               per.id_persona, per.nombre, per.app, per.apm, per.sexo, per.email, per.user_name, 
+               per.avatar, per.create_at
+        from profesor prof inner join persona per
+        where per.email = '".$this->getEmail()."' and per.pw = '".$this->getPw()."'";
+        return $this->consultaSQL($query);
+    }
 }

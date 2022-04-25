@@ -121,4 +121,18 @@ class PDODB
     {
         return $this->connection->lastInsertId();
     }
+
+    function consultaSQL($query){
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function ejecutarSQL($query){
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

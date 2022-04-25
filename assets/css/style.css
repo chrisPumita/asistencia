@@ -38,8 +38,8 @@ body {
 
 .avatar {
     vertical-align: middle;
-    width: 50px !important;
-    height: 50px !important;
+    width: 25px !important;
+    height: 25px !important;
     border-radius: 50%;
 }
 
