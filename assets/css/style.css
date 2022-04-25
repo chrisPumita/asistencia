@@ -50,3 +50,56 @@ body {
 .asfalre{
     font-weight:bold !important;
 }
+
+.modal-header{
+      /*ESTILOS PROPIOS***********************************************************************/
+  background-color: darkblue !important;
+  color: white !important;
+  /*ESTILOS PROPIOS***********************************************************************/
+}
+
+.btnClose_modal{
+    background-color: white !important;
+}
+
+.card_cursor{
+    cursor: pointer !important;
+}
+
+.creargrupo_center{
+    display: flex !important;
+    align-items: center !important;
+}
+
+.texto_creaGrupo{
+    font-size: 1rem;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+    .table caption {
+        font-size: 28px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 8px;
+        color: black;
+    }
+
+    .table tr th {
+        background-color: darkblue;
+        border: 1px solid #ccc;
+        font-size: 13px;
+        color: white;
+        /*text-align: left;*/
+    }
+
+
+    .table tr td {
+        font-size: 13px;
+    }

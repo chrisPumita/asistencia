@@ -5,13 +5,13 @@
         </a>
         <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between w-100 px-3 align-items-center">
             <li class="nav-item">
-                <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                <a href="../main_profesor/index.php" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                     <i class="fas fa-home"></i>
                 </a>
             </li>
             <li>
                 <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                    <i class="fas fa-clipboard-list"></i>
+                    <i class="fas fa-check-double" data-bs-toggle="modal" data-bs-target="#modal_pase_lista"></i>
                 </a>
             </li>
             <li>
@@ -37,7 +37,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="menuMobile">
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a></li>
                         <li><a class="dropdown-item" href="#">Acerca de</a></li>
                         <hr>
                         <li><a class="dropdown-item" href="#">Salir</a></li>
@@ -55,7 +55,7 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="menuPerfil">
                     <li><a class="dropdown-item" href="#">Perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a></li>
                     <li><a class="dropdown-item" href="#">Acerca de</a></li>
                     <hr>
                     <li><a class="dropdown-item" href="#">Salir</a></li>
@@ -64,3 +64,7 @@
         </div>
     </div>
 </div>
+
+
+<?php include "../main_profesor/Modal_profesor/pasar_lista.php"; ?>
+<?php include "../main_profesor/Modal_profesor/cambia_contraseña.php"; ?>

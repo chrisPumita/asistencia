@@ -154,7 +154,10 @@ $path = "../"
     </div>
 
 </div>
+
+
 </body>
+
 
 <?php include $path."includes_general/js.php"?>
 

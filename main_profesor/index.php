@@ -25,7 +25,8 @@ $path = "../"
                         <div class="row pt-3">
                             <div class="col-12 col-md-8">
                                 <h5>Asistencia General</h5>
-                                <img src="../assets/img/Captura.JPG" width="450" alt="">
+                                <div id="chart"></div>
+                                
                             </div>
                             <div class="col-12 col-md-4">
                                 <h5>Inscripcion General</h5>
@@ -48,13 +49,13 @@ $path = "../"
                                         </div>
                                     <?php } ?>
                                 </div>
-
+                                <hr>
                             </div>
 
                             <div class="col col-md-4">
                                 <h5>Ultimos pases de lista</h5>
                                 <div class="list-group">
-                                    <?php for($i = 0; $i<4; $i++){ ?>
+                                    <?php for($i = 0; $i<2; $i++){ ?>
                                         <a href="#" class="list-group-item list-group-item-action">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1">{Grupo}</h5>
@@ -67,7 +68,7 @@ $path = "../"
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                        
                         <div class="row pt-3">
                             <div class="col-12 col-md-8">
                                 <div class="row py-3">
@@ -95,7 +96,7 @@ $path = "../"
                                         <div class="row">
                                             <div class="col-6 col-md-3 col-sm-3 py-3">
                                                 <div class="card">
-                                                    <div class="card-body">
+                                                    <div class="card-body card_cursor" data-bs-toggle="modal" data-bs-target="#modal_periodos">
                                                         <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
                                                         <h6 class="card-subtitle mb-2 text-muted text-center">Periodos</h6>
                                                     </div>
@@ -103,7 +104,15 @@ $path = "../"
                                             </div>
                                             <div class="col-6 col-md-3 col-sm-3 py-3">
                                                 <div class="card">
-                                                    <div class="card-body">
+                                                    <div class="card-body card_cursor" data-bs-toggle="modal" data-bs-target="#modal_crearGrupo">
+                                                        <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
+                                                        <h6 class="card-subtitle mb-2 text-muted text-center">Crear grupo</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-3 col-sm-3 py-3">
+                                                <div class="card">
+                                                    <div class="card-body card_cursor">
                                                         <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
                                                         <h6 class="card-subtitle mb-2 text-muted text-center">Periodos</h6>
                                                     </div>
@@ -111,15 +120,7 @@ $path = "../"
                                             </div>
                                             <div class="col-6 col-md-3 col-sm-3 py-3">
                                                 <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
-                                                        <h6 class="card-subtitle mb-2 text-muted text-center">Periodos</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-md-3 col-sm-3 py-3">
-                                                <div class="card">
-                                                    <div class="card-body">
+                                                    <div class="card-body card_cursor">
                                                         <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
                                                         <h6 class="card-subtitle mb-2 text-muted text-center">Periodos</h6>
                                                     </div>
@@ -129,10 +130,10 @@ $path = "../"
                                     </div>
 
                                 </div>
-                                <div class="col-12 col-md-4" >
+                                <div class="col-12 col-md-4 mb-4" >
                                     <h5>justificantes por revisar</h5>
                                     <div class="list-group">
-                                        <?php for($i = 0; $i<4; $i++){ ?>
+                                        <?php for($i = 0; $i<2; $i++){ ?>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="d-flex w-100 justify-content-between">
                                                     <h5 class="mb-1">{Nombre alumno}</h5>
@@ -150,8 +151,48 @@ $path = "../"
                     </div>
                 </div>
             </div>
+<script>
+var options = {
+series: [{
+name: "Desktops",
+data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+}],
+chart: {
+height: 350,
+type: 'line',
+zoom: {
+enabled: false
+}
+},
+dataLabels: {
+enabled: false
+},
+stroke: {
+curve: 'straight'
+},
+title: {
+text: 'Product Trends by Month',
+align: 'left'
+},
+grid: {
+row: {
+colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+opacity: 0.5
+},
+},
+xaxis: {
+categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
+</script>
         </body>
 
+        
+        <?php include "../main_profesor/Modal_profesor/crear_grupo.php"; ?>
+        <?php include "../main_profesor/Modal_profesor/periodos_registrados.php"; ?>
         <?php include $path."includes_general/js.php"?>
 
         <script src="services/template.js"></script>
