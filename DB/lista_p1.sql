@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2022 a las 04:47:46
+-- Tiempo de generación: 26-04-2022 a las 15:02:16
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -119,6 +119,7 @@ CREATE TABLE `periodo` (
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL,
   `tipo` varchar(10) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -141,6 +142,13 @@ CREATE TABLE `persona` (
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `sexo`, `email`, `user_name`, `avatar`, `pw`, `create_at`) VALUES
+(2, 'Christian', 'Hernandez', 'Pioquinto', 0, 'christian.floppy@gmail.com', 'chris', '../recursos/avatars/defaultAvatar.webp', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-04-25 20:59:19');
+
 -- --------------------------------------------------------
 
 --
@@ -154,6 +162,13 @@ CREATE TABLE `profesor` (
   `carrera_esp` varchar(32) DEFAULT NULL,
   `account_confirm` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `profesor`
+--
+
+INSERT INTO `profesor` (`id_profesor`, `id_persona_fk`, `grado_academico`, `carrera_esp`, `account_confirm`) VALUES
+(1, 2, 'Lic. ', 'Informática', 1);
 
 --
 -- Índices para tablas volcadas
@@ -238,13 +253,13 @@ ALTER TABLE `grupo`
 -- AUTO_INCREMENT de la tabla `periodo`
 --
 ALTER TABLE `periodo`
-  MODIFY `id_periodo` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_periodo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `id_profesor` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_profesor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
