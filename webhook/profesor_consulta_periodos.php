@@ -1,7 +1,7 @@
 <?php
 include_once "../control/controlPeriodos.php";
 
-$filtro_periodo =   $_POST["filtro_periodo"];
+$filtro_periodo = $_POST["filtro_periodo"];
 
 //insertProfesor($params)
 $data = consultaPeriodosEscolares($filtro_periodo);

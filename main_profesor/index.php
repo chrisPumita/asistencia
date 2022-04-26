@@ -202,7 +202,13 @@ if(!isset($_SESSION['name_user']))
         </div>
     </div>
 </div>
-</body> <?php include "../main_profesor/Modal_profesor/crear_grupo.php"; ?> <?php include "../main_profesor/Modal_profesor/periodos_registrados.php"; ?> <?php include $path."includes_general/js.php"?> <script src="../services/profesor/dashboard.js"></script>
+</body>
+<?php
+    include "../main_profesor/Modal_profesor/crear_grupo.php";
+    include "../main_profesor/Modal_profesor/periodos_registrados.php";
+    include $path."includes_general/js.php";
+?>
+<script src="../services/profesor/dashboard.js"></script>
 <script>
     var options = {
         series: [{

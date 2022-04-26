@@ -10,8 +10,6 @@ class PDODB
 
     private $connection;
 
-
-
     function connect()
     {
         $opciones = array(
@@ -100,7 +98,6 @@ class PDODB
 
     function executeInstruction($sql)
     {
-
         $result = $this->connection->query($sql);
         $error = $this->connection->errorInfo();
 

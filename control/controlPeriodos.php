@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 function consultaPeriodosEscolares($filtro){
     include_once "../model/PERIODO.php";
     $PER = new PERIODO();
@@ -7,13 +7,15 @@ function consultaPeriodosEscolares($filtro){
     return $PER->queryConsultaPeriodos($filtro);
 }
 
-function crearPeriodo($nombre,$f_ini,$f_fin,$tipo){
+function crearActualizaPeriodo($id_periodo,$nombre,$f_ini,$f_fin,$tipo){
     include_once "../model/PERIODO.php";
+    session_start();
     $PER = new PERIODO();
-    $PER->setIdProfesor($_SESSION['idProfesor']);
+    $PER->setIdPeriodo($id_periodo);
+    $PER->setIdProfesor($_SESSION['id_profesor']);
     $PER->setNombrePeriodo($nombre);
     $PER->setFechaInicio($f_ini);
     $PER->setFechaFin($f_fin);
     $PER->setTipo($tipo);
-    return $PER->queryCreaPeriodo();
+   return $id_periodo == 0 ? $PER->queryCreaPeriodo() : $PER->queryActualizaPeriodo();
 }
