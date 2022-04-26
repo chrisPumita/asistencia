@@ -19,7 +19,12 @@ function iniciaSesion($correo, $pw, $tipo){
         $_SESSION['avatar'] = $CUENTA['avatar'];
         $_SESSION['email'] = $CUENTA['email'];
         $_SESSION['id_persona'] = $CUENTA['id_persona'];
-        $_SESSION['id_profesor'] = $CUENTA['id_profesor'];
+        if($tipo=="profesor"){
+            $_SESSION['id_profesor'] = $CUENTA['id_profesor'];
+        } else {
+            $_SESSION['id_alumno'] = $CUENTA['id_alumno'];
+        }
+        
         return true;
     }
     else
