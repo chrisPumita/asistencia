@@ -42,11 +42,11 @@ function verificaCuenta($correo, $pw, $tipo){
         return $PROF->queryConsultaCuentaProfesor();
     }
     else{
-        include_once "../model/ALUMNO";
+        include_once "../model/ALUMNO.php";
         $ALUM= new ALUMNO();
         $ALUM->setPw(md5($pw));
         $ALUM->setEmail($correo);
-        return queryConsultaCuentaAlumno();
+        return $ALUM->queryConsultaCuentaAlumno();
     }
 }
 

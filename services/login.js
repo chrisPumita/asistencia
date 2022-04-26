@@ -34,7 +34,7 @@ $("#frm_login").submit(function (event) {
                 }
             },
             error: function(result){
-                alert(result);
+                console.log(result);
             }
         })
     }
