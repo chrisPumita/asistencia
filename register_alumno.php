@@ -12,7 +12,7 @@ $path = "./"
 <section class="h-100">
     <div class="container h-100">
         <div class="row justify-content-sm-center h-100">
-            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+            <div class="col-xxl-6 col-xl-8 col-lg-8 col-md-8 col-sm-9">
                 <div class="text-center my-5">
                     <a href="./index.php">
                         <img src="./assets/img/logo.png" alt="logo" width="250">

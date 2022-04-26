@@ -1,5 +1,5 @@
 <?php
-$titulo = "oKList - Crear Ceunta Profesor";
+$titulo = "oKList - Crear Cuenta Alumno";
 $path = "./"
 ?>
 

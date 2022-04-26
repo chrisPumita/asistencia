@@ -101,7 +101,7 @@ class MAIN
         }
         return $letra."-".$numero;
     }
-    protected static function gen_user_id($strength = 16)  {
+    public static  function gen_user_id($strength = 16)  {
         $input = '0123456789';
         $input_length = strlen($input);
         $random_string = '';
@@ -112,7 +112,7 @@ class MAIN
         return $random_string;
     }
 
-    protected static function genIdBIGInt($strength = 3)  {
+    public static  function genIdBIGInt($strength = 3)  {
         $input = '0123456789';
         $input_length = strlen($input);
         $random_string = '';

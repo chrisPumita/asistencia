@@ -3,7 +3,9 @@ function insertProfesor($params){
     include_once "../model/PROFESOR.php";
     $PROFESOR= new PROFESOR();
     //Aqui se va a generar el ID de la persona para el profesor
-    $idPersona=2;
+    include_once "../model/MAIN.php";
+    // mainModel::limpiar_cadena($_POST['nombre_alumno'])
+    $idPersona= MAIN::gen_user_id();
     $PROFESOR->setIdPersona($idPersona);
     $PROFESOR->setNombre($params['nombre']);
     $PROFESOR->setApp($params['app']);
