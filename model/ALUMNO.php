@@ -91,4 +91,14 @@ class ALUMNO extends PERSONA
         $this->close();
         return $result;
     }
+
+    function queryVerificaAlumno(){
+        $query="SELECT per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`sexo`, per.`email`,
+        per.`user_name`, per.`avatar`, per.`pw`, per.`create_at`, al.id_alumno, al.no_cta 
+        FROM `persona` per, alumno al WHERE per.id_persona=al.id_persona_fk  AND per.email=".$this->getEmail()." AND per.per.pw=".$this->getPw();
+       $this->connect();
+       $result=$this->getData($query);
+       $this->close();
+       return $result;
+    }
 }

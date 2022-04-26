@@ -192,4 +192,13 @@ class PERSONA extends PDODB
         $this->close();
         return $result;
     }
+
+    function queryVerificaCuenta(){
+        $query="SELECT `id_persona`, `nombre`, `app`, `apm`, `sexo`, `email`, `user_name`, `avatar`, `pw`, `create_at` 
+        FROM `persona` WHERE email='".$this->getEmail()."' AND pw='".$this->getPw()."'";
+        $this->connect();
+        $result=$this->getData($query);
+        $this->close();
+        return $result;
+    }
 }
