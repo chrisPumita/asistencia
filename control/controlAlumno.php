@@ -2,8 +2,9 @@
 function insertAlumno($params){
     include_once "../model/ALUMNO.php";
     $ALUMNO= new ALUMNO();
-    $id=1;
-    $ALUMNO->setIdPersona($id);
+    include_once "../model/MAIN.php";
+    $id_persona=MAIN::gen_user_id();
+    $ALUMNO->setIdPersona($id_persona);
     $ALUMNO->setNombre($params['nombre']);
     $ALUMNO->setApp($params['app']);
     $ALUMNO->setApm($params['apm']);
@@ -14,7 +15,7 @@ function insertAlumno($params){
     $ALUMNO->setPw(md5($params['pwd']));
     if($ALUMNO->queryInsertPersona()){
         //Se genera el ID
-        $idAlumno=1;
+        $idAlumno=MAIN::genIdBIGInt();
         $ALUMNO->setIdAlumno($idAlumno);
         $ALUMNO->setIdPersonaFk($ALUMNO->getIdPersona());
         $ALUMNO->setNoCta($params['noCta']);
