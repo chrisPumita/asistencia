@@ -13,7 +13,8 @@ if(!isset($_SESSION['name_user']))
 <head> <?php include $path."includes_general/header.php"?></head>
 <body>
 <div class="container-fluid">
-    <div class="row"> <?php include $path."includes_general/sidebar.php"?><div class="col-sm pt-0 min-vh-100 bg-blanco m-0 p-0">
+    <div class="row"> <?php include $path."includes_general/sidebar.php"?>
+        <div class="col-sm pt-0 min-vh-100 bg-blanco m-0 p-0">
             <!-- content -->
             <div class="container-fluid bg-primary">
                 <div class="container p-3 text-light">
@@ -24,8 +25,7 @@ if(!isset($_SESSION['name_user']))
                         <div class="col-2 d-flex justify-content-center align-items-center">
                             <div class="dropdown">
                                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="
-							<?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
+                                    <img src=" <?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="menuPerfil">
                                     <li>
@@ -188,13 +188,6 @@ if(!isset($_SESSION['name_user']))
                                 </a> <?php } ?>
                             </div>
                         </div>
-
-                    </div>
-                </div>
-                <div class="row pt-3">
-
-                    <div class="col-12 col-md-4 mb-4">
-
                     </div>
                 </div>
             </div>
@@ -209,81 +202,5 @@ if(!isset($_SESSION['name_user']))
     include $path."includes_general/js.php";
 ?>
 <script src="../services/profesor/dashboard.js"></script>
-<script>
-    var options = {
-        series: [{
-            name: 'ASISTENCIAS',
-            data: [44, 55, 41, 67, 22, 43]
-        }, {
-            name: 'INASISTENCIAS',
-            data: [13, 23, 20, 8, 13, 27]
-        }, {
-            name: 'RETARDOS',
-            data: [11, 17, 15, 15, 21, 14]
-        }],
-        colors: ['#15850d', '#ce2121', '#dbea1a'],
-        chart: {
-            type: 'bar',
-            height: 350,
-            stacked: true,
-            toolbar: {
-                show: true
-            },
-            zoom: {
-                enabled: true
-            }
-        },
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                legend: {
-                    position: 'bottom',
-                    offsetX: -10,
-                    offsetY: 0
-                }
-            }
-        }],
-        plotOptions: {
-            bar: {
-                horizontal: false,
-                borderRadius: 10
-            },
-        },
-        xaxis: {
-            type: 'datetime',
-            categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT', '01/05/2011 GMT', '01/06/2011 GMT'],
-        },
-        legend: {
-            position: 'right',
-            offsetY: 40
-        },
-        fill: {
-            opacity: 1
-        }
-    };
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
-    var options = {
-        series: [44, 55, 13],
-        chart: {
-            width: 380,
-            type: 'pie',
-        },
-        labels: ['ASISTENCIAS', 'FALTAS', 'RETARDOS'],
-        colors: ['#15850d', '#ce2121', '#dbea1a'],
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }]
-    };
-    var chart = new ApexCharts(document.querySelector("#circularGrapfic"), options);
-    chart.render();
-</script>
+
 </html>

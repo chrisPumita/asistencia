@@ -140,7 +140,10 @@ class PERIODO extends PDODB
                        `fecha_fin`, `tipo`, `estado`) 
                 VALUES (NULL, '".$this->getIdProfesor()."', '".$this->getNombrePeriodo()."', '".$this->getFechaFin().
             "', '".$this->getFechaFin()."', '".$this->getTipo()."', '1')";
-        return $this->ejecutarSQL($query);
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 
     function queryActualizaPeriodo(){
