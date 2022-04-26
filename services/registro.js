@@ -34,7 +34,7 @@ $("#frm-new-profesor").submit(function (event) {
                 }
             },
             error: function(result){
-                alert(result);
+                console.log(result);
             }
         })
     }

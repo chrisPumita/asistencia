@@ -1,6 +1,5 @@
 <?php
 include_once "../control/controlPeriodos.php";
-
 $no_periodo = $_POST["no_periodo"];
 $nombre_periodo =   $_POST["nombre_periodo"];
 $fecha_inicio_periodo = $_POST["fecha_inicio_periodo"];

@@ -34,10 +34,14 @@ function verificaCuenta($correo, $pw, $tipo){
         $PROF = new PROFESOR();
         $PROF->setPw(md5($pw));
         $PROF->setEmail($correo);
-        return $PROF->consultaCuentaProfesor();
+        return $PROF->queryConsultaCuentaProfesor();
     }
     else{
         include_once "../model/ALUMNO";
+        $ALUM= new ALUMNO();
+        $ALUM->setPw(md5($pw));
+        $ALUM->setEmail($correo);
+        return queryConsultaCuentaAlumno();
     }
 }
 

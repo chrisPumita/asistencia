@@ -105,7 +105,7 @@ class PROFESOR extends PERSONA
         return $result;
     }
 
-    function consultaCuentaProfesor(){
+    function queryConsultaCuentaProfesor(){
         $query = "select prof.id_profesor, prof.grado_academico, prof.carrera_esp, prof.account_confirm,
                per.id_persona, per.nombre, per.app, per.apm, per.sexo, per.email, per.user_name, 
                per.avatar, per.create_at

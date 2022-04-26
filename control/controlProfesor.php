@@ -18,7 +18,7 @@ function insertProfesor($params){
     $PROFESOR->setPw(md5($params['pwd']));
     if($PROFESOR->queryInsertPersona()){
         //Agregaos profesor si se logró hacer el registro de la persona
-        $idProfesor=1;
+        $idProfesor=MAIN::genIdBIGInt();
         $PROFESOR->setIdProfesor($idProfesor);
         $PROFESOR->setIdPersonaFk($PROFESOR->getIdPersona());
         $PROFESOR->setGradoAcademico($params['gradoAc']);
