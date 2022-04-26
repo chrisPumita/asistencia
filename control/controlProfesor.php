@@ -12,7 +12,7 @@ function insertProfesor($params){
     $PROFESOR->setEmail($params['email']);
     $PROFESOR->setUserName($params['user_name']);
     //Buscar imagen en google cuando haya internet xD
-    $PROFESOR->setAvatar("../img/avatars/default.png");
+    $PROFESOR->setAvatar("../recursos/avatars/defaultAvatar.webp");
     $PROFESOR->setPw(md5($params['pwd']));
     if($PROFESOR->queryInsertPersona()){
         //Agregaos profesor si se logró hacer el registro de la persona

@@ -27,9 +27,14 @@ body {
     color: var(--c-primario) !important;
 }
 
+.nav-link {
+    color: #184152;
+}
 
-
-
+.nav-link:hover{
+    color: #ffffff;
+    background:#184152;
+}
 /*MIS EATILOS*/
 
 .bg-blanco{
@@ -38,11 +43,81 @@ body {
 
 .avatar {
     vertical-align: middle;
-    width: 50px !important;
-    height: 50px !important;
+    width: 25px !important;
+    height: 25px !important;
     border-radius: 50%;
 }
 
 .btnAsist{
     width: 80px !important;
 }
+
+.asfalre{
+    font-weight:bold !important;
+}
+
+.modal-header{
+      /*ESTILOS PROPIOS***********************************************************************/
+  background-color: darkblue !important;
+  color: white !important;
+  /*ESTILOS PROPIOS***********************************************************************/
+}
+
+.btnClose_modal{
+    background-color: white !important;
+}
+
+.card_cursor{
+    cursor: pointer !important;
+}
+
+.creargrupo_center{
+    display: flex !important;
+    align-items: center !important;
+}
+
+.texto_creaGrupo{
+    font-size: 1rem;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+    .table caption {
+        font-size: 28px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 8px;
+        color: black;
+    }
+
+    .table tr th {
+        background-color: darkblue;
+        border: 1px solid #ccc;
+        font-size: 13px;
+        color: white;
+        /*text-align: left;*/
+    }
+
+
+    .table tr td {
+        font-size: 13px;
+    }
+
+    .text-info{
+        color: #afafaf!important;
+        font-family: Calibri;
+        font-size: 11px;
+        font-weight: 100 !important;
+        line-height: 0.0 !important;
+    }
+
+    .class_card:hover{
+        background-color: #b8e1e1;
+        box-shadow: rgba(175,175,175,0.69);
+    }

@@ -7,26 +7,40 @@ function datosPerfilesAlumno($idAlumno){
     return $ALUMNO->queryDatosPerfilesAlumno();
 }
 
-//Funcion que busca en alumnos e correo y la pasword
-
-function verificaAlumno($params){
-    include_once "../model/ALUMNO.php";
-    $ALUMNO = new ALUMNO();
-    $ALUMNO->setEmail($params['email']);
-    $ALUMNO->setPw(md5($params['pwd']));
-    $arrayDatos['persona']= $ALUMNO->queryVerificaCuenta();
-    if(count($arrayDatos['persona'])>0){
-        if($params['checkConf']==1){
-            //Si el checkbutton es 1, significa que es un alumno
-            $arrayDatos['alumno'] $ALUMNO->queryVerificaAlumno();    
-        } else{
-            //En caso contrario será profesor
-            include_once "../model/PROFESOR.php";
-            $PROFESOR = new PROFESOR();
-            $arrayDatos['profesor']= $PROFESOR->queryVerificaProfesor();
-        }
-        return $arrayDatos;
+function iniciaSesion($correo, $pw, $tipo){
+    $PERSONA = verificaCuenta($correo, $pw, $tipo);
+    if ($PERSONA){
+        //Crear la sesion
+        session_start();
+        $CUENTA= $PERSONA[0];
+        $_SESSION['tipo'] = $tipo;
+        $_SESSION['name_user'] = $CUENTA['user_name'];
+        $_SESSION['name_complete'] = $CUENTA['nombre']." ".$CUENTA['app']." ".$CUENTA['apm'];
+        $_SESSION['avatar'] = $CUENTA['avatar'];
+        $_SESSION['email'] = $CUENTA['email'];
+        $_SESSION['id_persona'] = $CUENTA['id_persona'];
+        $_SESSION['id_profesor'] = $CUENTA['id_profesor'];
+        return true;
     }
-    return false;
+    else
+        return false;
 }
+
+function verificaCuenta($correo, $pw, $tipo){
+    //alumno
+    //profesor
+    if ($tipo=="profesor"){
+        include_once "../model/PROFESOR.php";
+        $PROF = new PROFESOR();
+        $PROF->setPw(md5($pw));
+        $PROF->setEmail($correo);
+        return $PROF->consultaCuentaProfesor();
+    }
+    else{
+        include_once "../model/ALUMNO";
+    }
+}
+
+
+
 ?>

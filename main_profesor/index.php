@@ -1,145 +1,200 @@
 <?php
 $titulo = "HOME - Profesor";
-$path = "../"
+$path = "../";
+session_start();
+$_SESSION["idSesion"] = session_id();
+if(!isset($_SESSION['name_user']))
+{
+    header('Location: ../');
+}
 ?>
-
 <!doctype html>
 <html lang="en">
-<head>
-    <?php include $path."includes_general/header.php"?>
-
-</head
+<head> <?php include $path."includes_general/header.php"?></head>
 <body>
 <div class="container-fluid">
-    <div class="row">
-        <?php include $path."includes_general/sidebar.php"?>
-        <div class="col-sm pt-0 min-vh-100 bg-blanco">
+    <div class="row"> <?php include $path."includes_general/sidebar.php"?><div class="col-sm pt-0 min-vh-100 bg-blanco m-0 p-0">
             <!-- content -->
             <div class="container-fluid bg-primary">
                 <div class="container p-3 text-light">
-                    <h3>Hola buenas tardes</h3>
-                    <h2>Juan Perez</h2>
+                    <div class="row">
+                        <div class="col">
+                            <h3>¡Hola buenas tardes <strong> <?php echo $_SESSION['name_complete'] ?> </strong>! </h3>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="
+							<?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="menuPerfil">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Perfil</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Acerca de</a>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        <a class="dropdown-item" href="../c_logout.php">Salir</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="container">
                 <div class="row pt-3">
-                    <div class="col-12 col-md-8">
-                        <h5>Asistencia General</h5>
-                        <img src="../assets/img/Captura.JPG" width="450" alt="">
+                    <div class="col-12 col-md-7 py-3">
+                        <h5 class="text-center">Asistencia General</h5>
+                        <div id="chart"></div>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <h5>Inscripcion General</h5>
-                        <img src="../assets/img/CUYO.png" width="200" alt="">
+                    <div class="col-12 col-md-5 align-content-center py-3">
+                        <div class="row">
+                            <h5 class="text-center">Inscripcion General</h5>
+                        </div>
+                        <div class="row h-100">
+                            <div id="circularGrapfic" class="d-flex align-content-center m-auto"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="row pt-3">
-                    <div class="col col-md-8">
-                        <h5>Seleccione un grupo para pasar lista</h5>
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
-
-                            <?php for($i = 0; $i<4; $i++){ ?>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h5 class="card-title">GRUPO {NoGrupo}</h5>
-                                        <p class="card-text">{NombreMateria}</p>
+                    <div class="col-12 col-md-8">
+                        <div class="row pt-3">
+                            <h5>Seleccione un grupo para pasar lista</h5>
+                            <div class="row row-cols-1 row-cols-md-3">
+                                <?php for($i = 0; $i <4; $i++){ ?>
+                                <div class="col pb-3">
+                                    <div class="card class_card" role="button">
+                                        <img src="../assets/img/banner.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">GRUPO {NoGrupo}</h5>
+                                            <p class="card-text">{NombreMateria}</p>
+                                        </div>
                                     </div>
                                 </div>
+                                <?php } ?>
                             </div>
-                            <?php } ?>
                         </div>
-                    </div>
-                    <div class="col col-md-4">
-                        <h5>Ultimos pases de lista</h5>
-                        <div class="list-group">
-                            <?php for($i = 0; $i<4; $i++){ ?>
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">{Grupo}</h5>
-                                        <span class="badge bg-warning">Hoy</span>
-                                    </div>
-                                    <p class="mb-1">{Materia}</p>
-                                    <small class="text-muted">{11 de Abril de 2022}</small>
-                                </a>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    <div class="col-12 col-md-8">
-                        <div class="row py-3">
+                        <div class="row pt-3">
                             <h5>Buscar pase de lista</h5>
-                            <form class="row g-3">
+                            <form class="row">
                                 <div class="col-12 col-md-7">
                                     <select class="form-select" aria-label="Default select example">
                                         <option selected>Grupo 7205 Informática - Analisis de sistemas</option>
                                         <option value="1">1</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
-                                    </select></div>
+                                    </select>
+                                </div>
                                 <div class="col-7 col-md-3">
-                                    <input class="w-100 form-control" type="date" id="start" name="trip-start"
-                                           value="2018-07-22"
-                                           min="2018-01-01" max="2018-12-31">
+                                    <input class="w-100 form-control" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
                                 </div>
                                 <div class="col-5 col-md-2">
                                     <button type="submit" class="btn btn-primary mb-3 w-100">Ver</button>
                                 </div>
                             </form>
                         </div>
+                        <div class="row pt-3">
+                            <h5>Crear Grupo</h5>
+                            <div class="row mt-2 mb-3">
+                                <div class="col-8 col-md-10">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected="">   - Seleccione el periodo -   </option>
+                                        <option value="1">Semestre 2022</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <button type="button" class="btn btn-primary mb-3 w-100" data-bs-toggle="modal" data-bs-target="#modal_crearGrupo">Crear</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row py-3">
                             <h5>Accesos rapidos</h5>
                             <div class="row">
                                 <div class="col-6 col-md-3 col-sm-3 py-3">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
+                                        <div class="card-body card_cursor" data-bs-toggle="modal" data-bs-target="#modal_periodos">
+                                            <h5 class="card-title text-center">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </h5>
                                             <h6 class="card-subtitle mb-2 text-muted text-center">Periodos</h6>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3 col-sm-3 py-3">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
-                                            <h6 class="card-subtitle mb-2 text-muted text-center">Periodos</h6>
+                                        <div class="card-body card_cursor">
+                                            <h5 class="card-title text-center">
+                                                <i class="fas fa-history"></i>
+                                            </h5>
+                                            <h6 class="card-subtitle mb-2 text-muted text-center">Historial</h6>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3 col-sm-3 py-3">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
-                                            <h6 class="card-subtitle mb-2 text-muted text-center">Periodos</h6>
+                                        <div class="card-body card_cursor">
+                                            <h5 class="card-title text-center">
+                                                <i class="fas fa-users"></i>
+                                            </h5>
+                                            <h6 class="card-subtitle mb-2 text-muted text-center">Mis Grupos</h6>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3 col-sm-3 py-3">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center" ><i class="fab fa-whatsapp"></i></h5>
-                                            <h6 class="card-subtitle mb-2 text-muted text-center">Periodos</h6>
+                                        <div class="card-body card_cursor">
+                                            <h5 class="card-title text-center">
+                                                <i class="fas fa-user-cog"></i>
+                                            </h5>
+                                            <h6 class="card-subtitle mb-2 text-muted text-center">Perfil</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="col-12 col-md-4" >
-                        <h5>justificantes por revisar</h5>
-                        <div class="list-group">
-                            <?php for($i = 0; $i<4; $i++){ ?>
-                                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="col-12 col-md-4">
+                        <div class="row">
+                            <h5>Ultimos pases de lista</h5>
+                            <div class="list-group"> <?php for($i = 0; $i
+                                <2; $i++){ ?> <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">{Grupo}</h5>
+                                        <span class="badge bg-warning">Hoy</span>
+                                    </div>
+                                    <p class="mb-1">{Materia}</p>
+                                    <small class="text-muted">{11 de Abril de 2022}</small>
+                                </a> <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row pt-5">
+                            <h5>justificantes por revisar</h5>
+                            <div class="list-group"> <?php for($i = 0; $i
+                                <2; $i++){ ?> <a href="#" class="list-group-item list-group-item-action">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">{Nombre alumno}</h5>
                                         <span class="badge bg-danger">{Grupo}</span>
                                     </div>
                                     <p class="mb-1">{Materia}</p>
                                     <small class="text-muted">{11 de Abril de 2022}</small>
-                                </a>
-                            <?php } ?>
+                                </a> <?php } ?>
+                            </div>
                         </div>
+
+                    </div>
+                </div>
+                <div class="row pt-3">
+
+                    <div class="col-12 col-md-4 mb-4">
+
                     </div>
                 </div>
             </div>
@@ -147,10 +202,82 @@ $path = "../"
         </div>
     </div>
 </div>
-</body>
-
-<?php include $path."includes_general/js.php"?>
-
-<script src="services/template.js"></script>
-<!-- Initialize Swiper -->
+</body> <?php include "../main_profesor/Modal_profesor/crear_grupo.php"; ?> <?php include "../main_profesor/Modal_profesor/periodos_registrados.php"; ?> <?php include $path."includes_general/js.php"?> <script src="../services/profesor/dashboard.js"></script>
+<script>
+    var options = {
+        series: [{
+            name: 'ASISTENCIAS',
+            data: [44, 55, 41, 67, 22, 43]
+        }, {
+            name: 'INASISTENCIAS',
+            data: [13, 23, 20, 8, 13, 27]
+        }, {
+            name: 'RETARDOS',
+            data: [11, 17, 15, 15, 21, 14]
+        }],
+        colors: ['#15850d', '#ce2121', '#dbea1a'],
+        chart: {
+            type: 'bar',
+            height: 350,
+            stacked: true,
+            toolbar: {
+                show: true
+            },
+            zoom: {
+                enabled: true
+            }
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                borderRadius: 10
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT', '01/05/2011 GMT', '01/06/2011 GMT'],
+        },
+        legend: {
+            position: 'right',
+            offsetY: 40
+        },
+        fill: {
+            opacity: 1
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+    var options = {
+        series: [44, 55, 13],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        labels: ['ASISTENCIAS', 'FALTAS', 'RETARDOS'],
+        colors: ['#15850d', '#ce2121', '#dbea1a'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#circularGrapfic"), options);
+    chart.render();
+</script>
 </html>
