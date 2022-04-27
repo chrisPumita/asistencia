@@ -147,6 +147,15 @@ class PERIODO extends PDODB
     }
 
     function queryActualizaPeriodo(){
-        return true;
+        $query = "UPDATE `periodo` SET 
+                     `nombre_periodo` = '".$this->getNombrePeriodo()."', 
+                     `fecha_inicio` = '".$this->getFechaInicio()."', 
+                     `fecha_fin` = '".$this->getFechaFin()."', 
+                     `tipo` = '".$this->getTipo()."' 
+                WHERE `periodo`.`id_periodo` = ".$this->getIdPeriodo();
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }

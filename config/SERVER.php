@@ -1,11 +1,11 @@
 <?php
 #CONFIGURACION DEL SERVIDOR
 #cONSTANTES DE PARAMETROS DE LA CONEXION A LA BD
-#
+
 date_default_timezone_set("America/Mexico_City");
 
 const SERVER = "localhost";
-const DB = "asistencia";
+const DB = "lista_p1";
 const USER = "root";
 const PASS = "";
 
