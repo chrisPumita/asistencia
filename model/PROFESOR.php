@@ -111,6 +111,9 @@ class PROFESOR extends PERSONA
                per.avatar, per.create_at
         from profesor prof inner join persona per
         where per.email = '".$this->getEmail()."' and per.pw = '".$this->getPw()."'";
-        return $this->consultaSQL($query);
+        $this->connect();
+        $result=$this->getData($query);
+        $this->close();
+        return $result;
     }
 }
