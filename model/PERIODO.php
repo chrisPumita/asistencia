@@ -132,7 +132,10 @@ class PERIODO extends PDODB
         }
         $query = "select id_periodo, id_profesor, nombre_periodo, fecha_inicio, fecha_fin, tipo, estado 
                 from periodo where id_profesor = ". $this->getIdProfesor()." ".$condicion." order by fecha_inicio desc";
-        return $this->consultaSQL($query);
+        $this->connect();
+        $result=$this->getData($query);
+        $this->close();
+        return $result;
     }
 
     function queryCreaPeriodo(){
@@ -158,4 +161,4 @@ class PERIODO extends PDODB
         $this->close();
         return $result;
     }
-}
+} 

@@ -9,7 +9,7 @@ if($data){
     $mensaje = "OK";
     $value = 1;
 } else {
-    $mensaje = "Error";
+    $mensaje = "Not Found";
     $value = 0;
 }
 

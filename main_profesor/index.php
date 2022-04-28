@@ -102,18 +102,8 @@ if(!isset($_SESSION['name_user']))
                         </div>
                         <div class="row pt-3">
                             <h5>Crear Grupo</h5>
-                            <div class="row mt-2 mb-3">
-                                <div class="col-8 col-md-10">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected="">   - Seleccione el periodo -   </option>
-                                        <option value="1">Semestre 2022</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
-                                </div>
-                                <div class="col-4 col-md-2">
-                                    <button type="button" class="btn btn-primary mb-3 w-100" data-bs-toggle="modal" data-bs-target="#modal_crearGrupo">Crear</button>
-                                </div>
+                            <div class="row mt-2 mb-3" id="container_select_periodos">
+                                
                             </div>
                         </div>
                         <div class="row py-3">
@@ -203,5 +193,14 @@ if(!isset($_SESSION['name_user']))
     include $path."includes_general/js.php";
 ?>
 <script src="../services/profesor/dashboard.js"></script>
+<script src="../services/general/generador_claves.js"></script>
+<script src="../assets/vendors/md5/md5.min.js"></script>
 
+<script>
+    var exampleModal = document.getElementById('modal_crearGrupo')
+    exampleModal.addEventListener('show.bs.modal', function (event) 
+    {
+            //alert("CARGANDO DATOS")
+    })
+</script>
 </html>

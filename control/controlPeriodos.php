@@ -2,8 +2,9 @@
 
 function consultaPeriodosEscolares($filtro){
     include_once "../model/PERIODO.php";
+    session_start();
     $PER = new PERIODO();
-    $PER->setIdProfesor($_SESSION['idProfesor']);
+    $PER->setIdProfesor($_SESSION['id_profesor']);
     return $PER->queryConsultaPeriodos($filtro);
 }
 
