@@ -70,4 +70,21 @@ class GRUPO_ALUMNO extends PDODB
     {
         $this->create_at = $create_at;
     }
+    
+    function queryInsertGrupoAlumno(){
+        $query="INSERT INTO `grupoalumno` (`id_grupo_fk`, `id_alumno_fk`, `estatus`, `create_at`) 
+        VALUES ('".$this->getIdGrupoFk()."', '".$this->getIdAlumnoFk()."', '1', current_timestamp())";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryUpdateEstatusGrupoAlumno(){
+        $query="UPDATE `grupoalumno` SET `estatus` = '".$this->getEstatus()."' WHERE `grupoalumno`.`id_grupo_fk` = ".$this->getIdGrupoFk()." AND `grupoalumno`.`id_alumno_fk` = ".$this->getIdAlumnoFk();
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
