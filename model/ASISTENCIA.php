@@ -172,4 +172,23 @@ class ASISTENCIA extends PDODB
     {
         $this->log = $log;
     }
+
+    function queryUpdateEstadoAsistencia(){
+        $query="UPDATE `asistencia` SET `confirmada` = '".$this->getConfirmada()."', `check_retardo` = '".$this->getCheckRetardo()."',
+         `upload_date_justificante` = '".$this->getUploadDateJustificante()."', `estatus_rev_just` = '".$this->getEstatusRevJust()."', `log` = '".$this->getLog()."' 
+         WHERE `asistencia`.`id_pase_fk` = ".$this->getIdPaseFk()." AND `asistencia`.`id_alumno_fk`= ".$this->getIdAlumnoFk();
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    function queryUpdateJustificanteFalta(){
+        $query="UPDATE `asistencia` SET `confirmada` = '".$this->getConfirmada()."', `value` = '".$this->getValue()."', `url_justificante` = '".$this->getUrlJustificante()."',
+         `upload_date_justificante` = '".$this->getUploadDateJustificante()."', `estatus_rev_just` = '".$this->getEstatusRevJust()."', `log` = '".$this->getLog()."' 
+         WHERE `asistencia`.`id_pase_fk` = ".$this->getIdPaseFk()." AND `asistencia`.`id_alumno_fk` = ".$this->getIdAlumnoFk();
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
