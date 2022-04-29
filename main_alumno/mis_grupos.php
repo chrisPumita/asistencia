@@ -1,5 +1,5 @@
 <?php
-$titulo = "HOME - Alumno";
+$titulo = "Mis Grupos - Alumno";
 $path = "../";
 
 ?>
@@ -78,18 +78,17 @@ $path = "../";
                                                 </div>
                                                 <div class="row">
                                                     <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">An item</li>
-                                                        <li class="list-group-item">A second item</li>
-                                                        <li class="list-group-item">A third item</li>
-                                                        <li class="list-group-item">A fourth item</li>
-                                                        <li class="list-group-item">And a fifth one</li>
+                                                        <li class="list-group-item">15/30 Clases</li>
+                                                        <li class="list-group-item">LUN, MAR, MIE, JUE</li>
+                                                        <li class="list-group-item">Min 80% asis 10% calif</li>
+                                                        <li class="list-group-item">3 Retardos = 1 Falta</li>
                                                     </ul>
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="">
-                                                        <button type="button" class="btn btn-success btn-sm">Màs detalles</button>
-                                                        <button type="button" class="btn btn-warning btn-sm" >Archivar</button>
+                                                    <div class="" >
+                                                        <button type="button" class="btn btn-success btn-sm"  >Màs detalles</button>
+                                                        <button type="button" class="btn btn-warning btn-sm" style=" flex-end;">Archivar</button>
                                                     </div>
 
                                                 </div>
