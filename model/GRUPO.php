@@ -1,5 +1,5 @@
 <?php
-
+include_once "PDODB.php";
 class GRUPO extends PDODB
 {
     private $id_grupo;
@@ -273,5 +273,68 @@ class GRUPO extends PDODB
     public function setEstatus($estatus)
     {
         $this->estatus = $estatus;
+    }
+
+    function queryConsultaGruposProfesor($idProfesor,$filtro,$DIA){
+        $filter = "";
+        $dia = "";
+        switch ($filtro){
+            case "TODAY":
+                $dia = " AND dias LIKE '%".$DIA."%' ";
+                break;
+        }
+
+        $query = "select g.id_grupo, id_periodo_fk, grupo,
+       carrera, materia, porcentaje_min, dias,
+       is_porcentual, puntaje_final, tipo_puntaje,
+       retardo_is_falta, no_clases, create_at,
+       codigo_invitacion, link_invitacion, estatus, p.*
+from grupo g inner join periodo p
+on p.id_periodo = g.id_periodo_fk inner join profesor pro
+    on pro.id_profesor = p.id_profesor
+where p.id_profesor = ".$idProfesor." AND  g.estatus > 0" .$dia;
+        $this->connect();
+        $result=$this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function consultaUltimosPasesLista($idProfesor){
+        $query = "select g.id_grupo, id_periodo_fk, grupo,
+       carrera, materia, estatus as estadoGrupo, p.id_periodo,
+       p.id_profesor, nombre_periodo, fecha_inicio,
+       fecha_fin, tipo, p.estado as estadoPeriodo,
+       pl.id_pase, fecha, notas, pl.create_at
+        from grupo g inner join periodo p
+        on p.id_periodo = g.id_periodo_fk inner join profesor pro
+        on pro.id_profesor = p.id_profesor left join paselista pl
+        on pl.id_grupo_fk = g.id_grupo
+        where p.id_profesor =".$idProfesor." AND g.estatus > 0 
+        ORDER BY fecha DESC LIMIT 5";
+    }
+
+    function queryCreaGrupo(){
+        $query = "INSERT INTO `grupo` (`id_grupo`, `id_periodo_fk`, `grupo`,
+                     `carrera`, `materia`, `porcentaje_min`, `dias`, 
+                     `is_porcentual`, `puntaje_final`, `tipo_puntaje`, 
+                     `retardo_is_falta`, `no_clases`, `create_at`, `codigo_invitacion`, `link_invitacion`, `estatus`) VALUES 
+          (NULL, '".$this->getIdPeriodoFk()."', 
+          '".$this->getGrupo()."', 
+          '".$this->getCarrera()."', 
+          '".$this->getMateria()."', 
+          '".$this->getPorcentajeMin()."', 
+          '".$this->getDias()."',
+           '".$this->getIsPorcentual()."', 
+           '".$this->getPuntajeFinal()."', 
+           '".$this->getTipoPuntaje()."', 
+           '".$this->getRetardoIsFalta()."', 
+           '".$this->getNoClases()."', CURRENT_TIMESTAMP, 
+           '".$this->getCodigoInvitacion()."', 
+           '".$this->getLinkInvitacion()."', '1')";
+
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }

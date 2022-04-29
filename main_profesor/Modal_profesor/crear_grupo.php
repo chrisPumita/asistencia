@@ -74,31 +74,31 @@
                             <label class="text-muted" for="name">Días:</label>
                             <br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="" id="lunes">
+                                <input class="form-check-input" type="checkbox" value="LUN" id="lunes" name="dias[]">
                                 <label class="form-check-label text-muted" for="lunes">Lun</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="" id="martes">
+                                <input class="form-check-input" type="checkbox" value="MAR" id="martes" name="dias[]">
                                 <label class="form-check-label text-muted" for="martes">Mar</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="" id="miercoles">
+                                <input class="form-check-input" type="checkbox" value="MIE" id="miercoles" name="dias[]">
                                 <label class="form-check-label text-muted" for="miercoles">Mier</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="" id="jueves">
+                                <input class="form-check-input" type="checkbox" value="JUE" id="jueves" name="dias[]">
                                 <label class="form-check-label text-muted" for="jueves">Jue</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="" id="viernes">
+                                <input class="form-check-input" type="checkbox" value="VIE" id="viernes" name="dias[]">
                                 <label class="form-check-label text-muted" for="viernes">Vier</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="" id="sabado">
+                                <input class="form-check-input" type="checkbox" value="SAB" id="sabado" name="dias[]">
                                 <label class="form-check-label text-muted" for="sabado">Sab</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="" id="domingo">
+                                <input class="form-check-input" type="checkbox" value="DOM" id="domingo" name="dias[]">
                                 <label class="form-check-label text-muted" for="domingo">Dom</label>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                             <div class="row mt-2 mb-2">
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="chkPOrcent">
+                                        <input class="form-check-input" type="checkbox" value="" id="chkPOrcent" name="chkPOrcent">
                                         <label class="form-check-label text-muted small" for="chkPOrcent"> El porcentaje contara para la calificación final </label>
                                     </div>
                                 </div>
@@ -124,11 +124,11 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioPts" id="10Pts" checked>
+                                                <input class="form-check-input" type="radio" name="radioPts" id="10Pts" value="10" checked>
                                                 <label class="form-check-label text-muted" for="10Pts"> /10 Puntos </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioPts" id="100Pts">
+                                                <input class="form-check-input" type="radio" name="radioPts" id="100Pts" value="100">
                                                 <label class="form-check-label text-muted" for="100Pts">/100 Porciento </label>
                                             </div>
                                         </div>

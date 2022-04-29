@@ -24,7 +24,6 @@ function iniciaSesion($correo, $pw, $tipo){
         } else {
             $_SESSION['id_alumno'] = $CUENTA['id_alumno'];
         }
-        
         return true;
     }
     else

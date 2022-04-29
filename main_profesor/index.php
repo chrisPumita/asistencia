@@ -21,7 +21,7 @@ if(!isset($_SESSION['name_user']))
                 <div class="container p-3 text-light">
                     <div class="row">
                         <div class="col">
-                            <h3>¡Hola buenas tardes <strong> <?php echo $_SESSION['name_complete'] ?> </strong>! </h3>
+                            <h3>¡Hola buenas tardes <strong> <?php echo $_SESSION['name_complete']?> </strong>! </h3>
                         </div>
                         <div class="col-2 d-flex justify-content-center align-items-center">
                             <div class="dropdown">
@@ -67,29 +67,14 @@ if(!isset($_SESSION['name_user']))
                     <div class="col-12 col-md-8">
                         <div class="row pt-3">
                             <h5>Seleccione un grupo para pasar lista</h5>
-                            <div class="row row-cols-1 row-cols-md-3">
-                                <?php for($i = 0; $i <4; $i++){ ?>
-                                <div class="col pb-3">
-                                    <div class="card class_card" role="button">
-                                        <img src="../assets/img/banner.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">GRUPO {NoGrupo}</h5>
-                                            <p class="card-text">{NombreMateria}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php } ?>
+                            <div class="row row-cols-1 row-cols-md-3" id="containerCardGrupos">
                             </div>
                         </div>
                         <div class="row pt-3">
                             <h5>Buscar pase de lista</h5>
                             <form class="row">
                                 <div class="col-12 col-md-7">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Grupo 7205 Informática - Analisis de sistemas</option>
-                                        <option value="1">1</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select class="form-select" aria-label="Default select example" id="selectGrupoSearch">
                                     </select>
                                 </div>
                                 <div class="col-7 col-md-3">
@@ -197,10 +182,80 @@ if(!isset($_SESSION['name_user']))
 <script src="../assets/vendors/md5/md5.min.js"></script>
 
 <script>
-    var exampleModal = document.getElementById('modal_crearGrupo')
-    exampleModal.addEventListener('show.bs.modal', function (event) 
-    {
-            //alert("CARGANDO DATOS")
-    })
+    var options = {
+        series: [{
+            name: 'ASISTENCIAS',
+            data: [44, 55, 41, 67, 22, 43]
+        }, {
+            name: 'INASISTENCIAS',
+            data: [13, 23, 20, 8, 13, 27]
+        }, {
+            name: 'RETARDOS',
+            data: [11, 17, 15, 15, 21, 14]
+        }],
+        colors: ['#15850d', '#ce2121', '#dbea1a'],
+        chart: {
+            type: 'bar',
+            height: 350,
+            stacked: true,
+            toolbar: {
+                show: true
+            },
+            zoom: {
+                enabled: true
+            }
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                borderRadius: 10
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT', '01/05/2011 GMT', '01/06/2011 GMT'],
+        },
+        legend: {
+            position: 'right',
+            offsetY: 40
+        },
+        fill: {
+            opacity: 1
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+    var options = {
+        series: [44, 55, 13],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        labels: ['ASISTENCIAS', 'FALTAS', 'RETARDOS'],
+        colors: ['#15850d', '#ce2121', '#dbea1a'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#circularGrapfic"), options);
+    chart.render();
 </script>
 </html>

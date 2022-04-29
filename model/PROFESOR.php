@@ -106,11 +106,11 @@ class PROFESOR extends PERSONA
     }
 
     function queryConsultaCuentaProfesor(){
-        $query = "select prof.id_profesor, prof.grado_academico, prof.carrera_esp, prof.account_confirm,
-               per.id_persona, per.nombre, per.app, per.apm, per.sexo, per.email, per.user_name, 
-               per.avatar, per.create_at
-        from profesor prof inner join persona per
-        where per.email = '".$this->getEmail()."' and per.pw = '".$this->getPw()."'";
+        $query = "select persona.id_persona, nombre, app, apm, sexo, email, user_name, avatar, pw, create_at,
+       profesor.id_profesor, grado_academico, carrera_esp, account_confirm
+from persona inner join profesor
+    on persona.id_persona = profesor.id_persona_fk
+where persona.email = '".$this->getEmail()."' and pw = '".$this->getPw()."'";
         $this->connect();
         $result=$this->getData($query);
         $this->close();

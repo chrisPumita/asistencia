@@ -9,6 +9,12 @@ async function cargaPeriodos(filtro) {
     return await peticionAjax(datos,route);
 }
 
+async function cargaGruposProfe(filtro,dia) {
+    let route = "../webhook/profesor_consulta_grupos.php";
+    let datos = {filtro:filtro, dia:dia};
+    return await peticionAjax(datos,route);
+}
+
 /**************** PETICION GENERICA AJAX **************/
 async function peticionAjax(datos,route)
 {

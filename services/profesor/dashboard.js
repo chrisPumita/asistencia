@@ -1,6 +1,7 @@
 $(document).ready(function() {
-    console.log("DAASHBOARD OKKKKKKKS");
+    console.log("DAASHBOARD");
     loadPeriodos("LAST");
+    cargaGruposLista("TODAY","LUN");
 });
 
 //descargar los periodos realizados
@@ -46,6 +47,45 @@ function loadPeriodos(filtro) {
     cargaPeriodos(filtro).then(function (response) {
         buildHTMLSelectPeriodos(response.data);
     })
+
+
+}function cargaGruposLista(filtro,dia) {
+    cargaGruposProfe(filtro,dia).then(function (response) {
+        console.log(response)
+        buildHTMLSelectGrupos(response.data);
+    })
+}
+
+function buildHTMLSelectGrupos(LISTA) {
+    let template = ``;
+    let templateSelect = ``;
+    if (LISTA.length >0) {
+        LISTA.forEach(
+            (gpo)=>
+            {
+                template += ` <div class="col pb-3" onClick="pasarLista(${gpo.id_grupo});">
+                                    <div class="card class_card" role="button">
+                                        <img src="../assets/img/banner.jpg" class="card-img-top" alt="...">
+                                        <ul class="list-group list-group-flush">
+                                          <li class="list-group-item"><strong>${gpo.materia}</strong><br>Grupo ${gpo.grupo}</li>
+                                          <li class="list-group-item">${gpo.carrera}</li>
+                                          <li class="list-group-item">${gpo.dias}</li>
+                                          <li class="list-group-item">${gpo.tipo} ${gpo.nombre_periodo}</li>
+                                        </ul>
+                                    </div>
+                                </div>`;
+                templateSelect += `<option selected="">Grupo ${gpo.grupo} ${gpo.carrera} - ${gpo.materia}</option>`;
+            }
+        );
+    }
+    else{
+        template = `<div class="alert alert-warning" role="alert">
+       No hay Grupos registrados, porfavor agregue uno.</a>.
+      </div>`
+    }
+
+    $("#containerCardGrupos").html(template);
+    $("#selectGrupoSearch").html(templateSelect);
 }
 
 function buildHTMLSelectPeriodos(LISTA) {
@@ -82,7 +122,6 @@ function loadDataPeriodo() {
     $("#tituloModalGrupo").html("Crear grupo en "+ tittle)
     $("#id_periodo_selected").val(id)
     changeKeys();
-
 }
 
 function changeKeys() {
@@ -114,7 +153,9 @@ $("#frm_new_grpo").submit(function (event)
                     $('#frm_new_grpo')[0].reset();
                     mensajeAlerta(result.tipo,result.mensaje, result.titulo);
                     $("#modal_periodos").modal("hide");
-                    mensajeAlerta("success","Exito","titulo")
+                    cargaGruposLista("","LUN");
+                    mensajeAlerta("success","Se ha creado un grupo,\nMande la invitacion a sus alumnos","Se ha creado un grupo");
+                    $("#modal_crearGrupo").modal("hide");
                 }
                 else{
                     let alerta =  `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -131,3 +172,36 @@ $("#frm_new_grpo").submit(function (event)
         })
     }
 });
+
+function pasarLista(id) {
+    sweetCustomDesicion("Pase de Lista", '¿Desea iniciar el pase de lista en este grupo?','<i class="fas fa-check"></i> Iniciar Pase de Lista','<i class="fas fa-undo-alt"></i> Cancelar','question', function (confirmed){
+        if (confirmed) {
+            let timerInterval
+            Swal.fire({
+                title: 'Preparando todo...',
+                html: 'Iniciando en <b></b> segundos.',
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    window.location.href = "./pase_lista.php?start_sesion="+id;
+                }
+                else{
+                    alertaNotificacion("error","Pase de Lista Cancelado")
+                }
+            })
+           //alertaNotificacion("success","Dijo Si")
+        }
+    });
+}
