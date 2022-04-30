@@ -15,8 +15,10 @@ $path = "../";
             <div class="container-fluid bg-primary text-light pt-3">
                 <div class="container">
                     <div class="col">
-                            <h3>¡Hola buenas tardes  </h3>
-                            <strong> <?php echo $_SESSION['name_complete']?> </strong>!
+                        <h5>¡Hola buenas tardes!  </h5>
+                        <h4>Juan Perez  </h4>
+                        <hr>
+                        <!--<strong> <?php echo $_SESSION['name_complete']?> </strong>! -->
                     </div>
                 </div>
             </div>
@@ -56,9 +58,9 @@ $path = "../";
                         </div>
                         <div class="col-12 col-md-3">
                             <h5>Justificantes recientes</h5>
-                            <div class="list-group"> 
+                            <div class="list-group" data-bs-toggle="modal" data-bs-target="#Modal_PDF"> 
 							<?php for($i = 0; $i<2; $i++){ ?>
-								<a href="#" class="list-group-item list-group-item-action">
+								<a href="#" class="list-group-item list-group-item-action ">
 								<i class="far fa-file-pdf"></i>
 						        <div class="d-flex justify-content-between">
 						        	
@@ -104,7 +106,7 @@ $path = "../";
                                                     </div>
 
                                                     <div class="col-3 col-md-3 d-block align-items-center justify-content-center d-xl-flex">
-                                                        <button type="button" class="btn btn-danger mb-3 w-70">Subir justificante</button>
+                                                        <button type="button" class="btn btn-danger mb-3 w-70" data-bs-toggle="modal" data-bs-target="#modal_justificante">Subir justificante</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,7 +143,10 @@ $path = "../";
 </div>
 </body>
 <?php
+include "../main_alumno/modal_alumno/subir_justificante.php";
+include "../main_alumno/modal_alumno/vista_justificante.php";
 include $path."includes_general/js.php";
 ?>
 
 </html>
+

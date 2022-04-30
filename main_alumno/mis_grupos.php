@@ -12,9 +12,12 @@ $path = "../";
         <?php include $path."includes_general/sidebar_alumno.php"?>
         <div class="col-sm pt-0 min-vh-100 bg-blanco m-0 p-0">
             <!-- content -->
-            <div class="container-fluid bg-primary">
+            <div class="container-fluid bg-primary text-light pt-3">
                 <div class="container">
-                    <h1>HOLA</h1>
+                    <div class="col">
+                        <h4>Mis Grupos  </h4>
+                        <hr>
+                    </div>
                 </div>
             </div>
 
@@ -22,7 +25,7 @@ $path = "../";
                 <div class="row">
                     <div class="col-12 col-md-12">
                         <div class="row pt-3">
-                            <h5>Seleccione un grupo para pasar lista</h5>
+                            
                             <div class="row row-cols-1 row-cols-md-3">
                                 <?php for($i = 0; $i <4; $i++){ ?>
                                     <div class="col-3 pb-3">
