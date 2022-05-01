@@ -1,5 +1,5 @@
 <?php
-$titulo = "HOME - Profesor";
+$titulo = "GRUPOS - Profesor";
 $path = "../"
 ?>
 
@@ -37,7 +37,33 @@ $path = "../"
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-4 col-md-12" style="display: flex;justify-content: flex-end;">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <!-- IMAGEN CON SESIÓN 
+                                            <img src=" <?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
+                                            -->
+                                            <img src="
+                                    https://holatelcel.com/wp-content/uploads/2020/12/foto-perfil-whatsapp-.png" alt="Avatar" class="avatar">
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="menuPerfil">
+                                            <li>
+                                                <a class="dropdown-item" href="perfil_profesor.php">Perfil</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">Acerca de</a>
+                                            </li>
+                                            <hr>
+                                            <li>
+                                                <a class="dropdown-item" href="../c_logout.php">Salir</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> 
+                            </div> 
                         </div>
                     </div>  
                 </div>

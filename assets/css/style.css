@@ -138,3 +138,8 @@ body {
     .btn_ajustable{
         width: -webkit-fill-available;
     }
+
+    .circular_square {
+      border-radius: 50%;
+      border: 2px solid grey;
+    }
