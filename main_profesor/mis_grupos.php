@@ -23,7 +23,7 @@ $path = "../"
                         </div>
                         <div class="col-12 col-md-7">
                             <div class="row">
-                                <div class="col-8 col-md-12" style="display: flex; justify-content: flex-end;">
+                                <div class="col-8 col-md-10" style="display: flex; justify-content: flex-end;">
                                     <div class="">
                                          <div class="row">
                                             <div class="col-1" style="display: flex;align-items: center;">
@@ -31,13 +31,13 @@ $path = "../"
                                                     <span class="visually-hidden">New alerts</span>
                                                 </span>
                                             </div>
-                                            <div class="col text-light">
+                                            <div class="col text-light mt-2">
                                                 <h5 class="">10 Grupos activos</h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4 col-md-12" style="display: flex;justify-content: flex-end;">
+                                <div class="col-4 col-md-2" style="display: flex;justify-content: flex-end;">
                                     <div class="dropdown">
                                         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
                                             <!-- IMAGEN CON SESIÓN 

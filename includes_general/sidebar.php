@@ -9,9 +9,9 @@
                     <i class="fas fa-home"></i>
                 </a>
             </li>
-            <li>
+            <li data-bs-toggle="modal" data-bs-target="#modal_pase_lista">
                 <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                    <i class="fas fa-check-double" data-bs-toggle="modal" data-bs-target="#modal_pase_lista"></i>
+                    <i class="fas fa-check-double"></i>
                 </a>
             </li>
             <li>
@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                <a href="../main_profesor/justificantes_revisar.php" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                     <i class="fas fa-file"></i>
                 </a>
             </li>
