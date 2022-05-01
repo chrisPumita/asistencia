@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                <a href="../main_profesor/mis_grupos.php" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
                     <i class="fas fa-users"></i>
                 </a>
             </li>
