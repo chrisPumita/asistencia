@@ -121,3 +121,20 @@ body {
         background-color: #b8e1e1;
         box-shadow: rgba(175,175,175,0.69);
     }
+
+    .fontsizeletrabtn{
+        font-size: 12px;
+    }
+
+    .position_per{
+        color: white;
+        background: #712092;
+        width: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn_ajustable{
+        width: -webkit-fill-available;
+    }

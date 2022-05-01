@@ -1,13 +1,13 @@
 <?php
 $titulo = "HOME - Profesor";
 $path = "../";
-
+/*
 session_start();
 $_SESSION["idSesion"] = session_id();
 if(!isset($_SESSION['name_user']))
 {
     header('Location: ../');
-}
+}*/
 ?>
 <!doctype html>
 <html lang="en">
