@@ -79,7 +79,7 @@ $path = "../"
                                 <div class="card h-100 card_cursor">
                                     <div class="card-body" data-bs-toggle="modal" data-bs-target="#modal_vista_justificante">
                                         <div class="row">
-                                            <div class="col-2 d-flex justify-content-center align-items-center"">
+                                            <div class="col-2 d-flex justify-content-center align-items-center">
                                                 <i class="far fa-file-pdf" style="height: 80px;width: 40px;"></i>
                                             </div>
                                             <div class="col-10">

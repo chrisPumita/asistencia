@@ -30,7 +30,7 @@ if(!isset($_SESSION['name_user']))
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="menuPerfil">
                                     <li>
-                                        <a class="dropdown-item" href="#">Perfil</a>
+                                        <a class="dropdown-item" href="perfil_profesor.php">Perfil</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
@@ -73,7 +73,7 @@ if(!isset($_SESSION['name_user']))
                         <div class="row pt-3">
                             <h5>Buscar pase de lista</h5>
                             <form class="row">
-                                <div class="col-12 col-md-7">
+                                <div class="col-12 col-md-7 mb-3">
                                     <select class="form-select" aria-label="Default select example" id="selectGrupoSearch">
                                     </select>
                                 </div>
@@ -81,16 +81,20 @@ if(!isset($_SESSION['name_user']))
                                     <input class="w-100 form-control" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
                                 </div>
                                 <div class="col-5 col-md-2">
-                                    <button type="submit" class="btn btn-primary mb-3 w-100">Ver</button>
+                                    <a href="pase_lista.php">
+                                        <button type="submit" class="btn btn-primary mb-3 w-100">Ver</button>
+                                    </a>
                                 </div>
                             </form>
                         </div>
+                        <!--
                         <div class="row pt-3">
                             <h5>Crear Grupo</h5>
                             <div class="row mt-2 mb-3" id="container_select_periodos">
                                 
                             </div>
                         </div>
+                    -->
                         <div class="row py-3">
                             <h5>Accesos rapidos</h5>
                             <div class="row">
@@ -115,24 +119,29 @@ if(!isset($_SESSION['name_user']))
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3 col-sm-3 py-3">
-                                    <div class="card">
-                                        <div class="card-body card_cursor">
-                                            <h5 class="card-title text-center">
-                                                <i class="fas fa-users"></i>
-                                            </h5>
-                                            <h6 class="card-subtitle mb-2 text-muted text-center">Mis Grupos</h6>
+                                    <a href="mis_grupos.php">
+                                        <div class="card">
+                                            <div class="card-body card_cursor">
+                                                <h5 class="card-title text-center">
+                                                    <i class="fas fa-users"></i>
+                                                </h5>
+                                                <h6 class="card-subtitle mb-2 text-muted text-center">Mis Grupos</h6>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-6 col-md-3 col-sm-3 py-3">
-                                    <div class="card">
-                                        <div class="card-body card_cursor">
-                                            <h5 class="card-title text-center">
-                                                <i class="fas fa-user-cog"></i>
-                                            </h5>
-                                            <h6 class="card-subtitle mb-2 text-muted text-center">Perfil</h6>
+                                    <a href="perfil_profesor.php">
+                                        <div class="card">
+                                            <div class="card-body card_cursor">
+                                                <h5 class="card-title text-center">
+                                                    <i class="fas fa-user-cog"></i>
+                                                </h5>
+                                                <h6 class="card-subtitle mb-2 text-muted text-center">Perfil</h6>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>

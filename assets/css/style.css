@@ -17,6 +17,11 @@ body {
     padding: 0;
 }
 
+a {
+    color: black !important;
+    text-decoration: auto !important;
+}
+
 /*SOBRE ESCRITURA A STILOS DE BOOSTRAP*/
 
 .bg-primary{
@@ -143,3 +148,25 @@ body {
       border-radius: 50%;
       border: 2px solid grey;
     }
+
+
+    // Para iPhone 5 o superior
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 568px) { 
+
+    .pruebacentro{
+        text-align: center !important;
+    }
+
+  };
+
+  // Para iPad mini
+@media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (-webkit-min-device-pixel-ratio: 1)  { 
+    .pruebacentro{
+        text-align: center !important;
+    }
+}

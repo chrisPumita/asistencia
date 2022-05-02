@@ -9,7 +9,7 @@
                     <i class="fas fa-home"></i>
                 </a>
             </li>
-            <li data-bs-toggle="modal" data-bs-target="#modal_pase_lista">
+            <li data-bs-toggle="modal" data-bs-target="#modal_pase_lista" data-bs-toggle="tooltip" title="Pase lista">
                 <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
                     <i class="fas fa-check-double"></i>
                 </a>

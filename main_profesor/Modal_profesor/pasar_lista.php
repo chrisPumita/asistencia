@@ -16,7 +16,7 @@
         </select>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success">Iniciar</button>
+        <button type="button"  class="btn btn-success">Iniciar</button>
       </div>
     </div>
   </div>

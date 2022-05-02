@@ -7,15 +7,25 @@
                 <button type="button" class="btn-close btnClose_modal" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
                 
-                
-                Aqui va lo de la previsualizacion del documento pero no se como hacerlo
-                
+                <div class="content">
+                    <div class="row">
+                        <div class="col-12">
+                            <embed src="https://justificantemedico.com/wp-content/uploads/plantilla-justificante-medico-murcia.pdf" width="100%" height="450px" 
+                            type="application/pdf">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="modal-footer">
-                <button type="reset" class="btn btn-success m-2">Aceptar justificante</button>
-                <button type="submit" class="btn btn-danger m-2">Rechazar justificante</button>
+                <button type="reset" class="btn btn-success m-2">
+                    Aceptar
+                </button>
+                <button type="submit" class="btn btn-danger m-2">
+                    Rechazar
+                </button>
             </div>
         </div>
     </div>

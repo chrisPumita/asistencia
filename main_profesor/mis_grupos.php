@@ -89,7 +89,10 @@ $path = "../"
                                     </div>
 
                                     <div class="col-12 col-md-2">
-                                        <button type="button" class="btn btn-primary btn_ajustable">Historial</button>
+                                        <a href="historial_grupos.php">
+                                            <button type="button" class="btn btn-primary btn_ajustable">Historial</button>
+                                        </a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -124,10 +127,10 @@ $path = "../"
                                                         <p>Curso {NombreCurso}</p>
                                                     </div>
                                                     <div class="row">
-                                                        <p class="card-text "> 15/30 Clases</p>
-                                                        <p class="card-text "> LUN MAR MIE JUE VIE</p>
-                                                        <p class="card-text "> Min 80% asis 10% Calif  </p>
-                                                        <p class="card-text "> 3 Retardos = 1 Falta  </p>
+                                                        <p class="card-text mb-0"> 15/30 Clases</p>
+                                                        <p class="card-text mb-0"> LUN MAR MIE JUE VIE</p>
+                                                        <p class="card-text mb-0"> Min 80% asis 10% Calif  </p>
+                                                        <p class="card-text mb-0"> 3 Retardos = 1 Falta  </p>
                                                     </div>
 
                                                     <div class="row">
@@ -163,7 +166,7 @@ $path = "../"
                         <div class="row" style="display: flex;justify-content: center;">
                             <h4><strong> Otros grupos de la semana</strong></h4>
                             <div class="row">
-                                <?php for($i = 0; $i <4; $i++){ ?>
+                               <?php for($i = 0; $i <4; $i++){ ?>
                                     <div class="col-12 col-md-3 pb-3"> 
                                         <div class="card class_card" role="button">
                                             <div class="card-body">
@@ -176,24 +179,31 @@ $path = "../"
                                                     <p>Curso {NombreCurso}</p>
                                                 </div>
                                                 <div class="row">
-                                                    <p class="card-text "> 15/30 Clases</p>
-                                                    <p class="card-text "> LUN MAR MIE JUE VIE</p>
-                                                    <p class="card-text "> Min 80% asis 10% Calif  </p>
-                                                    <p class="card-text "> 3 Retardos = 1 Falta  </p>
+
+                                                    <div class="col-7 col-md-12">
+                                                        <p class="card-text mb-0"> 15/30 Clases</p>
+                                                        <p class="card-text mb-0"> LUN MAR MIE JUE VIE</p>
+                                                        <p class="card-text mb-0"> Min 80% asis 10% Calif  </p>
+                                                        <p class="card-text mb-0"> 3 Retardos = 1 Falta  </p>
+                                                    </div>
+                                                    <div class="col-5 col-md-12">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="mt-3" style="display: flex;justify-content: flex-start;">
+                                                                    <button type="button" class="btn btn-warning btn-sm fontsizeletrabtn btn_ajustable">Archivar</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="mt-3" style="display: flex;justify-content: flex-end;">
+                                                                    <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mt-3" style="display: flex;justify-content: flex-start;">
-                                                            <button type="button" class="btn btn-warning btn-sm fontsizeletrabtn btn_ajustable">Archivar</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mt-3" style="display: flex;justify-content: flex-end;">
-                                                            <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
