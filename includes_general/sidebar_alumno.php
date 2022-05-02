@@ -9,13 +9,13 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#"> <i class="fas fa-home"></i> Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="../main_alumno/index.php"> <i class="fas fa-home"></i> Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-graduation-cap"></i> Mis Grupos</a>
+                            <a class="nav-link" href="../main_alumno/mis_grupos.php"><i class="fas fa-graduation-cap"></i> Mis Grupos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> <i class="fas fa-history"></i> Historial</a>
+                            <a class="nav-link" href="../main_alumno/historial_grupos.php"> <i class="fas fa-history"></i> Historial</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -26,7 +26,7 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="menuPerfil" style="">
                                     <li>
-                                        <a class="dropdown-item" href="#">Perfil</a>
+                                        <a class="dropdown-item" href="../main_alumno/perfil.php">Perfil</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>

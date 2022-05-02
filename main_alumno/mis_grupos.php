@@ -27,13 +27,13 @@ $path = "../";
                         <div class="row pt-3">
                             
                             <div class="row row-cols-1 row-cols-md-3">
-                                <?php for($i = 0; $i <4; $i++){ ?>
-                                    <div class="col-3 pb-3">
+                                <?php for($i = 0; $i <3; $i++){ ?>
+                                    <div class="col-12 col-md-3 mb-2 pb-3">
                                         <div class="card class_card" role="button">
 
                                             <div class="card-body">
                                                 <div class="row text-center">
-                                                    <h5 class="card-title">GRUPO {NoGrupo}</h5>
+                                                    <h5 class="card-title">GRUPO {No_Grupo}</h5>
                                                     <p>Carrera {NombreCarrera}</p>
                                                     <p>Curso {NombreCurso}</p>
                                                 </div>
@@ -54,6 +54,13 @@ $path = "../";
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-12 col-md-1 pb-3" style="display: flex;justify-content: center;">
+
+                                                <button type="button" class="btn btn-success btn_ajustable" style="display: flex;align-content: center;justify-content: center;align-items: center;">
+                                                    <i class="fas fa-angle-right"></i>
+                                                </button>
+
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -67,7 +74,7 @@ $path = "../";
                             <h5>Terminados</h5>
                             <div class="row row-cols-1 row-cols-md-3">
                                 <?php for($i = 0; $i <4; $i++){ ?>
-                                    <div class="col-3 pb-3">
+                                    <div class="col-12 col-md-3 mb-2">
                                         <div class="card class_card" role="button">
 
                                             <div class="card-body">
@@ -89,16 +96,22 @@ $path = "../";
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="" >
-                                                        <button type="button" class="btn btn-success btn-sm"  >Màs detalles</button>
-                                                        <button type="button" class="btn btn-warning btn-sm" style=" flex-end;">Archivar</button>
+                                                        <div class="col">
+                                                            <div class="mt-3" style="display: flex;justify-content: flex-start;">
+                                                                <button type="button" class="btn btn-warning btn-sm fontsizeletrabtn btn_ajustable">Archivar</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mt-3" style="display: flex;justify-content: flex-end;">
+                                                                <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-
-                                                </div>
 
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 <?php } ?>
                             </div>
                         </div>

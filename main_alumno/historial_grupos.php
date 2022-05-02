@@ -21,55 +21,48 @@ $path = "../";
                     </div>
                 </div>
             </div>
-            <div class="table-responsive">
-			  	<table class="table table-light caption-top">
-				  <caption>Asistencia por grupo</caption>
-				  <thead class="table-light">
-				    <tr>
-				      <th scope="col">Carrera</th>
-				      <th scope="col">Materia</th>
-				      <th scope="col">Grupo</th>
-				      <th scope="col">Asis</th>
-				      <th scope="col">Faltas</th>
-				      <th scope="col">Ret</th>
-				      <th scope="col">Periodo</th>
-				      <th scope="col">Estatus</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				      <td>the Bird</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				      <td>the Bird</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Larry</td>
-				      <td>the Bird</td>
-				      <td>@twitter</td>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				      <td>the Bird</td>
-				    </tr>
-				  </tbody>
-				</table>
-			</div>
+            <div class="container">
+            		
+            			
+            		
+            		<div class="col-12">
+                	<div class="mb-3 p-4">
+                		<h4><strong>Asistencia por grupo</strong></h4>
+                    <table class="table table-bordered order-table display nowrap table-responsive mt-3" id="tableEquiposA">
+                        <thead>
+                        <tr class="text-center">
+                            <th>CARRERA</th>
+                            <th>MATERIA</th>
+                            <th>GRUPO</th>
+                            <th>% ASIS</th>
+                            <th>% FALTAS</th>
+                            <th>% RETAR</th>
+                            <th>PERIODO</th>
+                            <th>ALUMNOS</th>
+                            <th>ESTATUS</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody id="">
+                        <tr class="text-center">
+                            <td data-label="">Informática</td>
+                            <td data-label="">Introducción a la informática</td>
+                            <td data-label="">2210</td>
+                            <td data-label="">70%</td>
+                            <td data-label="">25%</td>
+                            <td data-label="">5%</td>
+                            <td data-label="">semestre 2022-2</td>
+                            <td data-label="">34 inscritos</td>
+                            <td data-label="">Activo</td>
+                        </tr>
+                        <tr class="text-center">
+                            
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            	</div>
+            </div>
     	</div>
 </div>
 </body>
@@ -80,3 +73,4 @@ include $path."includes_general/js.php";
 
 </html>
 
+			
