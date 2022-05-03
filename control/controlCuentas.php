@@ -49,6 +49,17 @@ function verificaCuenta($correo, $pw, $tipo){
     }
 }
 
-
+function updateAvatar($idPersona,$avatar){
+    if($avatar!= ""){
+    include_once "../model/PERSONA.php";
+    session_start();
+    $PERSONA= new PERSONA();
+    $PERSONA->setIdPersona($_SESSION['id_persona']);
+    $PERSONA->setAvatar($avatar);
+    return $PERSONA->queryUpdateAvatar();
+    } else{
+        return false;
+    }
+}
 
 ?>

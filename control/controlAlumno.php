@@ -29,8 +29,8 @@ function updateAlumno($params){
     include_once "../model/ALUMNO.php";
     $ALUMNO = new ALUMNO();
     //Ver como hacer verificacion de sesión
-    $id=1;
-    $ALUMNO->setIdPersona($id);
+    session_start();
+    $ALUMNO->setIdPersona($_SESSION['id_persona']);
     $ALUMNO->setNombre($params['nombre']);
     $ALUMNO->setApp($params['app']);
     $ALUMNO->setApm($params['apm']);

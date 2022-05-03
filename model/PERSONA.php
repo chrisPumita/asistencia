@@ -201,4 +201,12 @@ class PERSONA extends PDODB
         $this->close();
         return $result;
     }
+
+    function queryUpdateAvatar(){
+        $query="UPDATE `persona` SET `avatar` = '".$this->getAvatar()."' WHERE `persona`.`id_persona` = ".$this->getIdPersona();
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
