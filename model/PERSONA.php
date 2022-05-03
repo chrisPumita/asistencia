@@ -209,4 +209,12 @@ class PERSONA extends PDODB
         $this->close();
         return $result;
     }
+
+    function queryUpdatePassword(){
+        $query="UPDATE `persona` SET `pw` = '".$this->getPw()."' WHERE `persona`.`id_persona` = ".$this->getIdPersona();
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

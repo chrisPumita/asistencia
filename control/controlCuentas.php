@@ -62,4 +62,16 @@ function updateAvatar($idPersona,$avatar){
     }
 }
 
+function updatePassword($oldPwd,$newPwd){
+    session_start();
+    //Obtenemos correo para el envio de verificacion y el tipo de 
+    if(verificaCuenta($_SESSION['email'],md5($oldPwd),$_SESSION['tipo'])){
+        include_once "../model/PERSONA.php";
+        $PER= new PERSONA();
+        $PER->setIdPersona($_SESSION['id_persona']);
+        $PER->setPw(md5($newPwd));
+        return $PER->queryUpdatePassword();
+    }
+}
+
 ?>
