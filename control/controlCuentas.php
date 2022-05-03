@@ -72,6 +72,7 @@ function updatePassword($oldPwd,$newPwd){
         $PER->setPw(md5($newPwd));
         return $PER->queryUpdatePassword();
     }
+    return false;
 }
 
 ?>
