@@ -80,7 +80,7 @@ $path = "../";
                                             		<div class="col-10">
                                                 		<div class="d-flex w-100 justify-content-between">
                                                     		<h6 class="mb-1">{Nombre alumno}</h6>
-                                                    		<span class="position-absolute end-0 me-0 p-1  badge rounded-pill bg-danger" style="align-self: end;top: 10px;">Revisado</span>
+                                                    		<span class="position-absolute end-0 me-1 p-1  badge rounded-pill bg-danger" style="align-self: end;top: 10px;">Revisado</span>
                                                 		</div>
                                                 		<div class="card-text text-muted">
                                                     		{Nombre de la materia} <br>
@@ -99,38 +99,53 @@ $path = "../";
 
                         <div class="row ">
                         <h5><strong>Ultimos pases de lista</strong></h5> <!-- row pt-3 --> <!-- "col-12 col-md-9" -->
-                            <div class="col-12 col-md-9">
-                            <?php for($i = 0; $i<4; $i++){ ?>
-                                <div class="card mt-3">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-1 d-flex justify-content-center align-items-center">
-                                                        <img src="../assets/img/close.png" alt="Avatar" class="avatar">
+                            
+                            <?php for($i = 0; $i <4; $i++){ ?>
+                                    <div class="col-12 col-md-9 pb-3"> 
+                                        <div class="card class_card" role="button">
+                                            <div class="card-body">
+                                                <div class="row" style="display: flex;align-items: center;">
+                                                    <!--
+                                                    <div class="col-6 col-md-1 mb-2" style="display: flex;justify-content: center;align-items: center;">
+                                                        <h4 class="text-muted mb-0"><strong>1</strong></h4>
                                                     </div>
-                                                    <div class="col-5 justify-content-center">
-                                                        <h6><strong>{Nombre alumno}</strong></h6>
-                                                        <h7><strong>{Carrera}{Materia}</strong></h7>
-                                                    </div>
-                                                    <div class="col-3 justify-content-center">
-                                                        <h6><strong>{Fecha}</strong></h6>
-                                                        <h7><strong>a las {Hora}</strong></h7>
+                                                    |-->
+                                                    <div class="col-12 col-md-1 mb-2" style="display: flex;justify-content: center;align-items: center;">
+                                                        <img class="circular_square " src="../assets/img/close.png" width="40" height="40" alt="Avatar"></img>
                                                     </div>
 
-                                                    <div class="col-3 col-md-3 d-block align-items-center justify-content-center d-xl-flex">
-                                                        <button type="button" class="btn btn-danger mb-3 w-70" data-bs-toggle="modal" data-bs-target="#modal_justificante">Subir justificante</button>
+
+
+                                                    <div class="col-12 col-md-5">
+                                                        <div class="row mb-1">
+                                                            <div class="col text-dark">
+                                                                <h6 class="mb-0" style="display: flex;justify-content: center;">   
+                                                                    <span class="position-relative mt-2 p-2 end-0 start-1 translate-middle bg-success border border-light rounded-circle">
+                                                                    <span class="visually-hidden">New alerts</span>
+                                                                    </span>
+                                                                    <strong style="text-align: initial;">{Nombre del alumno}</strong>
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+
+                                                       <div class="row mb-2">
+                                                            <div class="col-12 col-md-5" style="display: flex;justify-content: center;">
+                                                                <small>{Carrera}{Materia}</small>
+                                                            </div> 
+                                                        </div> 
+                                                    </div>
+                                                    <div class="col-12 col-md-4">
+                                                        <h6 class="text-muted mb-0" ><strong>{Fecha}</strong></h6>
+                                                        <p class="text-muted mb-0">a las {Hora}</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-2" style="display: flex; text-align: end;">
+                                                        <button type="button" class="btn btn-danger btn-sm fontsizeletrabtn btn_ajustable" data-bs-toggle="modal" data-bs-target="#modal_justificante">Subir Justificante</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            		<?php } ?>
-
-                        
-                        		<hr>
-                    		</div>
+                                <?php } ?>
                        <div class="row" style="display: flex;justify-content: center;">
                             <h4><strong> Buscar pase de lista</strong></h4>
                             <div class="row">

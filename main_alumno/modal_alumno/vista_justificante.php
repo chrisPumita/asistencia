@@ -14,12 +14,12 @@
       <!--Body-->
       <div class="modal-body">
 
-        <object class="PDFdoc" width="100%" height="500px" type="application/pdf" data="https://www.antennahouse.com/XSLsample/pdf/sample-link_1.pdf"></object>
+        <object class="PDFdoc" width="100%" height="500px" type="application/pdf" data="https://justificantemedico.com/wp-content/uploads/plantilla-justificante-medico-murcia.pdf"></object>
       </div>
 
       <!--Footer-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-success">Cerrar</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
     <!--/.Content-->
