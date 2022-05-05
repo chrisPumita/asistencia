@@ -27,6 +27,10 @@ async function busca_pase_lista(grupo,filtro) {
     return await peticionAjax(datos,route);
 }
 
+async function actulizarperfil(data,route) {
+    return await peticionAjax(datos,route);
+}
+
 /**************** PETICION GENERICA AJAX **************/
 async function peticionAjax(datos,route)
 {
