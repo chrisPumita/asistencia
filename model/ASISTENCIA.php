@@ -1,5 +1,5 @@
 <?php
-
+include_once "PDODB.php";
 class ASISTENCIA extends PDODB
 {
     private $id_pase_fk;
@@ -191,4 +191,19 @@ class ASISTENCIA extends PDODB
         $this->close();
         return $result;
     }
+
+    function queryInsertAsistenciaList($lista){
+        $values = "";
+
+        for ($i = 0; $i < count($lista); $i++){
+            $separator = $i+1 < count($lista)  ? ",":";";
+            $values .= "('".$this->getIdPaseFk()."','".$lista[$i]["id_alumno"]."')".$separator;
+        }
+        $query = "INSERT INTO `asistencia` (`id_pase_fk`, `id_alumno_fk`) VALUES ".$values;
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
 }

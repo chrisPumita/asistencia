@@ -1,13 +1,7 @@
 <?php
 $titulo = "HOME - Profesor";
 $path = "../";
-
-session_start();
-$_SESSION["idSesion"] = session_id();
-if(!isset($_SESSION['name_user']))
-{
-    header('Location: ../');
-}
+include_once "./sesion_profesor.php";
 ?>
 <!doctype html>
 <html lang="en">

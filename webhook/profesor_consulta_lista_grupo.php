@@ -1,11 +1,15 @@
 <?php
+$idGrupo = $_POST['grupo'];
+$action = $_POST['action'];
+$preload = $_POST['preload'] == "true" ? true:false;
 include_once "../control/controlGrupos.php";
+if ($preload){
+    $data = consultaListaAlumnos($idGrupo);
+}
+else{
+    $data = creaNuevoPaseLista($idGrupo);
+}
 
-$grpo = $_POST["filtro"];
-//insertProfesor($params)
-session_start();
-$idProfesor = $_SESSION['id_profesor'];
-$data = ConsultaGrupos($idProfesor,$grpo);
 if ($data) {
     $mensaje = "OK";
     $value = 1;

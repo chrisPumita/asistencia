@@ -53,6 +53,13 @@ a {
     border-radius: 50%;
 }
 
+.avatar_list{
+    vertical-align: middle;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+}
+
 .btnAsist{
     width: 80px !important;
 }
@@ -140,9 +147,9 @@ a {
         align-items: center;
     }
 
-    .btn_ajustable{
-        width: -webkit-fill-available;
-    }
+.btn_ajustable{
+    width:100% !important;
+}
 
     .circular_square {
       border-radius: 50%;
@@ -150,7 +157,6 @@ a {
     }
 
 
-    // Para iPhone 5 o superior
 @media only screen
   and (min-device-width : 320px)
   and (max-device-width : 568px) { 
@@ -159,9 +165,8 @@ a {
         text-align: center !important;
     }
 
-  };
+  }
 
-  // Para iPad mini
 @media only screen
   and (min-device-width : 768px)
   and (max-device-width : 1024px)

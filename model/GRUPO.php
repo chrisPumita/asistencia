@@ -275,14 +275,8 @@ class GRUPO extends PDODB
         $this->estatus = $estatus;
     }
 
-    function queryConsultaGruposProfesor($idProfesor,$filtro,$DIA){
-        $filter = "";
-        $dia = "";
-        switch ($filtro){
-            case "TODAY":
-                $dia = " AND dias LIKE '%".$DIA."%' ";
-                break;
-        }
+    function queryConsultaGruposProfesor($idProfesor,$filtro){
+        $idUnique = $this->getIdGrupo()>0 ? " AND g.id_grupo = ".$this->getIdGrupo() :"";
 
         $query = "select g.id_grupo, id_periodo_fk, grupo,
        carrera, materia, porcentaje_min, dias,
@@ -292,7 +286,7 @@ class GRUPO extends PDODB
 from grupo g inner join periodo p
 on p.id_periodo = g.id_periodo_fk inner join profesor pro
     on pro.id_profesor = p.id_profesor
-where p.id_profesor = ".$idProfesor." AND  g.estatus > 0" .$dia;
+where p.id_profesor = ".$idProfesor." AND  g.estatus > 0 ".$idUnique;
         $this->connect();
         $result=$this->getData($query);
         $this->close();
@@ -334,6 +328,23 @@ where p.id_profesor = ".$idProfesor." AND  g.estatus > 0" .$dia;
 
         $this->connect();
         $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryListaAlumnosGrupo(){
+        $query = "select per.id_persona, per.nombre, per.app, per.apm, per.sexo, 
+       per.email, per.user_name, per.avatar, per.pw, per.create_at,
+       al.id_alumno, id_persona_fk, no_cta, account_confirm
+        from persona per
+            inner join alumno al
+            on per.id_persona = al.id_persona_fk
+            inner join grupoalumno gp
+            on gp.id_alumno_fk = al.id_alumno
+        where gp.id_grupo_fk = ".$this->getIdGrupo()."
+        order by per.app, per.apm, per.nombre";
+        $this->connect();
+        $result=$this->getData($query);
         $this->close();
         return $result;
     }

@@ -14,3 +14,4 @@
 <link rel="stylesheet" href="<?php echo $path; ?>assets/css/style.css">
 <link rel="stylesheet" media="<?php echo $path; ?>only screen and (min-device-width : 768px) and (max-device-width : 1024px)" href="<?php echo $path; ?>assets/css/style.css">
 <title><?php echo $titulo; ?></title>
+

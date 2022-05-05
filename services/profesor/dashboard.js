@@ -1,7 +1,7 @@
 $(document).ready(function() {
     console.log("DAASHBOARD");
     loadPeriodos("LAST");
-    cargaGruposLista("TODAY","LUN");
+    cargaGruposLista("TODAY");
 });
 
 //descargar los periodos realizados
@@ -46,19 +46,84 @@ $("#frm_periodo_update_insert").submit(function (event)
 function loadPeriodos(filtro) {
     cargaPeriodos(filtro).then(function (response) {
         buildHTMLSelectPeriodos(response.data);
-    })
-
-
-}function cargaGruposLista(filtro,dia) {
-    cargaGruposProfe(filtro,dia).then(function (response) {
-        console.log(response)
-        buildHTMLSelectGrupos(response.data);
+        buildTblPeriodos(response.data)
     })
 }
 
-function buildHTMLSelectGrupos(LISTA) {
+function cargaGruposLista(filtro) {
+    cargaGruposProfe(filtro).then(function (response) {
+        let LISTA_DESP = filterItems("LUN",response.data);
+        buildHTMLSelectGrupos(response.data);
+        buildGridGruposHoy(LISTA_DESP);
+    })
+}
+
+function filterItems(query,LIST) {
+    return LIST.filter(function(el) {
+        return el.dias.toLowerCase().indexOf(query.toLowerCase()) > -1;
+    })
+}
+
+function buildTblPeriodos(LISTA) {
     let template = ``;
+    if (LISTA.length >0) {
+        template = `<h6>Seleccione un périodo para editar la información:</h6>
+                    <div class="mb-3 table-responsive">
+                        <table class="table table-bordered order-table display nowrap table-responsive mt-3" id="tableEquiposA">
+                            <thead>
+                            <tr class="text-center">
+                                <th>PERIODO</th>
+                                <th>FECHAS</th>
+                                <th>ESTATUS</th>
+                                <th>EDITAR</th>
+                            </tr>
+                            </thead>
+                            <tbody id="">`;
+        LISTA.forEach(
+            (per)=>
+            {
+                console.log(per)
+                let estado = per.estado ==="1"? `<i class="fas fa-circle text-success"></i> ACTIVO`:`<i class="fas fa-circle text-danger"></i> TERMINADO`;
+                    template += `<tr class="text-center">
+                                <td data-label="">${per.tipo} <br> <strong>${per.nombre_periodo}</strong> </td>
+                                <td data-label="">del ${per.fecha_inicio} <br> al ${per.fecha_fin}</td>
+                                <td data-label="">${estado}</td>
+                                <td data-label="">
+                                    <button type="button" class="btn btn-warning" onClick="editaPeriodo('${per.id_periodo}||${per.tipo}||${per.nombre_periodo}||${per.fecha_inicio}||${per.fecha_fin}');">
+                                        <i class="fas fa-edit" style="color: white;"></i>
+                                    </button>
+                                </td>
+                            </tr>`;
+            }
+        );
+        template += ` </tbody>
+                        </table>
+                    </div>`;
+    }
+    else{
+        template += `NO DATA`;
+    }
+    $("#containerTblPeriodos").html(template);
+}
+
+function buildHTMLSelectGrupos(LISTA) {
     let templateSelect = ``;
+    if (LISTA.length >0) {
+        LISTA.forEach(
+            (gpo)=>
+            {
+                templateSelect += `<option selected="">Grupo ${gpo.grupo} ${gpo.carrera} - ${gpo.materia}</option>`;
+            }
+        );
+    }
+    else{
+
+    }
+    $("#selectGrupoSearch").html(templateSelect);
+}
+
+function buildGridGruposHoy(LISTA) {
+    let template = ``;
     if (LISTA.length >0) {
         LISTA.forEach(
             (gpo)=>
@@ -74,18 +139,15 @@ function buildHTMLSelectGrupos(LISTA) {
                                         </ul>
                                     </div>
                                 </div>`;
-                templateSelect += `<option selected="">Grupo ${gpo.grupo} ${gpo.carrera} - ${gpo.materia}</option>`;
             }
         );
     }
     else{
         template = `<div class="alert alert-warning" role="alert">
-       No hay Grupos registrados, porfavor agregue uno.</a>.
+           No hay grupos para hoy, para ver todos sus grupos, vaya a <a href="./mis_grupos.php"> mis Grupos</a>.
       </div>`
     }
-
     $("#containerCardGrupos").html(template);
-    $("#selectGrupoSearch").html(templateSelect);
 }
 
 function buildHTMLSelectPeriodos(LISTA) {
@@ -131,6 +193,16 @@ function changeKeys() {
     $("#code_invitacion_md5").val(getServetInfo()+"join.php?code="+codeMD5+"&invite="+code);
 }
 
+function editaPeriodo(datos) {
+    d=datos.split('||');
+    console.log(d)
+    $("#no_periodo").val(d[0]);
+    $("#tipo_periodo").val(d[1]);
+    $("#nombre_periodo").val(d[2]);
+    $("#fecha_inicio_periodo").val(d[3]);
+    $("#fecha_fin_periodo").val(d[4]);
+}
+
 $("#frm_new_grpo").submit(function (event)
 {
     event.preventDefault();
@@ -153,7 +225,7 @@ $("#frm_new_grpo").submit(function (event)
                     $('#frm_new_grpo')[0].reset();
                     mensajeAlerta(result.tipo,result.mensaje, result.titulo);
                     $("#modal_periodos").modal("hide");
-                    cargaGruposLista("","LUN");
+                    cargaGruposLista("LUN");
                     mensajeAlerta("success","Se ha creado un grupo,\nMande la invitacion a sus alumnos","Se ha creado un grupo");
                     $("#modal_crearGrupo").modal("hide");
                 }
@@ -180,7 +252,7 @@ function pasarLista(id) {
             Swal.fire({
                 title: 'Preparando todo...',
                 html: 'Iniciando en <b></b> segundos.',
-                timer: 1000,
+                timer: 1500,
                 timerProgressBar: true,
                 didOpen: () => {
                     Swal.showLoading()
@@ -195,7 +267,7 @@ function pasarLista(id) {
             }).then((result) => {
                 /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = "./pase_lista.php?start_sesion="+id;
+                    window.location.href = "./pase_lista.php?start_sesion="+id+"&action=new";
                 }
                 else{
                     alertaNotificacion("error","Pase de Lista Cancelado")

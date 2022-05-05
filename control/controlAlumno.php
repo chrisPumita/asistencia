@@ -11,10 +11,9 @@ function insertAlumno($params){
     $ALUMNO->setSexo($params['sexo']);
     $ALUMNO->setEmail($params['email']);
     $ALUMNO->setUserName($params['user_name']);
-    $ALUMNO->setAvatar($params['avatar']);
+    $ALUMNO->setAvatar("../recursos/avatars/defaultAvatar.webp");
     $ALUMNO->setPw(md5($params['pwd']));
     if($ALUMNO->queryInsertPersona()){
-        //Se genera el ID
         $idAlumno=MAIN::genIdBIGInt();
         $ALUMNO->setIdAlumno($idAlumno);
         $ALUMNO->setIdPersonaFk($ALUMNO->getIdPersona());
@@ -23,7 +22,6 @@ function insertAlumno($params){
         return $ALUMNO->queryInsertAlumno();
     }
 }
-
 
 function updateAlumno($params){
     include_once "../model/ALUMNO.php";
@@ -38,6 +36,3 @@ function updateAlumno($params){
     $ALUMNO->setEmail($params['email']);
     return $ALUMNO->queryUpdatePersona();
 }
-
-
-?>

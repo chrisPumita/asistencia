@@ -21,7 +21,7 @@ $path = "./"
                 <div class="card shadow-lg">
                     <div class="card-body p-5">
                         <h1 class="fs-4 card-title fw-bold mb-4 text-center" style="color: darkblue;">Registrarme como Alumno</h1>
-                        <form id="frm-new-profesor" class="needs-validation" novalidate="" autocomplete="off">
+                        <form id="frm-new-alumno" class="needs-validation" novalidate="" autocomplete="off">
                             <div id="resp"></div>
                             <div class="mb-3">
                                 <label class="mb-2 text-muted" for="nombre">Nombre</label>
@@ -54,8 +54,8 @@ $path = "./"
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="mb-2 text-muted" for="apm">No. Cuenta/Matricula</label>
-                                <input id="apm" type="text" class="form-control" name="apm" value="" required autofocus>
+                                <label class="mb-2 text-muted" for="noCta">No. Cuenta/Matricula</label>
+                                <input type="text" class="form-control" name="noCta" id="noCta" value="" required autofocus>
                             </div>                         
                             <div class="mb-3">
                                 <label class="mb-2 text-muted" for="email">Correo electrónico</label>

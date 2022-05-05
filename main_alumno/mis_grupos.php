@@ -28,7 +28,7 @@ $path = "../";
                             
                             <div class="row row-cols-1 row-cols-md-3">
                                 <?php for($i = 0; $i <3; $i++){ ?>
-                                    <div class="col-12 col-md-3 mb-2 pb-3">
+                                    <div class="col-12 col-xxl-4 pb-3 col-sm-6 col-md-6">
                                         <div class="card class_card" role="button">
 
                                             <div class="card-body">

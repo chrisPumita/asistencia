@@ -9,9 +9,21 @@ async function cargaPeriodos(filtro) {
     return await peticionAjax(datos,route);
 }
 
-async function cargaGruposProfe(filtro,dia) {
+async function cargaGruposProfe(filtro) {
     let route = "../webhook/profesor_consulta_grupos.php";
-    let datos = {filtro:filtro, dia:dia};
+    let datos = {filtro:filtro};
+    return await peticionAjax(datos,route);
+}
+
+async function cargaLista_pase_lista(grupo,action,preload) {
+    let route = "../webhook/profesor_consulta_lista_grupo.php";
+    let datos = {grupo:grupo, action:action,preload:preload};
+    return await peticionAjax(datos,route);
+}
+
+async function busca_pase_lista(grupo,filtro) {
+    let route = "../webhook/profesor_consulta_paselista.php";
+    let datos = {grupo:grupo, filtro:filtro};
     return await peticionAjax(datos,route);
 }
 
@@ -33,4 +45,12 @@ async function peticionAjax(datos,route)
             }
         }
     );
+}
+
+
+
+/***********  GENERADOR FECHAS ****************/
+function getDateAhora() {
+    let date = new Date();
+    return String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date.getFullYear();
 }
