@@ -13,16 +13,11 @@ $path = "../"
 <div class="container-fluid">
     <div class="row">
         <?php include $path."includes_general/sidebar.php"?>
-        <div class="col-sm pt-0 min-vh-100 bg-blanco">
+        <div class="col-sm pt-0 min-vh-100 bg-blanco m-0 p-0">
             <!-- content -->
             <div class="container-fluid bg-primary">
-                <!--
-                <div class="container p-3 text-light">
-                    <h3>Hola buenas tardes</h3>
-                    <h2>Juan Perez</h2>
-                </div> -->
                 <div class="row text-light">
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-4">
                         <div class="p-3">
                             <h4>Pase de Lista</h4>
                             <h3 class="asfalre mt-2">GRUPO 7117</h3>
@@ -30,41 +25,69 @@ $path = "../"
                         </div>
                         
                     </div>
-                    <div class="col-12 col-md-7">
-                        <div class="row">
-                            <div class="col-6 col-md-5">
-                                <div class="p-3">
+                    <div class="col-12 col-md-4">
+                        <div class="row mt-md-3">
+                            <div class="col-12 col-md-12" style="display: flex;justify-content: center;">
+                                <div class="">
                                     <h4>{fecha y hora actual}</h4>
                                     <button type="button" class="btn btn-danger btn-sm btn-lg-5">Cancelar pase de lista</button>
                                 </div>
                             </div>
+                        </div> 
+                    </div>
 
-                            
-                            <div class="col-6 col-md-7 d-flex justify-content-center" style="align-items: center;">
-                                <div class="p-3">
 
-                                    <div class="card" style="width: 120px;">
-                                      <div class="card-body">
-                                         <div class="row">
-                                            <div class="col-1" style="display: flex;align-items: center;">
-                                                <span class="position-absolute mt-3 p-2 end-1 translate-middle p-2 bg-success border border-light rounded-circle">
-                                                    <span class="visually-hidden">New alerts</span>
-                                                </span>
-                                            </div>
-                                            <div class="col text-dark">Activo</div>
+                    <div class="col-12 col-md-4 mt-4">
+                        <div class="row">
+                            <div class="col-6 col-md-12 mb-2 d-flex justify-content-md-end justify-content-center">
+                            <div class="card" style="width: 100px;">
+                                <div class="p-2" style="display: flex;justify-content: center;">
+                                    <div class="row">
+                                        <div class="col-1" style="display: flex;align-items: center;">
+                                            <span class="position-absolute mt-3 p-2 end-1 translate-middle p-2 bg-success border border-light rounded-circle">
+                                            <span class="visually-hidden">New alerts</span>
+                                            </span>
                                         </div>
+                                        <div class="col text-dark">Activo</div>
                                     </div>
                                 </div>
-
-                                </div>
                             </div>
+                        </div>
+                        <div class="col-6 col-md-12 mb-2 d-flex justify-content-md-end justify-content-center" style="display: flex;justify-content: flex-end;">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <!-- IMAGEN CON SESIÓN 
+                                    <img src=" <br />
+<b>Warning</b>:  Undefined variable $_SESSION in <b>C:\xampp\htdocs\asistencia\main_profesor\pase_lista.php</b> on line <b>60</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type null in <b>C:\xampp\htdocs\asistencia\main_profesor\pase_lista.php</b> on line <b>60</b><br />
+" alt="Avatar" class="avatar">
+                                    -->
+                                    <img src="
+                            https://holatelcel.com/wp-content/uploads/2020/12/foto-perfil-whatsapp-.png" alt="Avatar" class="avatar">
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="menuPerfil" style="">
+                                    <li>
+                                        <a class="dropdown-item" href="perfil_profesor.php">Perfil</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Acerca de</a>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        <a class="dropdown-item" href="../c_logout.php">Salir</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         </div>
                         
                     </div>
 
-                    
                 </div>
-
             </div>
 
             <div class="container">

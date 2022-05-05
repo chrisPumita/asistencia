@@ -130,7 +130,7 @@ $path = "../"
                                                     </div>
                                                     <div class="col">
                                                         <div class="" style="display: flex;justify-content: flex-end;">
-                                                            <button type="button" class="btn btn-primary btn-sm fontsizeletrabtn btn_ajustable">Editar</button>
+                                                            <button type="button" class="btn btn-primary btn-sm fontsizeletrabtn btn_ajustable" data-bs-toggle="modal" data-bs-target="#modal_editaGrupo">Editar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -227,7 +227,7 @@ $path = "../"
                                                     </div>
                                                     
                                                     <div class="col-6 col-md-2">
-                                                        <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Reporte individual</button>
+                                                        <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable" data-bs-toggle="modal" data-bs-target="#modal_reporte_individual">Reporte individual</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -284,6 +284,8 @@ $path = "../"
 
 <?php
     include "../main_profesor/Modal_profesor/pase_de_lista.php";
+    include "../main_profesor/Modal_profesor/editar_grupo.php";
+    include "../main_profesor/Modal_profesor/reporte_individual.php";
     include $path."includes_general/js.php";
 ?>
 
