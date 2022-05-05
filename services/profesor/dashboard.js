@@ -58,11 +58,7 @@ function cargaGruposLista(filtro) {
     })
 }
 
-function filterItems(query,LIST) {
-    return LIST.filter(function(el) {
-        return el.dias.toLowerCase().indexOf(query.toLowerCase()) > -1;
-    })
-}
+
 
 function buildTblPeriodos(LISTA) {
     let template = ``;

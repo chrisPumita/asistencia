@@ -58,3 +58,10 @@ function getDateAhora() {
     let date = new Date();
     return String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date.getFullYear();
 }
+
+
+function filterItems(query,LIST) {
+    return LIST.filter(function(el) {
+        return el.dias.toLowerCase().indexOf(query.toLowerCase()) > -1;
+    })
+}
