@@ -81,6 +81,12 @@ include_once "./sesion_profesor.php";
                                 </div>
                             </form>
                         </div>
+                        <div class="row pt-3">
+                            <h5>Crear Grupo</h5>
+                            <div class="row mt-2 mb-3" id="container_select_periodos">
+
+                            </div>
+                        </div>
                         <!--
                         <div class="row pt-3">
                             <h5>Crear Grupo</h5>
