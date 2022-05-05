@@ -1,5 +1,6 @@
 <?php
  include_once "../control/controlCuentas.php";
-$idAlumno=1;
- var_dump(json_encode(datosPerfilesAlumno($idAlumno)));
+ session_start();
+$idAlumno=$_SESSION['id_alumno'];
+ echo json_encode(datosPerfilesAlumno($idAlumno));
 ?>

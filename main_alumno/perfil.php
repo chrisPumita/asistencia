@@ -28,31 +28,31 @@ $path = "../"
                             <img class="circular_square" src="../assets/img/defaultAvatar.webp" width="250" height="250" alt="Avatar">
                         </div>
                         <div class="text-center text-muted mt-3">
-                            <h4>{Nombre Alumno}</h4>
+                            <h4 id="nombre_perfil"></h4>
                             <button type="button" class="btn btn-primary">Cambiar</button>
                         </div>
                     </div>
-
-
+                    
                     <div class="col-12 col-md-9">
+                    <form id="frm-update-alumno">
                         <div class="mb-3">
-                            <label class="mb-2 text-muted" for="edit_nombre_profe">Nombre</label>
-                            <input id="edit_nombre_profe" type="text" class="form-control" name="edit_nombre_profe" value="" required autofocus>
+                            <label class="mb-2 text-muted" for="edit_nombre_al">Nombre</label>
+                            <input id="edit_nombre_al" type="text" class="form-control" name="edit_nombre_al" value="" required autofocus>
                         </div>
                         <div class="mb-3">
-                            <label class="mb-2 text-muted" for="edit_app_profe">Primer Apellido</label>
-                            <input id="edit_app_profe" type="text" class="form-control" name="edit_app_profe" value="" required autofocus>
+                            <label class="mb-2 text-muted" for="edit_app_al">Primer Apellido</label>
+                            <input id="edit_app_al" type="text" class="form-control" name="edit_app_al" value="" required autofocus>
                         </div>
                         <div class="mb-3">
-                            <label class="mb-2 text-muted" for="edit_apm_profe">Segundo Apellido</label>
-                            <input id="edit_apm_profe" type="text" class="form-control" name="edit_apm_profe" value="" required autofocus>
+                            <label class="mb-2 text-muted" for="edit_apm_al">Segundo Apellido</label>
+                            <input id="edit_apm_al" type="text" class="form-control" name="edit_apm_al" value="" required autofocus>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
-                                    <label class="mb-2 text-muted" for="edit_sexo_profe">Sexo</label>
-                                    <select class="form-select" aria-label=".form-select-sm example" name="edit_sexo_profe" id="edit_sexo_profe">
+                                    <label class="mb-2 text-muted" for="edit_sexo_al">Sexo</label>
+                                    <select class="form-select" aria-label=".form-select-sm example" name="edit_sexo_al" id="edit_sexo_al">
                                         <option value="0">Hombre</option>
                                         <option value="1">Mujer</option>
                                     </select>
@@ -61,19 +61,19 @@ $path = "../"
 
                             <div class="col">
                             	<div class="mb-3">
-                            		<label class="mb-2 text-muted" for="edit_apm_profe">Usuario</label>
-                            		<input id="edit_apm_profe" type="text" class="form-control" name="edit_apm_profe" value="" required autofocus>
+                            		<label class="mb-2 text-muted" for="edit_user_al">Usuario</label>
+                            		<input id="edit_user_al" type="text" class="form-control" name="edit_user_al" value="" required autofocus disabled>
                         		</div>
                             	
                             </div>
                         </div>
                         <div class="mb-3">
-                            		<label class="mb-2 text-muted" for="edit_apm_profe">No. Cuenta/Matricula</label>
-                            		<input id="edit_apm_profe" type="text" class="form-control" name="edit_apm_profe" value="" required autofocus>
+                            		<label class="mb-2 text-muted" for="edit_no_cta">No. Cuenta/Matricula</label>
+                            		<input id="edit_no_cta" type="text" class="form-control" name="edit_no_cta" value="" required autofocus disabled>
                         		</div>
                                  <div class="mb-3">
-                                    <label class="mb-2 text-muted" for="edit_email_profe">Correo electrónico</label>
-                                    <input id="edit_email_profe" type="text" class="form-control" name="edit_email_profe" value="" required autofocus>
+                                    <label class="mb-2 text-muted" for="edit_email_al">Correo electrónico</label>
+                                    <input id="edit_email_al" type="email" class="form-control" name="edit_email_al" value="" required autofocus>
                                 </div>
 
                         <div class="row mt-3">
@@ -83,7 +83,9 @@ $path = "../"
                                 <button type="button" class="btn btn-primary btn_ajustable">Actualizar</button>
                             </div>
                         </div>
+                    </form>
                     </div>
+                    
                 </div>
             </div> 
         </div>
@@ -95,7 +97,7 @@ $path = "../"
     include "../main_profesor/Modal_profesor/edita_periodo.php";
     include $path."includes_general/js.php";
 ?>
-
+<script src="../services/general/perfil.js"></script>
 <script src="services/template.js"></script>
 <!-- Initialize Swiper -->
 </html>

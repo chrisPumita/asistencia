@@ -5,7 +5,7 @@
 date_default_timezone_set("America/Mexico_City");
 
 const SERVER = "localhost";
-const DB = "lista_p1";
+const DB = "asistencia";
 const USER = "root";
 const PASS = "";
 
