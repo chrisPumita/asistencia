@@ -60,3 +60,15 @@ function sweetCustomDesicion(title,message,yes,no,type,callback) {
         callback(confirmed && confirmed.value == true);
     });
 }
+
+function copyToClickBoard(element){
+    var content = element.innerHTML;
+    navigator.clipboard.writeText(content)
+        .then(() => {
+            console.log("Text copied to clipboard...")
+            alertaNotificacion("info","Clave copiada")
+        })
+        .catch(err => {
+            console.log('Something went wrong', err);
+        })
+}

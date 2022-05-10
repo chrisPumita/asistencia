@@ -31,6 +31,13 @@ async function actulizarperfil(data,route) {
     return await peticionAjax(datos,route);
 }
 
+//*PASE DE LISTA CON BOTONES*/
+async function actionPaseLista(idPase, idAlumno,actionSet) {
+    let route = "../webhook/profesor_edit_pase_lista_alum.php";
+    let datos = {idPase:idPase, idAlumno:idAlumno, actionSet:actionSet};
+    return await peticionAjax(datos,route);
+}
+
 /**************** PETICION GENERICA AJAX **************/
 async function peticionAjax(datos,route)
 {
@@ -42,7 +49,7 @@ async function peticionAjax(datos,route)
             dataType: "json",
             cache: false,
             success: function(res){
-                console.log(res);
+               // console.log(res);
             },
             error: function() {
                 alert("Error 500 interno de Servidor al consultar grupos");

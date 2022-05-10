@@ -119,7 +119,7 @@ class PASE_LISTA extends PDODB
     function queryBuscaPaseLista($filtro){
         switch($filtro){
             case  "TODAY":
-                $filtro = "and fecha = '".date('Y-m-d')."'";
+                $filtro = " and fecha = '".date('Y-m-d')."'";
                 break;
                 default:
                     $filtro = "";
@@ -140,11 +140,12 @@ class PASE_LISTA extends PDODB
        url_justificante, upload_date_justificante, estatus_rev_just, log,
        al.id_alumno, id_persona_fk, no_cta, account_confirm,
        per.id_persona, nombre, app, apm, sexo, email, user_name, avatar,
-       estatus as estatus_alumno
-from paselista pl inner join asistencia asi on pl.id_pase = asi.id_pase_fk
-    inner join alumno al on al.id_alumno = asi.id_alumno_fk
-    inner join persona per on per.id_persona = al.id_persona_fk
-inner join grupoalumno ga on ga.id_alumno_fk = al.id_alumno
+       asi.*,
+       (select grupoalumno.estatus from grupoalumno
+       where id_alumno_fk = al.id_alumno AND id_grupo_fk = pl.id_grupo_fk) AS estatus_alumno
+from asistencia asi inner join  paselista pl on pl.id_pase = asi.id_pase_fk
+                  inner join alumno al on al.id_alumno = asi.id_alumno_fk
+                  inner join persona per on per.id_persona = al.id_persona_fk
                     where id_pase = ".$this->getIdPase();
         $this->connect();
         $result=$this->getData($query);

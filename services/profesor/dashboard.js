@@ -20,7 +20,6 @@ $("#frm_periodo_update_insert").submit(function (event)
             data: $('#frm_periodo_update_insert').serialize(),
             dataType: "json",
             success: function (result) {
-                console.log(result);
                 if(result.response=="1"){
                     $('#frm_periodo_update_insert')[0].reset();
                     mensajeAlerta(result.tipo,result.mensaje, result.titulo);
@@ -78,7 +77,6 @@ function buildTblPeriodos(LISTA) {
         LISTA.forEach(
             (per)=>
             {
-                console.log(per)
                 let estado = per.estado ==="1"? `<i class="fas fa-circle text-success"></i> ACTIVO`:`<i class="fas fa-circle text-danger"></i> TERMINADO`;
                     template += `<tr class="text-center">
                                 <td data-label="">${per.tipo} <br> <strong>${per.nombre_periodo}</strong> </td>
@@ -191,7 +189,6 @@ function changeKeys() {
 
 function editaPeriodo(datos) {
     d=datos.split('||');
-    console.log(d)
     $("#no_periodo").val(d[0]);
     $("#tipo_periodo").val(d[1]);
     $("#nombre_periodo").val(d[2]);
@@ -216,7 +213,6 @@ $("#frm_new_grpo").submit(function (event)
             data: $('#frm_new_grpo').serialize(),
             dataType: "json",
             success: function (result) {
-                console.log(result);
                 if(result.response=="1"){
                     $('#frm_new_grpo')[0].reset();
                     mensajeAlerta(result.tipo,result.mensaje, result.titulo);
@@ -241,35 +237,3 @@ $("#frm_new_grpo").submit(function (event)
     }
 });
 
-function pasarLista(id) {
-    sweetCustomDesicion("Pase de Lista", '¿Desea iniciar el pase de lista en este grupo?','<i class="fas fa-check"></i> Iniciar Pase de Lista','<i class="fas fa-undo-alt"></i> Cancelar','question', function (confirmed){
-        if (confirmed) {
-            let timerInterval
-            Swal.fire({
-                title: 'Preparando todo...',
-                html: 'Iniciando en <b></b> segundos.',
-                timer: 1500,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = "./pase_lista.php?start_sesion="+id+"&action=new";
-                }
-                else{
-                    alertaNotificacion("error","Pase de Lista Cancelado")
-                }
-            })
-           //alertaNotificacion("success","Dijo Si")
-        }
-    });
-}

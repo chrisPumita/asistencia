@@ -49,7 +49,8 @@ function consultaListaAlumnos($idGrupo){
 function creaNuevoPaseLista($idGrupo){
     include_once "../model/PASE_LISTA.php";
     $PL = new PASE_LISTA();
-    $idPaseGen = "1111";
+    include_once "../model/MAIN.php";
+    $idPaseGen = MAIN::genIdBIGInt();
     $PL->setIdPase($idPaseGen);
     $PL->setIdGrupoFk($idGrupo);
     $PL->setFecha(date('Y-m-d'));
@@ -77,6 +78,7 @@ function consultaPaseLista($id_grupo, $filtro){
     $pase_lista =  $PL->queryBuscaPaseLista($filtro);
     if(count($pase_lista) >0){
         $PL->setIdPase($pase_lista[0]["id_pase"]);
+        $PL->setFecha($pase_lista[0]["fecha"]);
         return $PL->queryConsultaListaRealizada();
     }
     else{
