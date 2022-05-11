@@ -149,16 +149,10 @@ include_once "./sesion_profesor.php";
                     <div class="col-12 col-md-4">
                         <div class="row">
                             <h5>Ultimos pases de lista</h5>
-                            <div class="list-group"> <?php for($i = 0; $i
-                                <2; $i++){ ?> <a href="#" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">{Grupo}</h5>
-                                        <span class="badge bg-warning">Hoy</span>
-                                    </div>
-                                    <p class="mb-1">{Materia}</p>
-                                    <small class="text-muted">{11 de Abril de 2022}</small>
-                                </a> <?php } ?>
+                            <div id="containerHistorial">
+
                             </div>
+
                         </div>
                         <div class="row pt-5">
                             <h5>justificantes por revisar</h5>

@@ -1,17 +1,18 @@
 $(document).ready(function() {
     cargaGruposLista(ID_GPO);
-    cargaListaToday();
+    cargaLista();
 });
 
-function cargaListaToday() {
-    busca_pase_lista(ID_GPO,"TODAY").then(function (response) {
+function cargaLista() {
+    busca_pase_lista(ID_GPO,FILTER,FECHA,ID_PASE).then(function (response) {
         if(response.response == 0){
             //aun no ha pasado lista
             preCargaAlumnos();
         }
         else{
             buildTableStartPaseLista(response.data);
-            $("#buttonCancel").html(`<button type="button" class="btn btn-danger btn-sm btn-lg-5">Cancelar pase de lista</button>`);
+            $("#buttonCancel").html(`<button type="button" class="btn btn-danger btn-sm btn-lg-5" onClick="cancelPaseLista(${response.data[0].id_pase});">Cancelar pase de lista</button>`);
+            $("#btnUpdateNotas").html(`<button type="button" class="btn btn-primary btn-sm btn-lg-5 mt-3" onClick="saveNotas(${response.data[0].id_pase});">Guardar Nota</button>`);
             //conteo SPAN
             estadisticaAsistencia(response.data);
         }
@@ -182,8 +183,7 @@ $(document).on("click", ".btnPase", function ()
     let idPase = a[0];
     let idAlumno = a[1];
     actionPaseLista(idPase,idAlumno,action).then(function (result) {
-        console.log(result);
-        cargaListaToday();
+        cargaLista();
     })
 
 });
@@ -201,4 +201,25 @@ function estadisticaAsistencia(LISTA) {
     $("#countAsis").html(asis);
     $("#countFalt").html(fal);
     $("#countReta").html(ret);
+}
+
+//profesor_cancel_pase_lista
+
+function cancelPaseLista(idPase) {
+    sweetCustomDesicion("Cancelar Pase de Lista", '¿Esta seguro que desea CANCELAR este pase de lista?','<i class="fas fa-chevron-circle-right"></i> Continuar','<i class="fas fa-times"></i> Cancelar','question', function (confirmed){
+        if (!confirmed)
+        {
+            cancelarPaseLista(idPase).then(function (result) {
+                alertaNotificacion("error","Se ha cancelado el pase de lista");
+                setTimeout( function() { window.location.href = "./"; }, 1000 );
+            })
+        }
+    });
+}
+
+function saveNotas(idPase) {
+    let nota = $("#textAreaNoatas").val();
+    updateNotaPaseLista(idPase,nota).then(function (result) {
+        alertaNotificacion("success","Se ha guardado la nota");
+    })
 }

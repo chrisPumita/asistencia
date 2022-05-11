@@ -10,9 +10,15 @@ if (!isset($_GET['start_sesion'])){
 }
 else{
     $idGrupo = $_GET['start_sesion'];
+    $id_pase = $_GET['id_pase'];
     $action = $_GET['action'];
+    $date = $_GET['date'];
+    $filter = $_GET['filter'];
     echo '<script> let ID_GPO = '.$idGrupo.'; </script>';
+    echo '<script> let ID_PASE = '.$id_pase.'; </script>';
+    echo '<script> let FILTER = '.$filter.'; </script>';
     echo '<script> let ACTION = "'.$action.'"; </script>';
+    echo '<script> let FECHA = "'.$date.'"; </script>';
 }
 
 ?>
@@ -123,9 +129,11 @@ else{
                             </div>
                             <div class="row py-4">
                                 <div class="card card-body">
-                                    <h4 class="card-title">Notas</h4>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Agregar una nota adicional..." style="height: 200px;"></textarea>
-                                    <button type="button" class="btn btn-primary mt-3">Actualizar</button>
+                                    <h4 class="card-title" for="textAreaNoatas">Notas</h4>
+                                    <textarea class="form-control" id="textAreaNoatas" rows="3" placeholder="Agregar una nota adicional..." style="height: 200px;"></textarea>
+                                    <span id="btnUpdateNotas">
+                                        <button type="button" class="btn btn-primary mt-3">Actualizar</button>
+                                    </span>
                                 </div>
                             </div>
                         </div>

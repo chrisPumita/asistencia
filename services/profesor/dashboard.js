@@ -1,6 +1,7 @@
 $(document).ready(function() {
     console.log("DAASHBOARD");
     loadPeriodos("LAST");
+    consultaUltimosPaseLista("LAST");
     cargaGruposLista("TODAY");
 });
 
@@ -56,8 +57,6 @@ function cargaGruposLista(filtro) {
         buildGridGruposHoy(LISTA_DESP);
     })
 }
-
-
 
 function buildTblPeriodos(LISTA) {
     let template = ``;
@@ -168,7 +167,6 @@ function buildHTMLSelectPeriodos(LISTA) {
        No hay Periodos registrados, porfavor <a href="#" data-bs-toggle="modal" data-bs-target="#modal_periodos" class="alert-link"> agregue uno</a> para poder crear Grupos.
       </div>`
     }
-
     $("#container_select_periodos").html(template);
 }
 
@@ -237,3 +235,31 @@ $("#frm_new_grpo").submit(function (event)
     }
 });
 
+
+function consultaUltimosPaseLista(filtro) {
+    historialPaseLista(filtro).then(function (result) {
+        let template = ``;
+        let pases = result.data;
+        if(pases.length > 0){
+            template = `<div class="list-group">`;
+            pases.forEach(pase =>{
+                console.log(pase)
+                //revisaPaseLista(id_grupo,id_pase,filtro,dia)
+                template += `<a href="#" onClick="revisaPaseLista(${pase.id_grupo},${pase.id_pase},'THIS_DATE','${pase.fecha}',)" 
+                                class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">${pase.carrera} ${pase.grupo}</h6>
+                                    <span class="badge bg-info"><i class="fas fa-calendar-check"></i></span>
+                                </div>
+                                <p class="mb-1">${pase.materia}</p>
+                                <small class="text-muted">${pase.create_at}</small>
+                            </a> `;
+            });
+            template += `</div>`;
+        }
+        else{
+            template = ``;
+        }
+        $("#containerHistorial").html(template);
+    })
+}

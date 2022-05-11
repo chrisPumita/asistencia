@@ -1,16 +1,4 @@
 <?php
-function updateEstadoAsistencia($idAlumnnoFk,$idPaseFk,$confirmada,$retardoCheck,$dateJustificante,$estatusRev,$log){
-    include_once "../model/ASISTENCIA.php";
-    $ASIS = new ASISTENCIA();
-    $ASIS->setIdAlumnoFk($idAlumnnoFk);
-    $ASIS->setIdPaseFk($idPaseFk);
-    $ASIS->setConfirmada($confirmada);
-    $ASIS->setCheckRetardo($retardoCheck);
-    $ASIS->setUploadDateJustificante($dateJustificante);
-    $ASIS->setEstatusRevJust($estatusRev);
-    $ASIS->setLog($log);
-    return $ASIS->queryUpdateEstadoAsistencia();
-}
 
 function updateJustificanteFalta($idAlumnnoFk,$idPaseFk,$confirmada,$value,$url_justificante,$dateJustificante,$estatusRev){
     include_once "../model/ASISTENCIA.php";
@@ -56,4 +44,19 @@ function cambioValorAsistencia($idPase,$idAlumno,$actionSet){
             break;
     }
     return $ASIS->queryUpdateEstadoAsistencia();
+}
+
+function cancelaPaseLista($idPase){
+    include "../model/PASE_LISTA.php";
+    $PL  = new PASE_LISTA();
+    $PL->setIdPase($idPase);
+    return $PL->queryCancelaPaseLista();
+}
+
+function updateNotaPaseLista($idPase,$nota){
+    include "../model/PASE_LISTA.php";
+    $PL  = new PASE_LISTA();
+    $PL->setIdPase($idPase);
+    $PL->setNotas($nota);
+    return $PL->queryUpdateNotasPaseLista();
 }

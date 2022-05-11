@@ -21,9 +21,9 @@ async function cargaLista_pase_lista(grupo,action,preload) {
     return await peticionAjax(datos,route);
 }
 
-async function busca_pase_lista(grupo,filtro) {
+async function busca_pase_lista(grupo,filtro,dia,idPase) {
     let route = "../webhook/profesor_consulta_paselista.php";
-    let datos = {grupo:grupo, filtro:filtro};
+    let datos = {grupo:grupo, filtro:filtro,dia:dia,idPase:idPase};
     return await peticionAjax(datos,route);
 }
 
@@ -37,6 +37,26 @@ async function actionPaseLista(idPase, idAlumno,actionSet) {
     let datos = {idPase:idPase, idAlumno:idAlumno, actionSet:actionSet};
     return await peticionAjax(datos,route);
 }
+//*CANCELAR PASE LISTA*/
+async function cancelarPaseLista(idPase) {
+    let route = "../webhook/profesor_cancel_pase_lista.php";
+    let datos = {idPase:idPase};
+    return await peticionAjax(datos,route);
+}
+
+async function updateNotaPaseLista(idPase,nota) {
+    let route = "../webhook/profesor_update_nota_pase_lista.php";
+    let datos = {idPase:idPase,nota:nota};
+    return await peticionAjax(datos,route);
+}
+
+/* HISTORIAL PASES DE LISTA */
+async function historialPaseLista(filtro) {
+    let route = "../webhook/profesor_historia_pase_lista.php";
+    let datos = {filtro:filtro};
+    return await peticionAjax(datos,route);
+}
+
 
 /**************** PETICION GENERICA AJAX **************/
 async function peticionAjax(datos,route)
@@ -57,8 +77,6 @@ async function peticionAjax(datos,route)
         }
     );
 }
-
-
 
 /***********  GENERADOR FECHAS ****************/
 function getDateAhora() {

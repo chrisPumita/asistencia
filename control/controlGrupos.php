@@ -71,11 +71,12 @@ function creaNuevoPaseLista($idGrupo){
     }
 }
 
-function consultaPaseLista($id_grupo, $filtro){
+function consultaPaseLista($idPase, $id_grupo, $filtro, $dia){
     include_once "../model/PASE_LISTA.php";
     $PL = new PASE_LISTA();
+    $PL->setIdPase($idPase);
     $PL->setIdGrupoFk($id_grupo);
-    $pase_lista =  $PL->queryBuscaPaseLista($filtro);
+    $pase_lista =  $PL->queryBuscaPaseLista($filtro,$dia);
     if(count($pase_lista) >0){
         $PL->setIdPase($pase_lista[0]["id_pase"]);
         $PL->setFecha($pase_lista[0]["fecha"]);
@@ -84,4 +85,10 @@ function consultaPaseLista($id_grupo, $filtro){
     else{
         return false;
     }
+}
+
+function consultaHistorialPasesLista($idProfesor,$filtro){
+    include_once "../model/PASE_LISTA.php";
+    $PL = new PASE_LISTA();
+    return $PL->queryHistorialPasesLista($idProfesor,$filtro);
 }

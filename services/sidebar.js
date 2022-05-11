@@ -54,7 +54,7 @@ function pasarLista(id) {
             }).then((result) => {
                 /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = "./pase_lista.php?start_sesion="+id+"&action=new";
+                    window.location.href = "./pase_lista.php?start_sesion="+id+"&action=new&id_pase=0&date='none'&filter='TODAY'";
                 }
                 else{
                     alertaNotificacion("error","Pase de Lista Cancelado")
@@ -63,4 +63,8 @@ function pasarLista(id) {
             //alertaNotificacion("success","Dijo Si")
         }
     });
+}
+
+function revisaPaseLista(id_grupo,id_pase,filtro,dia) {
+    window.location.href = "./pase_lista.php?start_sesion="+id_grupo+"&action=new&id_pase="+id_pase+"&date="+dia+"&filter='"+filtro+"'";
 }
