@@ -105,7 +105,7 @@ function buildHTMLSelectGrupos(LISTA) {
         LISTA.forEach(
             (gpo)=>
             {
-                templateSelect += `<option selected="">Grupo ${gpo.grupo} ${gpo.carrera} - ${gpo.materia}</option>`;
+                templateSelect += `<option value="${gpo.id_grupo}">Grupo ${gpo.grupo} ${gpo.carrera} - ${gpo.materia}</option>`;
             }
         );
     }
@@ -243,7 +243,6 @@ function consultaUltimosPaseLista(filtro) {
         if(pases.length > 0){
             template = `<div class="list-group">`;
             pases.forEach(pase =>{
-                console.log(pase)
                 //revisaPaseLista(id_grupo,id_pase,filtro,dia)
                 template += `<a href="#" onClick="revisaPaseLista(${pase.id_grupo},${pase.id_pase},'THIS_DATE','${pase.fecha}',)" 
                                 class="list-group-item list-group-item-action">
@@ -261,5 +260,24 @@ function consultaUltimosPaseLista(filtro) {
             template = ``;
         }
         $("#containerHistorial").html(template);
+    })
+}
+
+function buscaPaseListaxFecha() {
+    let idGrupo = $("#selectGrupoSearch option:selected").val();
+    let fecha = $("#fecha_pase_lista").val();
+    console.log(idGrupo,fecha);
+    busca_pase_lista(idGrupo,"DATE",fecha,0).then(function (response) {
+        if(response.response == 0){
+            //alerta no hay
+            mensajeAlerta("error","No encontramos un pase de lista este dia","No se encontro pase de lista")
+        }
+        else{
+            //redireccionar
+            console.log(response.data[0])
+            let pl = response.data[0];
+            alertaNotificacion("success", "Pase de Lista encontrado");
+            window.location.href = "./pase_lista.php?start_sesion="+pl.id_grupo_fk+"&action=new&id_pase="+pl.id_pase+"&date="+pl.fecha+"&filter='THIS_DATE'";
+        }
     })
 }

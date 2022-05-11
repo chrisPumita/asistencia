@@ -8,12 +8,15 @@ function cargaLista() {
         if(response.response == 0){
             //aun no ha pasado lista
             preCargaAlumnos();
+            $("#dateToday").html(getDateAhora());
         }
         else{
             buildTableStartPaseLista(response.data);
             $("#buttonCancel").html(`<button type="button" class="btn btn-danger btn-sm btn-lg-5" onClick="cancelPaseLista(${response.data[0].id_pase});">Cancelar pase de lista</button>`);
             $("#btnUpdateNotas").html(`<button type="button" class="btn btn-primary btn-sm btn-lg-5 mt-3" onClick="saveNotas(${response.data[0].id_pase});">Guardar Nota</button>`);
             //conteo SPAN
+            $("#dateToday").html(response.data[0].fecha);
+            $("#textAreaNoatas").html(response.data[0].notas);
             estadisticaAsistencia(response.data);
         }
     })
@@ -32,7 +35,6 @@ function loadDataGrupo(data){
         $("#tittleGpo").html(curso.carrera+" - "+ "Grupo: "+ curso.grupo);
         $("#materiaName").html(curso.materia);
         $("#codigoLink").html(curso.codigo_invitacion);
-        $("#dateToday").html(getDateAhora());
     }
     else{
         mensajeAlerta("danger","No se puede inciar un pase de lista porque este grupo no tiene alumnos inscritos","Sin alumnos");

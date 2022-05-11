@@ -14,6 +14,8 @@ else{
     $action = $_GET['action'];
     $date = $_GET['date'];
     $filter = $_GET['filter'];
+    if(!isset($idGrupo)||!isset($id_pase)||!isset($action)||!isset($date)||!isset($filter))
+        header("Location: ./");
     echo '<script> let ID_GPO = '.$idGrupo.'; </script>';
     echo '<script> let ID_PASE = '.$id_pase.'; </script>';
     echo '<script> let FILTER = '.$filter.'; </script>';

@@ -1,7 +1,6 @@
 <?php
 $titulo = "HOME - Alumno";
 $path = "../";
-
 ?>
 <!doctype html>
 <html lang="en">

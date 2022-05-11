@@ -146,7 +146,7 @@ class PASE_LISTA extends PDODB
        url_justificante, upload_date_justificante, estatus_rev_just, log,
        al.id_alumno, id_persona_fk, no_cta, account_confirm,
        per.id_persona, nombre, app, apm, sexo, email, user_name, avatar,
-       asi.*,
+       asi.*, pl.id_grupo_fk,
        (select grupoalumno.estatus from grupoalumno
        where id_alumno_fk = al.id_alumno AND id_grupo_fk = pl.id_grupo_fk) AS estatus_alumno
 from asistencia asi inner join  paselista pl on pl.id_pase = asi.id_pase_fk
