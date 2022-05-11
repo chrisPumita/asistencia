@@ -65,7 +65,7 @@ $path = "../";
 
                             </div>
                             <div class="col-12 col-md-3">
-                            			<h5><strong>Justificantes recientes</strong>></h5>
+                            			<h5><strong>Justificantes recientes</strong></h5>
                              
 										<?php for($i = 0; $i<2; $i++){ ?>
 										<div class="row row-cols-1 row-cols-md-12 g-4">
@@ -91,8 +91,7 @@ $path = "../";
                                 				</div>
                             				</div>
                         				</div> 
-						    			<?php } ?> 
-												
+						    			<?php } ?>
                         			</div>
                         </div>
 
