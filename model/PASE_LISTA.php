@@ -116,18 +116,24 @@ class PASE_LISTA extends PDODB
         return $result;
     }
 
-    function queryBuscaPaseLista($filtro){
+    function queryBuscaPaseLista($filtro,$dia){
         switch($filtro){
             case  "TODAY":
-                $filtro = "and fecha = '".date('Y-m-d')."'";
+                $filtro = " and fecha = '".date('Y-m-d')."'";
                 break;
-                default:
-                    $filtro = "";
+            case  "none":
+                $filtro = "";
+                break;
+            default:
+                $filtro = " and fecha = '".$dia."'";
                 break;
         }
 
+        $filtroPase = $this->getIdPase() != 0 ? " AND id_pase = ". $this->getIdPase() : "";
+
         $query = "select id_pase, id_grupo_fk, fecha, notas, create_at from paselista
-                    where id_grupo_fk = ". $this->getIdGrupoFk(). " ".$filtro;
+                    where id_grupo_fk = ". $this->getIdGrupoFk(). " ".$filtro. $filtroPase;
+       // echo $query;
         $this->connect();
         $result=$this->getData($query);
         $this->close();
@@ -140,12 +146,57 @@ class PASE_LISTA extends PDODB
        url_justificante, upload_date_justificante, estatus_rev_just, log,
        al.id_alumno, id_persona_fk, no_cta, account_confirm,
        per.id_persona, nombre, app, apm, sexo, email, user_name, avatar,
-       estatus as estatus_alumno
-from paselista pl inner join asistencia asi on pl.id_pase = asi.id_pase_fk
-    inner join alumno al on al.id_alumno = asi.id_alumno_fk
-    inner join persona per on per.id_persona = al.id_persona_fk
-inner join grupoalumno ga on ga.id_alumno_fk = al.id_alumno
+       asi.*, pl.id_grupo_fk,
+       (select grupoalumno.estatus from grupoalumno
+       where id_alumno_fk = al.id_alumno AND id_grupo_fk = pl.id_grupo_fk) AS estatus_alumno
+from asistencia asi inner join  paselista pl on pl.id_pase = asi.id_pase_fk
+                  inner join alumno al on al.id_alumno = asi.id_alumno_fk
+                  inner join persona per on per.id_persona = al.id_persona_fk
                     where id_pase = ".$this->getIdPase();
+        $this->connect();
+        $result=$this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryCancelaPaseLista(){
+        $query = "DELETE FROM paselista WHERE id_pase = ".$this->getIdPase()." ;";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryUpdateNotasPaseLista(){
+        $query = "UPDATE paselista t
+                    SET t.notas = CONCAT(t.notas,'\n".$this->getNotas()."') 
+                    WHERE t.id_pase =  ".$this->getIdPase()." ;";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryHistorialPasesLista($idProfesor,$filtro){
+        switch ($filtro){
+            case "LAST":
+                //mostrando los ultimos 10 activos
+                $filtro = " AND p.estado > 0 ORDER BY pl.create_at DESC LIMIT 10";
+                break;
+            default:
+                //Mostrando todos sin excepcion
+                $filtro = " ORDER BY pl.create_at DESC";
+                break;
+        }
+        $query = "SELECT pl.id_pase, pl.id_grupo_fk, pl.fecha, pl.notas, pl.create_at,
+        g.id_grupo, grupo, carrera, materia, porcentaje_min, dias,
+       is_porcentual, puntaje_final, tipo_puntaje, retardo_is_falta,
+       no_clases, codigo_invitacion, link_invitacion, estatus,
+       p.id_periodo, p.id_profesor, p.nombre_periodo, p.fecha_inicio, p.fecha_fin,
+       p.tipo, p.estado, p.id_profesor
+        FROM paselista pl inner join grupo g on pl.id_grupo_fk = g.id_grupo
+            inner join periodo p on g.id_periodo_fk = p.id_periodo
+        WHERE p.id_profesor = ".$idProfesor." ".$filtro;
         $this->connect();
         $result=$this->getData($query);
         $this->close();

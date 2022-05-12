@@ -1,5 +1,5 @@
-<-- Subir Justificante -->
-<div class="modal" id="modal_justificante" tabindex="-1">
+<!-- Subir Justificante -->
+<div class="modal fade" id="modal_justificante" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,10 +8,9 @@
       </div>
       <div class="modal-body">
         <p>Seleccione su justificante en formato PDF</p>
-        <input type="file" />
+        <input type="file"/>
       </div>
       <div class="modal-footer">
-        
         <button type="button" class="btn btn-success">Subir justificante</button>
       </div>
     </div>

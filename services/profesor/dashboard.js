@@ -1,6 +1,7 @@
 $(document).ready(function() {
     console.log("DAASHBOARD");
     loadPeriodos("LAST");
+    consultaUltimosPaseLista("LAST");
     cargaGruposLista("TODAY");
 });
 
@@ -20,7 +21,6 @@ $("#frm_periodo_update_insert").submit(function (event)
             data: $('#frm_periodo_update_insert').serialize(),
             dataType: "json",
             success: function (result) {
-                console.log(result);
                 if(result.response=="1"){
                     $('#frm_periodo_update_insert')[0].reset();
                     mensajeAlerta(result.tipo,result.mensaje, result.titulo);
@@ -58,12 +58,6 @@ function cargaGruposLista(filtro) {
     })
 }
 
-function filterItems(query,LIST) {
-    return LIST.filter(function(el) {
-        return el.dias.toLowerCase().indexOf(query.toLowerCase()) > -1;
-    })
-}
-
 function buildTblPeriodos(LISTA) {
     let template = ``;
     if (LISTA.length >0) {
@@ -82,7 +76,6 @@ function buildTblPeriodos(LISTA) {
         LISTA.forEach(
             (per)=>
             {
-                console.log(per)
                 let estado = per.estado ==="1"? `<i class="fas fa-circle text-success"></i> ACTIVO`:`<i class="fas fa-circle text-danger"></i> TERMINADO`;
                     template += `<tr class="text-center">
                                 <td data-label="">${per.tipo} <br> <strong>${per.nombre_periodo}</strong> </td>
@@ -112,7 +105,7 @@ function buildHTMLSelectGrupos(LISTA) {
         LISTA.forEach(
             (gpo)=>
             {
-                templateSelect += `<option selected="">Grupo ${gpo.grupo} ${gpo.carrera} - ${gpo.materia}</option>`;
+                templateSelect += `<option value="${gpo.id_grupo}">Grupo ${gpo.grupo} ${gpo.carrera} - ${gpo.materia}</option>`;
             }
         );
     }
@@ -174,7 +167,6 @@ function buildHTMLSelectPeriodos(LISTA) {
        No hay Periodos registrados, porfavor <a href="#" data-bs-toggle="modal" data-bs-target="#modal_periodos" class="alert-link"> agregue uno</a> para poder crear Grupos.
       </div>`
     }
-
     $("#container_select_periodos").html(template);
 }
 
@@ -195,7 +187,6 @@ function changeKeys() {
 
 function editaPeriodo(datos) {
     d=datos.split('||');
-    console.log(d)
     $("#no_periodo").val(d[0]);
     $("#tipo_periodo").val(d[1]);
     $("#nombre_periodo").val(d[2]);
@@ -220,7 +211,6 @@ $("#frm_new_grpo").submit(function (event)
             data: $('#frm_new_grpo').serialize(),
             dataType: "json",
             success: function (result) {
-                console.log(result);
                 if(result.response=="1"){
                     $('#frm_new_grpo')[0].reset();
                     mensajeAlerta(result.tipo,result.mensaje, result.titulo);
@@ -245,35 +235,49 @@ $("#frm_new_grpo").submit(function (event)
     }
 });
 
-function pasarLista(id) {
-    sweetCustomDesicion("Pase de Lista", '¿Desea iniciar el pase de lista en este grupo?','<i class="fas fa-check"></i> Iniciar Pase de Lista','<i class="fas fa-undo-alt"></i> Cancelar','question', function (confirmed){
-        if (confirmed) {
-            let timerInterval
-            Swal.fire({
-                title: 'Preparando todo...',
-                html: 'Iniciando en <b></b> segundos.',
-                timer: 1500,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = "./pase_lista.php?start_sesion="+id+"&action=new";
-                }
-                else{
-                    alertaNotificacion("error","Pase de Lista Cancelado")
-                }
-            })
-           //alertaNotificacion("success","Dijo Si")
+
+function consultaUltimosPaseLista(filtro) {
+    historialPaseLista(filtro).then(function (result) {
+        let template = ``;
+        let pases = result.data;
+        if(pases.length > 0){
+            template = `<div class="list-group">`;
+            pases.forEach(pase =>{
+                //revisaPaseLista(id_grupo,id_pase,filtro,dia)
+                template += `<a href="#" onClick="revisaPaseLista(${pase.id_grupo},${pase.id_pase},'THIS_DATE','${pase.fecha}',)" 
+                                class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">${pase.carrera} ${pase.grupo}</h6>
+                                    <span class="badge bg-info"><i class="fas fa-calendar-check"></i></span>
+                                </div>
+                                <p class="mb-1">${pase.materia}</p>
+                                <small class="text-muted">${pase.create_at}</small>
+                            </a> `;
+            });
+            template += `</div>`;
         }
-    });
+        else{
+            template = ``;
+        }
+        $("#containerHistorial").html(template);
+    })
+}
+
+function buscaPaseListaxFecha() {
+    let idGrupo = $("#selectGrupoSearch option:selected").val();
+    let fecha = $("#fecha_pase_lista").val();
+    console.log(idGrupo,fecha);
+    busca_pase_lista(idGrupo,"DATE",fecha,0).then(function (response) {
+        if(response.response == 0){
+            //alerta no hay
+            mensajeAlerta("error","No encontramos un pase de lista este dia","No se encontro pase de lista")
+        }
+        else{
+            //redireccionar
+            console.log(response.data[0])
+            let pl = response.data[0];
+            alertaNotificacion("success", "Pase de Lista encontrado");
+            window.location.href = "./pase_lista.php?start_sesion="+pl.id_grupo_fk+"&action=new&id_pase="+pl.id_pase+"&date="+pl.fecha+"&filter='THIS_DATE'";
+        }
+    })
 }

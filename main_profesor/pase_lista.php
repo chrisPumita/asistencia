@@ -10,9 +10,17 @@ if (!isset($_GET['start_sesion'])){
 }
 else{
     $idGrupo = $_GET['start_sesion'];
+    $id_pase = $_GET['id_pase'];
     $action = $_GET['action'];
+    $date = $_GET['date'];
+    $filter = $_GET['filter'];
+    if(!isset($idGrupo)||!isset($id_pase)||!isset($action)||!isset($date)||!isset($filter))
+        header("Location: ./");
     echo '<script> let ID_GPO = '.$idGrupo.'; </script>';
+    echo '<script> let ID_PASE = '.$id_pase.'; </script>';
+    echo '<script> let FILTER = '.$filter.'; </script>';
     echo '<script> let ACTION = "'.$action.'"; </script>';
+    echo '<script> let FECHA = "'.$date.'"; </script>';
 }
 
 ?>
@@ -43,7 +51,7 @@ else{
                             <div class="col-12 col-md-12" style="display: flex;justify-content: center;">
                                 <div class="p-3">
                                     <h4 id="dateToday"></h4>
-                                    <h3> <span class="small">Código: </span><span id="codigoLink"><strong></strong></span></h3>
+                                    <h3> <span class="small">Código: </span><span id="codigoLink" onClick="copyToClickBoard(this);" role="button"></span></h3>
                                     <span id="buttonCancel"> </span>
                                 </div>
                             </div>
@@ -108,21 +116,26 @@ else{
                                     <h4 class="card-title">Revisión final</h4>
                                     <div class="text-center">
                                         <h5 class="">Asistencias</h5>
-                                        <h5 class="asfalre" style="color: green;">30</h5>
+                                        <h5 class="asfalre" style="color: green;" id="countAsis"></h5>
                                         <h6 class="">Faltas</h6>
-                                        <h5 class="asfalre" style="color: red;">30</h5>
+                                        <h5 class="asfalre" style="color: red;" id="countFalt"></h5>
                                         <h6 class="">Retardos</h6>
-                                        <h5 class="asfalre" style="color: orange;">30</h5>
+                                        <h5 class="asfalre" style="color: orange;" id="countReta"></h5>
                                     </div>
-
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col">
+                                    <div id="chart"></div>
+                                </div>
+                            </div>
                             <div class="row py-4">
                                 <div class="card card-body">
-                                    <h4 class="card-title">Notas</h4>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Agregar una nota adicional..." style="height: 200px;"></textarea>
-                                    <button type="button" class="btn btn-primary mt-3">Actualizar</button>
+                                    <h4 class="card-title" for="textAreaNoatas">Notas</h4>
+                                    <textarea class="form-control" id="textAreaNoatas" rows="3" placeholder="Agregar una nota adicional..." style="height: 200px;"></textarea>
+                                    <span id="btnUpdateNotas">
+                                        <button type="button" class="btn btn-primary mt-3">Actualizar</button>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -132,10 +145,8 @@ else{
             <!-- content -->
         </div>
     </div>
-
 </div>
-
-
+<?php include_once "../includes_general/footer.php"?>
 </body>
 
 

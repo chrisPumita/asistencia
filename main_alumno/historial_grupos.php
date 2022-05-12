@@ -65,6 +65,7 @@ $path = "../";
             </div>
     	</div>
 </div>
+    <?php include_once "../includes_general/footer.php"?>
 </body>
 <?php
 

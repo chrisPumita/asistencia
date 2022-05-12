@@ -66,29 +66,24 @@ include_once "./sesion_profesor.php";
                         </div>
                         <div class="row pt-3">
                             <h5>Buscar pase de lista</h5>
-                            <form class="row">
                                 <div class="col-12 col-md-7 mb-3">
-                                    <select class="form-select" aria-label="Default select example" id="selectGrupoSearch">
+                                    <select class="form-select" aria-label="Default select example" id="selectGrupoSearch" name="selectGrupoSearch">
                                     </select>
                                 </div>
                                 <div class="col-7 col-md-3">
-                                    <input class="w-100 form-control" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+                                    <input class="w-100 form-control" type="date" id="fecha_pase_lista" name="fecha_pase_lista" value="<?php echo date("Y-m-d"); ?>">
                                 </div>
                                 <div class="col-5 col-md-2">
-                                    <a href="pase_lista.php">
-                                        <button type="submit" class="btn btn-primary mb-3 w-100">Ver</button>
-                                    </a>
+                                    <button type="button" class="btn btn-primary mb-3 w-100" onclick="buscaPaseListaxFecha();">Buscar</button>
                                 </div>
-                            </form>
+                            <div id="resp"></div>
                         </div>
-                        <!--
                         <div class="row pt-3">
                             <h5>Crear Grupo</h5>
                             <div class="row mt-2 mb-3" id="container_select_periodos">
-                                
+
                             </div>
                         </div>
-                    -->
                         <div class="row py-3">
                             <h5>Accesos rapidos</h5>
                             <div class="row">
@@ -143,15 +138,7 @@ include_once "./sesion_profesor.php";
                     <div class="col-12 col-md-4">
                         <div class="row">
                             <h5>Ultimos pases de lista</h5>
-                            <div class="list-group"> <?php for($i = 0; $i
-                                <2; $i++){ ?> <a href="#" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">{Grupo}</h5>
-                                        <span class="badge bg-warning">Hoy</span>
-                                    </div>
-                                    <p class="mb-1">{Materia}</p>
-                                    <small class="text-muted">{11 de Abril de 2022}</small>
-                                </a> <?php } ?>
+                            <div id="containerHistorial">
                             </div>
                         </div>
                         <div class="row pt-5">
@@ -174,6 +161,7 @@ include_once "./sesion_profesor.php";
         </div>
     </div>
 </div>
+<?php include_once "../includes_general/footer.php"?>
 </body>
 <?php
     include "../main_profesor/Modal_profesor/crear_grupo.php";

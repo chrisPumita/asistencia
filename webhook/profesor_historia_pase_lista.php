@@ -1,19 +1,18 @@
 <?php
-//buscamos si hoy ya se genero un pase de lista para cargarla
-$idGrupo = $_POST['grupo'];
-$filtro = $_POST['filtro'];
-$dia = $_POST['dia'];
-$idPase = $_POST['idPase'];
 
+//buscamos si hoy ya se genero un pase de lista para cargarla
+$filtro = $_POST['filtro'];
+session_start();
+$idProfesor = $_SESSION['id_profesor'];
 include_once "../control/controlGrupos.php";
 
-$data = consultaPaseLista($idPase, $idGrupo,$filtro,$dia);
+$data = consultaHistorialPasesLista($idProfesor, $filtro);
 
 if ($data) {
-    $mensaje = "Este grupo ya paso lista el dia de hoy";
+    $mensaje = "Enviando historial";
     $value = 1;
 } else {
-    $mensaje = "Este grupo aun no ha pasado lista";
+    $mensaje = "No hay registros";
     $value = 0;
 }
 

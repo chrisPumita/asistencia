@@ -10,3 +10,6 @@
 
 <script src="<?php echo $path; ?>services/general/alertas.js"></script>
 <script src="<?php echo $path; ?>services/general/async_services.js"></script>
+
+<?php if($_SESSION['tipo'] == "profesor")
+    echo '<script src="'.$path.'services/sidebar.js"></script>';?>
