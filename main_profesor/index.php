@@ -161,6 +161,7 @@ include_once "./sesion_profesor.php";
         </div>
     </div>
 </div>
+<?php include_once "../includes_general/footer.php"?>
 </body>
 <?php
     include "../main_profesor/Modal_profesor/crear_grupo.php";

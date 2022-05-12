@@ -21,8 +21,8 @@
                     <span class="navbar-text">
         <div class="dropdown">
                                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="
-							https://holatelcel.com/wp-content/uploads/2020/12/foto-perfil-whatsapp-.png" alt="Avatar" class="avatar">
+                                    Hola <?php echo $_SESSION['name_user'] ?>
+                                    <img src="<?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="menuPerfil" style="">
                                     <li>
