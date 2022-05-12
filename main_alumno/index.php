@@ -182,5 +182,7 @@ include "../main_alumno/modal_alumno/vista_justificante.php";
 include $path."includes_general/js.php";
 ?>
 
+<script src="../services/alumno/home.js"></script>
+
 </html>
 
