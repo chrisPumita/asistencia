@@ -28,13 +28,13 @@ $path = "../"
                             <img class="circular_square" src="../assets/img/defaultAvatar.webp" width="250" height="250" alt="Avatar">
                         </div>
                         <div class="text-center text-muted mt-3">
-                            <h4 id="nombre_perfil"></h4>
+                            <h4><span id="nombre_perfil"></span></h4>
                             <button type="button" class="btn btn-primary">Cambiar</button>
                         </div>
                     </div>
                     
                     <div class="col-12 col-md-9">
-                    <form id="frm-update-alumno">
+                    <form id="frm-update-datos-alumno">
                         <div class="mb-3">
                             <label class="mb-2 text-muted" for="edit_nombre_al">Nombre</label>
                             <input id="edit_nombre_al" type="text" class="form-control" name="edit_nombre_al" value="" required autofocus>
@@ -80,7 +80,7 @@ $path = "../"
                             <div class="col col-md-10">
                             </div>
                             <div class="col-12 col-md-2" style="display: flex;justify-content: flex-end;">
-                                <button type="button" class="btn btn-primary btn_ajustable">Actualizar</button>
+                                <button type="submit" class="btn btn-primary btn_ajustable">Actualizar</button>
                             </div>
                         </div>
                     </form>

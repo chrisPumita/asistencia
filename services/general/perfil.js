@@ -28,3 +28,10 @@ function buildHtmlDatosAlumno(alumno){
     $("#edit_email_al").val(alumno.email);
     $("#nombre_perfil").html(alumno.nombre+" "+ alumno.app+ " "+ alumno.apm)
 }
+
+$("#frm-update-datos-alumno").submit(function (event) {
+    var data = $('#frm-update-datos-alumno').serialize();
+    let route = "../webhook/alumno_update.php";
+    peticionAjax(data,route);
+    event.preventDefault();
+});
