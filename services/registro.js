@@ -57,9 +57,30 @@ $("#frm-new-alumno").submit(function (event) {
             success: function (result) {
                 console.log(result);
                 if(result.response=="1"){
-                    $('#frm-new-alumno')[0].reset();
-                    mensajeAlerta("success","Tu cuenta ha sido creada correctamente, ahora puede iniciar sesion", "CUENTA CREADA");
-                    setTimeout( function() { window.location.href = "./"; }, 3000 );
+                    let timerInterval
+                    Swal.fire({
+                        title: 'Cuenta creada exitosamente',
+                        html: 'Estamos preparando todo para iniciar sesión',
+                        timer: 1000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 100)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                    }).then((result) => {
+                        let email = $("#email").val();
+                        iniciarSesion(email,c_pw,"alumno");
+                        $('#frm-new-alumno')[0].reset();
+                    })
+
+                    //setTimeout( function() { window.location.href = "./"; }, 3000 );
+
                 }
                 else{
                     let alerta =  `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -76,3 +97,21 @@ $("#frm-new-alumno").submit(function (event) {
         })
     }
 });
+
+function iniciarSesion(email,password,rdo_accoun) {
+    $.ajax({
+        type: "POST",
+        url: "./webhook/login.php",
+        data: {email:email,password:password,rdo_accoun:rdo_accoun},
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            if(result.response=="1"){
+                window.location.href = "./";
+            }
+        },
+        error: function(result){
+            console.log(result);
+        }
+    })
+}

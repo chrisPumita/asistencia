@@ -187,10 +187,11 @@ class ASISTENCIA extends PDODB
         $this->close();
         return $result;
     }
-    function queryUpdateJustificanteFalta(){
-        $query="UPDATE `asistencia` SET `confirmada` = '".$this->getConfirmada()."', `value` = '".$this->getValue()."', `url_justificante` = '".$this->getUrlJustificante()."',
-         `upload_date_justificante` = '".$this->getUploadDateJustificante()."', `estatus_rev_just` = '".$this->getEstatusRevJust()."', `log` = '".$this->getLog()."' 
-         WHERE `asistencia`.`id_pase_fk` = ".$this->getIdPaseFk()." AND `asistencia`.`id_alumno_fk` = ".$this->getIdAlumnoFk();
+    function querySubeJustificante(){
+        $query=" UPDATE `asistencia` SET `url_justificante` = '".$this->url_justificante."', 
+                    `upload_date_justificante` = '".date('Y-m-d H:i:s')."' 
+                     WHERE `asistencia`.`id_pase_fk` = ".$this->getIdPaseFk()." 
+                     AND `asistencia`.`id_alumno_fk` = ".$this->getIdAlumnoFk();
         $this->connect();
         $result=$this->executeInstruction($query);
         $this->close();
@@ -211,4 +212,33 @@ class ASISTENCIA extends PDODB
         return $result;
     }
 
+    function consultaPaseListaAlumno($filtro){
+        $limite = "";
+        switch ($filtro){
+            case "LAST":
+                $limite = " LIMIT 10  ";
+                $filtro = " AND gpo.estatus > 0 ";
+                break;
+        }
+
+        $query = "select gpo.id_grupo, carrera, materia, porcentaje_min,
+       dias, is_porcentual, puntaje_final, tipo_puntaje, retardo_is_falta,
+       no_clases, gpo.estatus, gpo.grupo,
+       pl.id_pase, id_grupo_fk, fecha, notas, pl.create_at as fechaInicioPL,
+       asi.id_pase_fk, id_alumno_fk, confirmada, check_retardo, value,
+       url_justificante, upload_date_justificante, estatus_rev_just, log
+from periodo per
+    inner join grupo gpo
+        on  per.id_periodo = gpo.id_periodo_fk
+    inner join paselista pl
+    on gpo.id_grupo = pl.id_grupo_fk
+    inner join asistencia asi
+        on pl.id_pase = asi.id_pase_fk
+WHERE asi.id_alumno_fk = ".$this->getIdAlumnoFk()." ".$filtro."
+ORDER BY fecha DESC ". $limite;
+        $this->connect();
+        $result=$this->getData($query);
+        $this->close();
+        return $result;
+    }
 }

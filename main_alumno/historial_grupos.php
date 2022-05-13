@@ -1,7 +1,7 @@
 <?php
 $titulo = "HOME - Alumno";
 $path = "../";
-
+include_once "./sesion_alumno.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,9 +22,6 @@ $path = "../";
                 </div>
             </div>
             <div class="container">
-            		
-            			
-            		
             		<div class="col-12">
                 	<div class="mb-3 p-4">
                 		<h4><strong>Asistencia por grupo</strong></h4>

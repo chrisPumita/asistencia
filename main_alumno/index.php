@@ -69,75 +69,25 @@ include_once "./sesion_alumno.php";
                                 </div>
                                 <div class="row ">
                                     <h5><strong>Ultimos pases de lista</strong></h5> <!-- row pt-3 --> <!-- "col-12 col-md-9" -->
-                                    <?php for($i = 0; $i <4; $i++){ ?>
-                                        <div class="col-12">
-                                            <div class="card class_card" role="button">
-                                                <div class="card-body">
-                                                    <div class="row" style="display: flex;align-items: center;">
-                                                        <!--
-                                                        <div class="col-6 col-md-1 mb-2" style="display: flex;justify-content: center;align-items: center;">
-                                                            <h4 class="text-muted mb-0"><strong>1</strong></h4>
-                                                        </div>
-                                                        |-->
-                                                        <div class="col-12 col-md-1 mb-2" style="display: flex;justify-content: center;align-items: center;">
-                                                            <img class="avatar " src="../assets/img/close.png" width="40" height="40" alt="Avatar"></img>
-                                                        </div>
-                                                        <div class="col-12 col-md-5">
-                                                            <div class="row mb-1">
-                                                                <div class="col text-dark">
-                                                                    <h6 class="mb-0" style="display: flex;justify-content: start;">
-                                                                    <span class="position-relative mt-2 p-2 end-0 start-1 translate-middle bg-success border border-light rounded-circle">
-                                                                    <span class="visually-hidden">New alerts</span>
-                                                                    </span>
-                                                                        <strong style="text-align: initial;">{Nombre del alumno}</strong>
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mb-2">
-                                                                <div class="col-12 col-md-5" style="display: flex;justify-content: center;">
-                                                                    <small>{Carrera}{Materia}</small>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-4">
-                                                            <h6 class="text-muted mb-0" ><strong>{Fecha}</strong></h6>
-                                                            <p class="text-muted mb-0">a las {Hora}</p>
-                                                        </div>
-                                                        <div class="col-12 col-md-2" style="display: flex; text-align: end;">
-                                                            <button type="button" class="btn btn-danger btn-sm fontsizeletrabtn btn_ajustable" data-bs-toggle="modal" data-bs-target="#modal_justificante">Subir Justificante</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
+                                    <div id="containerPasesLista"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <h5><strong> Buscar pase de lista</strong></h5>
-                            <div class="col-12">
-                                <form class="row g-3">
-                                    <div class="col-12 col-md-7">
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Grupo 7205 Informática - Analisis de sistemas</option>
-                                            <option value="1">1</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-7 col-md-3">
-                                        <input class="w-100 form-control" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
-                                    </div>
-                                    <div class="col-5 col-md-2">
-                                        <button type="submit" class="btn btn-primary mb-3 w-100">Ver</button>
-                                    </div>
-                                </form>
+                            <div class="col-12" id="containerBuscaPases">
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="row">
+                            <h5><strong>Mis Grupos</strong></h5>
+                            <div class="col" >
+                                <ul class="list-group list-group-flush" id="listGrupos">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
                             <h5><strong>Justificantes recientes</strong></h5>
                             <?php for($i = 0; $i<2; $i++){ ?>
                                 <div class="row">
@@ -173,7 +123,6 @@ include_once "./sesion_alumno.php";
     include_once "../includes_general/footer.php";
     include_once "./modal_alumno/modal-invitacion.php";
 ?>
-
 
 </body>
 <?php

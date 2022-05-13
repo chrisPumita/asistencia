@@ -57,6 +57,23 @@ async function historialPaseLista(filtro) {
     return await peticionAjax(datos,route);
 }
 
+/*++++++++++++++++++++++++++++++++++++
+*   a l u m n o s
+* ++++++++++++++++++++++++++++++++++*/
+
+/* HISTORIAL PASES DE LISTA */
+async function consutaInsc(filtro) {
+    let route = "../webhook/alumno_consulta_inscripciones.php";
+    let datos = {filtro:filtro};
+    return await peticionAjax(datos,route);
+}
+
+/* HISTORIAL PASES DE LISTA */
+async function consultaPasesListaAlumno(filtro) {
+    let route = "../webhook/alumno_consulta_pases_lista.php";
+    let datos = {filtro:filtro};
+    return await peticionAjax(datos,route);
+}
 
 /**************** PETICION GENERICA AJAX **************/
 async function peticionAjax(datos,route)

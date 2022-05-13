@@ -16,12 +16,13 @@
                         <h6 for="code">Escriba código</h6>
                     </div>
                     <div class="col-auto">
-                        <input type="text" class="form-control" id="code" name="code" placeholder="XXXXXXXXXX">
+                        <input type="text" class="form-control" id="codigoInvitacion" name="codigoInvitacion" placeholder="XXXXXXXXXX">
                     </div>
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3">Enviar</button>
                     </div>
                 </form>
+                <div id="resp"></div>
             </div>
             <!--Footer-->
             <div class="modal-footer">

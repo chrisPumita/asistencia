@@ -11,5 +11,10 @@
 <script src="<?php echo $path; ?>services/general/alertas.js"></script>
 <script src="<?php echo $path; ?>services/general/async_services.js"></script>
 
-<?php if($_SESSION['tipo'] == "profesor")
-    echo '<script src="'.$path.'services/sidebar.js"></script>';?>
+<?php
+if (isset($_SESSION['tipo']))
+    if($_SESSION['tipo'] == "profesor")
+        echo '<script src="'.$path.'services/sidebar.js"></script>';
+    else
+        echo '<script src="'.$path.'services/bar_alumno.js"></script>';
+?>

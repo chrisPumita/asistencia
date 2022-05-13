@@ -1,18 +1,5 @@
 <?php
 
-function updateJustificanteFalta($idAlumnnoFk,$idPaseFk,$confirmada,$value,$url_justificante,$dateJustificante,$estatusRev){
-    include_once "../model/ASISTENCIA.php";
-    $ASIS = new ASISTENCIA();
-    $ASIS->setIdAlumnoFk($idAlumnnoFk);
-    $ASIS->setIdPaseFk($idPaseFk);
-    $ASIS->setConfirmada($confirmada);
-    $ASIS->setValue($value);
-    $ASIS->setUrlJustificante($url_justificante);
-    $ASIS->setUploadDateJustificante($dateJustificante);
-    $ASIS->setEstatusRevJust($estatusRev);
-    return $ASIS->queryUpdateJustificanteFalta();
-}
-
 function cambioValorAsistencia($idPase,$idAlumno,$actionSet){
     include_once "../model/ASISTENCIA.php";
     $ASIS = new ASISTENCIA();
@@ -59,4 +46,42 @@ function updateNotaPaseLista($idPase,$nota){
     $PL->setIdPase($idPase);
     $PL->setNotas($nota);
     return $PL->queryUpdateNotasPaseLista();
+}
+
+function procesaJustificanteAlumno1($archivo1,$nombreFILE1,$idPase,$idAlumno)
+{
+    return true;
+}
+
+function procesaJustificanteAlumno($archivo1,$nombreFILE1,$idPase,$idAlumno)
+{
+    //validamos que el documento requerido SI sea del alumno
+    include_once "../model/ASISTENCIA.php";
+    $FILE = new ASISTENCIA();
+    $FILE->setIdPaseFk($idPase);
+    $FILE->setIdAlumnoFk($idAlumno);
+
+    $carpeta = '../justificantes'; // URL COMPLETA
+    if (!file_exists($carpeta)) {
+        mkdir($carpeta, 0777, true);
+    }
+
+    $hoy= date('Y-m-d-His');
+    $nombre= md5($idPase.$idAlumno.'-'.$hoy);
+    $nombre =str_replace(' ', '', $nombre);
+    $ruta1 = $carpeta.'/'.$nombreFILE1; // RUTA1 EXAMPLE: "/24072019.24/e-r.jpg"
+    $extension = pathinfo($ruta1, PATHINFO_EXTENSION);
+
+    if (move_uploaded_file($archivo1, $ruta1)){
+        rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/tarjetaCirc.jpg"
+        //Guardar en el modelo de arhcivo
+
+        $path = $carpeta.'/'.$nombre.'.'.$extension;
+        $FILE->setUrlJustificante($path);
+      //  $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,0);
+     //   return $result;
+        return $FILE->querySubeJustificante();
+    }
+    return false;
+
 }

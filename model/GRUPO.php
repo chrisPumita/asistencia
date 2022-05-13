@@ -275,6 +275,15 @@ class GRUPO extends PDODB
         $this->estatus = $estatus;
     }
 
+    function queryBuscaGrupoCodigo(){
+        $query = "SELECT `id_grupo` FROM `grupo` 
+                    WHERE `codigo_invitacion` LIKE '".$this->getCodigoInvitacion()."' ";
+        $this->connect();
+        $result=$this->getData($query);
+        $this->close();
+        return $result;
+    }
+
     function queryConsultaGruposProfesor($idProfesor,$filtro){
         $idUnique = $this->getIdGrupo()>0 ? " AND g.id_grupo = ".$this->getIdGrupo() :"";
 

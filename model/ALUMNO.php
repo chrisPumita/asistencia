@@ -95,6 +95,7 @@ class ALUMNO extends PERSONA
     function queryConsultaCuentaAlumno(){
         $query="SELECT al.id_alumno,al.id_persona_fk,al.no_cta,al.account_confirm,per.id_persona,per.nombre,per.app,
         per.apm,per.sexo,per.email,per.user_name,per.avatar,per.create_at FROM `alumno` al INNER JOIN persona per 
+            on per.id_persona = al.id_persona_fk 
         WHERE per.email ='".$this->getEmail()."' AND per.pw='".$this->getPw()."'";
        $this->connect();
        $result=$this->getData($query);
