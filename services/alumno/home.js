@@ -2,6 +2,7 @@ $(document).ready(function() {
     console.log("F(X) Alumno");
     consultaInscripcionesAlumno();
     consultaUltimosPaseListaAlumno();
+    buscaJustificantes();
 });
 
 setInterval(consultaUltimosPaseListaAlumno,1000);
@@ -161,7 +162,47 @@ function subirJustificante(idPase,materia) {
     $("#modal_justificante").modal("show");
     $("#tituloJust").html(materia);
     $("#idPase").val(idPase);
+}
 
+function buscaJustificantes() {
+    consultaJustificantes("ALUMNO").then(function (result) {
+        console.log(result);
+        let LIST = result.data;
+        let template = ``;
+        if(LIST.length > 0){
+            LIST.forEach(just=>{
+                let estadoArchivo = just.estatus_rev_just === "0" ? `<span class="position-absolute end-0 me-1 p-1  badge rounded-pill bg-info" style="align-self: end;top: 10px;">Enviado</span>`
+                    : `<span class="position-absolute end-0 me-1 p-1  badge rounded-pill bg-success" style="align-self: end;top: 10px;">Revisado</span>`;
+                template += `<div class="row" >
+                            <div class="card h-100 card_cursor">
+                                <div class="card-body" role="button" onclick="showJustificPDF('${just.url_justificante}','${just.materia} ${just.grupo}');">
+                                    <div class="row">
+                                        <div class="col-2 d-flex justify-content-center align-items-center">
+                                            <i class="far fa-file-pdf" style="height: 60px;width: 30px;"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">${just.materia} <small>${just.grupo}</small></h6>
+                                                ${estadoArchivo}
+                                            </div>
+                                            <div class="card-text text-muted">
+                                                ${just.carrera} <br>
+                                                Enviado el ${just.upload_date_justificante}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                console.log(just);
+            });
+        }
+        else{
+            template = result.mensaje;
+        }
+
+        $("#containerJustificantes").html(template);
+    })
 }
 
 $("#frm-upload-file").on("submit", function(e){
@@ -179,10 +220,17 @@ $("#frm-upload-file").on("submit", function(e){
         if (res.type > 0){
             $("#frm-upload-file").trigger('reset');
             $("#modal_justificante").modal('hide');
+            buscaJustificantes();
             mensajeAlerta("success", "El justificante ha sido enviado, espera la respuesta del profesor para que la aprueba y modifique tu falta.","Se envió justificante")
         }
         console.log(res);
-
     });
-
 });
+
+function showJustificPDF(url,name) {
+    $("#Modal_PDF").modal('show');
+    let iframe = '<iframe src="'+url+'" width="100%" height="500px"> </iframe>';
+    $("#containerPDFView").html(iframe);
+    $("#namePDF").html(name);
+
+}

@@ -5,17 +5,14 @@
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header">
-        <p class="heading lead">Modal PDF</p>
+        <p class="heading lead" id="namePDF"></p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
-
       <!--Body-->
       <div class="modal-body">
           <div id="containerPDFView"></div>
-          <iframe src="../justificantes/a3d19e2b5a86c0e5c2accdaa5a7d924d.jpg" width="100%" height="500px"> </iframe>
       </div>
-
       <!--Footer-->
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>

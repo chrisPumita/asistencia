@@ -83,5 +83,10 @@ function procesaJustificanteAlumno($archivo1,$nombreFILE1,$idPase,$idAlumno)
         return $FILE->querySubeJustificante();
     }
     return false;
+}
 
+function cargaJustifiicantesPendientes($filtro,$id){
+    include_once "../model/ASISTENCIA.php";
+    $ASI = new ASISTENCIA();
+    return  $ASI->queryConsultaJustificantes($filtro,$id);
 }

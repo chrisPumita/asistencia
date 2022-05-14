@@ -57,6 +57,12 @@ async function historialPaseLista(filtro) {
     return await peticionAjax(datos,route);
 }
 
+async function consultaJustificantes(filtro) {
+    let route = "../webhook/consulta_justificantes.php";
+    let datos = {filtro:filtro};
+    return await peticionAjax(datos,route);
+}
+
 /*++++++++++++++++++++++++++++++++++++
 *   a l u m n o s
 * ++++++++++++++++++++++++++++++++++*/

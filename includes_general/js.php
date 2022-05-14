@@ -15,6 +15,4 @@
 if (isset($_SESSION['tipo']))
     if($_SESSION['tipo'] == "profesor")
         echo '<script src="'.$path.'services/sidebar.js"></script>';
-    else
-        echo '<script src="'.$path.'services/bar_alumno.js"></script>';
 ?>

@@ -209,5 +209,5 @@ include_once "./sesion_alumno.php";
 <?php
 include $path."includes_general/js.php";
 ?>
-
+<script src="../services/alumno/mis_grupos.js"></script>
 </html>

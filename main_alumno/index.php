@@ -89,29 +89,7 @@ include_once "./sesion_alumno.php";
                         </div>
                         <div class="row mt-3">
                             <h5><strong>Justificantes recientes</strong></h5>
-                            <?php for($i = 0; $i<2; $i++){ ?>
-                                <div class="row">
-                                    <div class="card h-100 card_cursor">
-                                        <div class="card-body" data-bs-toggle="modal" data-bs-target="#Modal_PDF">
-                                            <div class="row">
-                                                <div class="col-2 d-flex justify-content-center align-items-center">
-                                                    <i class="far fa-file-pdf" style="height: 60px;width: 30px;"></i>
-                                                </div>
-                                                <div class="col-10">
-                                                    <div class="d-flex w-100 justify-content-between">
-                                                        <h6 class="mb-1">{Nombre alumno}</h6>
-                                                        <span class="position-absolute end-0 me-1 p-1  badge rounded-pill bg-danger" style="align-self: end;top: 10px;">Revisado</span>
-                                                    </div>
-                                                    <div class="card-text text-muted">
-                                                        {Nombre de la materia} <br>
-                                                        {Fecha en la que se subio}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
+                            <div id="containerJustificantes"></div>
                         </div>
                     </div>
                 </div>
