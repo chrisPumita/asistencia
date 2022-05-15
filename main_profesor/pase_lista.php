@@ -1,8 +1,6 @@
 <?php
 $titulo = "HOME - Profesor";
 $path = "../";
-
-
 include_once "./sesion_profesor.php";
 
 if (!isset($_GET['start_sesion'])){

@@ -119,13 +119,13 @@ class PASE_LISTA extends PDODB
     function queryBuscaPaseLista($filtro,$dia){
         switch($filtro){
             case  "TODAY":
-                $filtro = " and fecha = '".date('Y-m-d')."'";
+                $filtro = " and fecha LIKE '".date('Y-m-d')."'";
                 break;
             case  "none":
                 $filtro = "";
                 break;
             default:
-                $filtro = " and fecha = '".$dia."'";
+                $filtro = " and fecha LIKE '".$dia."'";
                 break;
         }
 
@@ -133,7 +133,7 @@ class PASE_LISTA extends PDODB
 
         $query = "select id_pase, id_grupo_fk, fecha, notas, create_at from paselista
                     where id_grupo_fk = ". $this->getIdGrupoFk(). " ".$filtro. $filtroPase;
-       // echo $query;
+      //  echo $query;
         $this->connect();
         $result=$this->getData($query);
         $this->close();
@@ -181,11 +181,11 @@ from asistencia asi inner join  paselista pl on pl.id_pase = asi.id_pase_fk
         switch ($filtro){
             case "LAST":
                 //mostrando los ultimos 10 activos
-                $filtro = " AND p.estado > 0 ORDER BY pl.create_at DESC LIMIT 10";
+                $filtro = " AND p.estado > 0 ORDER BY pl.fecha DESC LIMIT 1000000";
                 break;
             default:
                 //Mostrando todos sin excepcion
-                $filtro = " ORDER BY pl.create_at DESC";
+                $filtro = " ORDER BY pl.fecha DESC";
                 break;
         }
         $query = "SELECT pl.id_pase, pl.id_grupo_fk, pl.fecha, pl.notas, pl.create_at,

@@ -75,9 +75,9 @@ async function consutaInsc(filtro) {
 }
 
 /* HISTORIAL PASES DE LISTA */
-async function consultaPasesListaAlumno(filtro) {
+async function consultaPasesListaAlumno(filtro,id) {
     let route = "../webhook/alumno_consulta_pases_lista.php";
-    let datos = {filtro:filtro};
+    let datos = {filtro:filtro,id:id};
     return await peticionAjax(datos,route);
 }
 

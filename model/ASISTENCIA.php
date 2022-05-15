@@ -212,12 +212,16 @@ class ASISTENCIA extends PDODB
         return $result;
     }
 
-    function consultaPaseListaAlumno($filtro){
+    function consultaPaseListaAlumno($filtro,$id){
         $limite = "";
         switch ($filtro){
             case "LAST":
                 $limite = " LIMIT 10  ";
                 $filtro = " AND gpo.estatus > 0 ";
+                break;
+            case "GRUPO":
+                $limite = " LIMIT 10  ";
+                $filtro = " AND gpo.id_grupo  =".$id."  " ;
                 break;
         }
 
@@ -271,4 +275,5 @@ ORDER BY fecha DESC ". $limite;
         return $result;
 
     }
+
 }

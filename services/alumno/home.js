@@ -47,11 +47,13 @@ function consultaInscripcionesAlumno() {
             let inscripciones = result.data;
             if (inscripciones.length>0){
                 let GRUPOS = result.data;
-                template = `<form class="row g-3">
+                template = `<form class="row g-3" id="frm-busca-pase">
                                     <div class="col-12 col-md-7">
                                         <select class="form-select" id="selectGrupoSearch">`;
                 GRUPOS.forEach(gpo=>{
-                    template_lits += `<li class="list-group-item"><i class="far fa-check-square"></i> ${gpo.materia} - Grupo ${gpo.grupo}</li>`;
+                    template_lits += `<li class="list-group-item"><a href="./info_grupos.php?idGrupo=${gpo.id_grupo}">
+                                            <i class="far fa-check-square"></i> ${gpo.materia} - Grupo ${gpo.grupo}
+                                        </a></li>`;
                     template += ` <option value="${gpo.id_grupo}">${gpo.materia} - Grupo ${gpo.grupo}</option>`;
                 })
                 template += `
@@ -80,7 +82,7 @@ function consultaInscripcionesAlumno() {
 
 
 function consultaUltimosPaseListaAlumno() {
-    consultaPasesListaAlumno("LAST").then(result =>{
+    consultaPasesListaAlumno("LAST",0).then(result =>{
         let pases = result.data;
         let template = ``;
         if (pases.length > 0) {
@@ -200,7 +202,6 @@ function buscaJustificantes() {
         else{
             template = result.mensaje;
         }
-
         $("#containerJustificantes").html(template);
     })
 }

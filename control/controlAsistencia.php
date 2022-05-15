@@ -55,7 +55,6 @@ function procesaJustificanteAlumno1($archivo1,$nombreFILE1,$idPase,$idAlumno)
 
 function procesaJustificanteAlumno($archivo1,$nombreFILE1,$idPase,$idAlumno)
 {
-    //validamos que el documento requerido SI sea del alumno
     include_once "../model/ASISTENCIA.php";
     $FILE = new ASISTENCIA();
     $FILE->setIdPaseFk($idPase);
@@ -65,7 +64,6 @@ function procesaJustificanteAlumno($archivo1,$nombreFILE1,$idPase,$idAlumno)
     if (!file_exists($carpeta)) {
         mkdir($carpeta, 0777, true);
     }
-
     $hoy= date('Y-m-d-His');
     $nombre= md5($idPase.$idAlumno.'-'.$hoy);
     $nombre =str_replace(' ', '', $nombre);
@@ -75,11 +73,8 @@ function procesaJustificanteAlumno($archivo1,$nombreFILE1,$idPase,$idAlumno)
     if (move_uploaded_file($archivo1, $ruta1)){
         rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/tarjetaCirc.jpg"
         //Guardar en el modelo de arhcivo
-
         $path = $carpeta.'/'.$nombre.'.'.$extension;
         $FILE->setUrlJustificante($path);
-      //  $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,0);
-     //   return $result;
         return $FILE->querySubeJustificante();
     }
     return false;

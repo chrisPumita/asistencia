@@ -77,10 +77,27 @@ function consultaPaseLista($idPase, $id_grupo, $filtro, $dia){
     $PL->setIdPase($idPase);
     $PL->setIdGrupoFk($id_grupo);
     $pase_lista =  $PL->queryBuscaPaseLista($filtro,$dia);
+    //var_dump($pase_lista);
     if(count($pase_lista) >0){
         $PL->setIdPase($pase_lista[0]["id_pase"]);
         $PL->setFecha($pase_lista[0]["fecha"]);
-        return $PL->queryConsultaListaRealizada();
+        $tmpLista =  $PL->queryConsultaListaRealizada();
+        if(count($tmpLista) > 0){
+            //Lista Genera, la regresamos
+            return array("no_pase"=>$idPase, "lista_prepare"=>$PL->queryConsultaListaAsistencia());
+        }
+        else{
+            //no se crearon los inserts, los creamos
+            include_once "../model/ASISTENCIA.php";
+            $lista = consultaListaAlumnos($PL->getIdGrupoFk());
+            $ASIS = new  ASISTENCIA();
+            $ASIS->setIdPaseFk($idPase);
+            if($ASIS->queryInsertAsistenciaList($lista))
+            {
+                return array("no_pase"=>$idPase, "lista_prepare"=>$PL->queryConsultaListaAsistencia());
+            }
+            return $tmpLista;
+        }
     }
     else{
         return false;
