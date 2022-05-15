@@ -49,14 +49,39 @@ function verificaCuenta($correo, $pw, $tipo){
     }
 }
 
-function updateAvatar($idPersona,$avatar){
-    if($avatar!= ""){
-    include_once "../model/PERSONA.php";
-    session_start();
-    $PERSONA= new PERSONA();
-    $PERSONA->setIdPersona($_SESSION['id_persona']);
-    $PERSONA->setAvatar($avatar);
-    return $PERSONA->queryUpdateAvatar();
+function updateAvatar($archivo1,$nombreFILE1){
+    if($archivo1!= ""){
+        include_once "../model/PERSONA.php";
+        session_start();
+        $idPersona = $_SESSION['id_persona'];
+        $PERSONA= new PERSONA();
+        $PERSONA->setIdPersona($idPersona);
+        $carpeta= "../recursos/avatars"; //URL COMPLETA
+        if(!file_exists($carpeta)){
+            mkdir($carpeta,0777,true);
+        }
+        $hoy= date('Y-m-d-His');
+        $nombre= md5($idPersona.'-'.$hoy);
+        $nombre =str_replace(' ', '', $nombre);
+        $ruta1 = $carpeta.'/'.$nombreFILE1; // RUTA1 EXAMPLE: "/24072019.24/e-r.jpg"
+        $extension = pathinfo($ruta1, PATHINFO_EXTENSION);
+
+        if (move_uploaded_file($archivo1, $ruta1)){
+            rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/tarjetaCirc.jpg"
+            //Guardar en el modelo de arhcivo
+
+            $path = $carpeta.'/'.$nombre.'.'.$extension;
+            $PERSONA->setAvatar($path);
+            //  $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,0);
+            //   return $result;
+            if($PERSONA->queryUpdateAvatar()){
+                $_SESSION['avatar'] = $PERSONA->getAvatar();
+                return true;
+            }
+                
+        } else{
+            return false;
+        }
     } else{
         return false;
     }

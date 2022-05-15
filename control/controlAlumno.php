@@ -34,5 +34,9 @@ function updateAlumno($params){
     $ALUMNO->setApm($params['apm']);
     $ALUMNO->setSexo($params['sexo']);
     $ALUMNO->setEmail($params['email']);
-    return $ALUMNO->queryUpdatePersona();
+    if($ALUMNO->queryUpdatePersona()) {
+        $_SESSION['name_complete'] = $ALUMNO->getNombre()." ". $ALUMNO->getApp()." ".$ALUMNO->getApm();
+        $_SESSION['email'] = $ALUMNO->getEmail();
+        return true;
+    } else return false;
 }

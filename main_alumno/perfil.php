@@ -1,6 +1,7 @@
 <?php
 $titulo = "PERFIL - Alumno";
-$path = "../"
+$path = "../";
+include_once "./sesion_alumno.php";
 ?>
 
 <!doctype html>
@@ -25,11 +26,11 @@ $path = "../"
                 <div class="row mt-3">
                     <div class="col-12 col-md-3">
                         <div class="text-center" >
-                            <img class="circular_square" src="../assets/img/defaultAvatar.webp" width="250" height="250" alt="Avatar">
+                            <img class="circular_square" src="../assets/img/defaultAvatar.webp" width="250" height="250" alt="Avatar" id="avatar_al">
                         </div>
                         <div class="text-center text-muted mt-3">
                             <h4><span id="nombre_perfil"></span></h4>
-                            <button type="button" class="btn btn-primary">Cambiar</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_avatar">Cambiar</button>
                         </div>
                     </div>
                     
@@ -96,6 +97,7 @@ $path = "../"
 
 <?php
     include "../main_profesor/Modal_profesor/edita_periodo.php";
+    include_once "./modal_alumno/subir_avatar.php";
     include $path."includes_general/js.php";
 ?>
 <script src="../services/general/perfil.js"></script>
