@@ -251,7 +251,7 @@ function consultaUltimosPaseLista(filtro) {
                                     <span class="badge bg-info"><i class="fas fa-calendar-check"></i></span>
                                 </div>
                                 <p class="mb-1">${pase.materia}</p>
-                                <small class="text-muted">${pase.create_at}</small>
+                                <small class="text-muted">${pase.fecha}</small>
                             </a> `;
             });
             template += `</div>`;

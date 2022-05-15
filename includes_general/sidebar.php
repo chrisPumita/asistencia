@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+                <a href="../main_profesor/historial_grupos.php" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
                     <i class="fas fa-calendar-alt"></i>
                 </a>
             </li>

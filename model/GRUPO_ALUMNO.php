@@ -89,7 +89,14 @@ class GRUPO_ALUMNO extends PDODB
     }
 
     function queryConsultaInscripciones($filtro){
-        $filtro = $filtro == "ALL" ? "AND per.estado > 0 ": "";
+        switch ($filtro){
+            case "ALL":
+                $filtro = "AND per.estado > 0 ";
+                break;
+            default:
+                $filtro = " AND g.id_grupo = " . $filtro;
+                break;
+        }
         $query = "select per.id_periodo, id_profesor, nombre_periodo,
        fecha_inicio, fecha_fin, tipo, created_at, estado,
        g.id_grupo, g.id_periodo_fk, g.grupo, g.carrera, g.materia,

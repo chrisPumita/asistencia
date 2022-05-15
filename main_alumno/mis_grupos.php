@@ -21,143 +21,19 @@ include_once "./sesion_alumno.php";
                 </div>
             </div>
             <div class="container">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row text-center">
-                                    <h5 class="card-title">GRUPO {NoGrupo}</h5>
-                                    <p>Carrera {NombreCarrera}</p>
-                                    <p>Curso {NombreCurso}</p>
-                                </div>
-                                <div class="row">
-                                    <p class="card-text mb-0"> 15/30 Clases</p>
-                                    <p class="card-text mb-0"> LUN MAR MIE JUE VIE</p>
-                                    <p class="card-text mb-0"> Min 80% asis 10% Calif  </p>
-                                    <p class="card-text mb-0"> 3 Retardos = 1 Falta  </p>
-                                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="containerGrupos">
 
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mt-3" style="display: flex;justify-content: flex-end;">
-                                            <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row text-center">
-                                    <h5 class="card-title">GRUPO {NoGrupo}</h5>
-                                    <p>Carrera {NombreCarrera}</p>
-                                    <p>Curso {NombreCurso}</p>
-                                </div>
-                                <div class="row">
-                                    <p class="card-text mb-0"> 15/30 Clases</p>
-                                    <p class="card-text mb-0"> LUN MAR MIE JUE VIE</p>
-                                    <p class="card-text mb-0"> Min 80% asis 10% Calif  </p>
-                                    <p class="card-text mb-0"> 3 Retardos = 1 Falta  </p>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mt-3" style="display: flex;justify-content: flex-end;">
-                                            <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row text-center">
-                                    <h5 class="card-title">GRUPO {NoGrupo}</h5>
-                                    <p>Carrera {NombreCarrera}</p>
-                                    <p>Curso {NombreCurso}</p>
-                                </div>
-                                <div class="row">
-                                    <p class="card-text mb-0"> 15/30 Clases</p>
-                                    <p class="card-text mb-0"> LUN MAR MIE JUE VIE</p>
-                                    <p class="card-text mb-0"> Min 80% asis 10% Calif  </p>
-                                    <p class="card-text mb-0"> 3 Retardos = 1 Falta  </p>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mt-3" style="display: flex;justify-content: flex-end;">
-                                            <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row text-center">
-                                    <h5 class="card-title">GRUPO {NoGrupo}</h5>
-                                    <p>Carrera {NombreCarrera}</p>
-                                    <p>Curso {NombreCurso}</p>
-                                </div>
-                                <div class="row">
-                                    <p class="card-text mb-0"> 15/30 Clases</p>
-                                    <p class="card-text mb-0"> LUN MAR MIE JUE VIE</p>
-                                    <p class="card-text mb-0"> Min 80% asis 10% Calif  </p>
-                                    <p class="card-text mb-0"> 3 Retardos = 1 Falta  </p>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mt-3" style="display: flex;justify-content: flex-end;">
-                                            <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row text-center">
-                                    <h5 class="card-title">GRUPO {NoGrupo}</h5>
-                                    <p>Carrera {NombreCarrera}</p>
-                                    <p>Curso {NombreCurso}</p>
-                                </div>
-                                <div class="row">
-                                    <p class="card-text mb-0"> 15/30 Clases</p>
-                                    <p class="card-text mb-0"> LUN MAR MIE JUE VIE</p>
-                                    <p class="card-text mb-0"> Min 80% asis 10% Calif  </p>
-                                    <p class="card-text mb-0"> 3 Retardos = 1 Falta  </p>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mt-3" style="display: flex;justify-content: flex-end;">
-                                            <button type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <hr>
+                <!-- content
                 <div class="row">
                     <div class="col-12 col-md-12">
                         <div class="row pt-3">
                             <h5>Terminados</h5>
-                            <div class="row row-cols-1 row-cols-md-3">
+                            <div class="row row-cols-1 row-cols-md-3" id="containerGruposArch">
                                 <?php for($i = 0; $i <4; $i++){ ?>
                                     <div class="col-12 col-md-3 mb-2">
                                         <div class="card class_card" role="button">
-
                                             <div class="card-body">
                                                 <span class="position-absolute end-0 me-3 p-2 bg-success border border-light rounded-circle">
                                                     <span class="visually-hidden">New alerts</span>
@@ -188,7 +64,6 @@ include_once "./sesion_alumno.php";
                                                             </div>
                                                         </div>
                                                     </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -199,8 +74,9 @@ include_once "./sesion_alumno.php";
 
                     </div>
                 </div>
+                -->
             </div>
-            <!-- content -->
+
         </div>
     </div>
 </div>

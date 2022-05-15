@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2022 a las 07:31:59
+-- Tiempo de generación: 15-05-2022 a las 03:56:46
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -42,7 +42,11 @@ CREATE TABLE `alumno` (
 INSERT INTO `alumno` (`id_alumno`, `id_persona_fk`, `no_cta`, `account_confirm`) VALUES
 (220504046, 2784399672959068, 316345978, 1),
 (220504307, 7391240909317772, 1456156156, 1),
-(220504313, 9308202814258365, 0, 1);
+(220504313, 9308202814258365, 0, 1),
+(220513068, 4751276030961502, 45789, 1),
+(220513174, 4690693011377169, 156156156, 1),
+(220513615, 8308296961262499, 156561516, 1),
+(220513943, 4010125521545205, 123456, 1);
 
 -- --------------------------------------------------------
 
@@ -68,9 +72,34 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`id_pase_fk`, `id_alumno_fk`, `confirmada`, `check_retardo`, `value`, `url_justificante`, `upload_date_justificante`, `estatus_rev_just`, `create_at`, `log`) VALUES
-(1111, 220504046, NULL, NULL, NULL, NULL, NULL, NULL, '2022-05-05 05:30:45', ''),
-(1111, 220504307, NULL, NULL, NULL, NULL, NULL, NULL, '2022-05-05 05:30:45', ''),
-(1111, 220504313, NULL, NULL, NULL, NULL, NULL, NULL, '2022-05-05 05:30:45', '');
+(220514117, 220504046, -1, 0, '0.00', NULL, NULL, 0, '2022-05-15 01:41:42', '20:41:42: Marcado como  Falta'),
+(220514117, 220504307, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:41:45', '20:41:45: Marcado como  Asistencia'),
+(220514117, 220504313, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:41:45', '20:41:45: Marcado como  Asistencia'),
+(220514117, 220513068, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:41:39', '20:41:39: Marcado como  Asistencia'),
+(220514117, 220513174, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:41:44', '20:41:44: Marcado como  Asistencia'),
+(220514117, 220513615, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:41:41', '20:41:41: Marcado como  Asistencia'),
+(220514117, 220513943, -1, 0, '0.00', NULL, NULL, 0, '2022-05-15 01:41:40', '20:41:40: Marcado como  Falta'),
+(220514377, 220504046, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:51:11', '20:51:11: Marcado como  Asistencia'),
+(220514377, 220504307, -1, 0, '0.00', NULL, NULL, 0, '2022-05-15 01:51:13', '20:51:13: Marcado como  Falta'),
+(220514377, 220504313, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:51:14', '20:51:14: Marcado como  Asistencia'),
+(220514377, 220513068, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:51:08', '20:51:08: Marcado como  Asistencia'),
+(220514377, 220513174, -1, 0, '0.00', NULL, NULL, 0, '2022-05-15 01:51:12', '20:51:12: Marcado como  Falta'),
+(220514377, 220513615, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:51:10', '20:51:10: Marcado como  Asistencia'),
+(220514377, 220513943, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:51:09', '20:51:09: Marcado como  Asistencia'),
+(220514437, 220504046, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:34:53', '20:34:53: Marcado como  Asistencia'),
+(220514437, 220504307, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:34:54', '20:34:54: Marcado como  Asistencia'),
+(220514437, 220504313, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:34:55', '20:34:55: Marcado como  Asistencia'),
+(220514437, 220513068, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:34:50', '20:34:50: Marcado como  Asistencia'),
+(220514437, 220513174, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:34:53', '20:34:53: Marcado como  Asistencia'),
+(220514437, 220513615, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:34:32', '20:34:32: Marcado como  Asistencia'),
+(220514437, 220513943, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:34:31', '20:34:31: Marcado como  Asistencia'),
+(220514644, 220504046, -1, 0, '0.00', NULL, NULL, 0, '2022-05-15 01:35:30', '20:35:30: Marcado como  Falta'),
+(220514644, 220504307, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:38:29', '20:38:29: Marcado como  Asistencia'),
+(220514644, 220504313, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:38:30', '20:38:30: Marcado como  Asistencia'),
+(220514644, 220513068, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:35:27', '20:35:27: Marcado como  Asistencia'),
+(220514644, 220513174, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:38:28', '20:38:28: Marcado como  Asistencia'),
+(220514644, 220513615, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:35:29', '20:35:29: Marcado como  Asistencia'),
+(220514644, 220513943, -1, 0, '0.00', NULL, NULL, 0, '2022-05-15 01:35:28', '20:35:28: Marcado como  Falta');
 
 -- --------------------------------------------------------
 
@@ -102,10 +131,11 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`id_grupo`, `id_periodo_fk`, `grupo`, `carrera`, `materia`, `porcentaje_min`, `dias`, `is_porcentual`, `puntaje_final`, `tipo_puntaje`, `retardo_is_falta`, `no_clases`, `create_at`, `codigo_invitacion`, `link_invitacion`, `estatus`) VALUES
-(5, 6, '2801', 'Informatica', 'Programacion Web', 80, 'LUN,MAR,JUE,', 1, 10, 0, 3, 30, '2022-04-28 17:55:34', 'XBmLz5zk', 'http://localhost/asistencia/join.php?code=a147a54c471b568887132d83f9434304&invite=XBmLz5zk', 1),
-(6, 7, '5201', 'Informatica', 'Desarrollo de Aplciaciones Web', 3, 'JUE,', 1, 1, 0, 3, 30, '2022-04-29 00:40:54', 'XX5HMyBa', 'http://localhost/asistencia/join.php?code=528e5d55f129bbeaaa5c3f7c34a035fe&invite=XX5HMyBa', 1),
-(7, 7, '5100', 'Informatica', 'Desarrollo Web 1', 80, 'LUN,VIE,', 1, 10, 0, 3, 30, '2022-04-29 05:59:43', 'YMMp4WHq', 'http://localhost/asistencia/join.php?code=cc22b8d3944a3e9417f85913f44d99ef&invite=YMMp4WHq', 1),
-(8, 7, '3001', 'IME', 'Base de Datos', 0, 'LUN,MAR,', 0, 0, 0, 0, 0, '2022-04-29 06:03:06', 'p8T6GhvO', 'http://localhost/asistencia/join.php?code=2dc50fc21299a22be23c95457744c5c8&invite=p8T6GhvO', 1);
+(5, 6, '2801', 'Informatica', 'Analisis y diseño de Algoritmos', 80, 'LUN,MAR,JUE,', 1, 10, 0, 3, 30, '2022-05-14 22:09:49', 'XBmLz5zk', 'http://localhost/asistencia/join.php?code=a147a54c471b568887132d83f9434304&invite=XBmLz5zk', 1),
+(6, 7, '5201', 'Informatica', 'Desarrollo de Aplciaciones Web I', 3, 'LUN,JUE,', 1, 1, 0, 3, 30, '2022-05-14 22:09:49', 'XX5HMyBa', 'http://localhost/asistencia/join.php?code=528e5d55f129bbeaaa5c3f7c34a035fe&invite=XX5HMyBa', 1),
+(7, 7, '5100', 'Informatica', 'Programación I POO ', 80, 'LUN,VIE,', 1, 10, 0, 3, 30, '2022-05-14 22:09:49', 'YMMp4WHq', 'http://localhost/asistencia/join.php?code=cc22b8d3944a3e9417f85913f44d99ef&invite=YMMp4WHq', 1),
+(8, 7, '3001', 'IME', 'Base de Datos para Ingenieria', 0, 'LUN,MAR,', 0, 0, 0, 0, 0, '2022-05-14 22:09:57', 'p8T6GhvO', 'http://localhost/asistencia/join.php?code=2dc50fc21299a22be23c95457744c5c8&invite=p8T6GhvO', 1),
+(9, 8, '1000', 'Informatica', 'Seguridad Informática I', 0, 'LUN,MAR,JUE,', 0, 0, 0, 0, 0, '2022-05-14 22:09:49', 'bh5V9yu5', 'http://localhost/asistencia/join.php?code=25ef770021c427a1e91e9c30fa558bcf&invite=bh5V9yu5', 1);
 
 -- --------------------------------------------------------
 
@@ -125,9 +155,41 @@ CREATE TABLE `grupoalumno` (
 --
 
 INSERT INTO `grupoalumno` (`id_grupo_fk`, `id_alumno_fk`, `estatus`, `create_at`) VALUES
-(7, 220504046, 1, '2022-05-04 22:34:24'),
+(5, 220504046, 1, '2022-05-13 16:09:52'),
+(5, 220504307, 1, '2022-05-14 22:17:50'),
+(5, 220504313, 1, '2022-05-14 22:17:51'),
+(5, 220513068, 1, '2022-05-14 22:17:52'),
+(5, 220513174, 1, '2022-05-14 22:17:53'),
+(5, 220513615, 1, '2022-05-13 17:09:29'),
+(5, 220513943, 1, '2022-05-14 22:17:55'),
+(6, 220504046, 1, '2022-05-13 16:10:22'),
+(6, 220504307, 1, '2022-05-14 22:16:26'),
+(6, 220504313, 1, '2022-05-14 22:16:28'),
+(6, 220513068, 1, '2022-05-14 22:16:29'),
+(6, 220513174, 1, '2022-05-14 22:16:30'),
+(6, 220513615, 1, '2022-05-13 17:09:33'),
+(6, 220513943, 1, '2022-05-14 22:16:32'),
+(7, 220504046, 1, '2022-05-13 16:10:31'),
 (7, 220504307, 0, '2022-05-04 22:34:24'),
-(7, 220504313, 1, '2022-05-04 22:34:24');
+(7, 220504313, 1, '2022-05-04 22:34:24'),
+(7, 220513068, 1, '2022-05-14 22:20:31'),
+(7, 220513174, 1, '2022-05-14 22:20:32'),
+(7, 220513615, 1, '2022-05-13 17:09:38'),
+(7, 220513943, 1, '2022-05-14 22:20:35'),
+(8, 220504046, 1, '2022-05-13 16:10:37'),
+(8, 220504307, 1, '2022-05-14 22:20:37'),
+(8, 220504313, 1, '2022-05-10 19:19:15'),
+(8, 220513068, 1, '2022-05-14 22:20:39'),
+(8, 220513174, 1, '2022-05-14 22:20:40'),
+(8, 220513615, 1, '2022-05-14 22:20:41'),
+(8, 220513943, 1, '2022-05-14 22:20:42'),
+(9, 220504046, 1, '2022-05-13 16:10:43'),
+(9, 220504307, 1, '2022-05-14 22:20:44'),
+(9, 220504313, 1, '2022-05-14 22:20:45'),
+(9, 220513068, 1, '2022-05-14 22:20:46'),
+(9, 220513174, 1, '2022-05-14 22:20:47'),
+(9, 220513615, 1, '2022-05-14 22:20:49'),
+(9, 220513943, 1, '2022-05-14 22:20:50');
 
 -- --------------------------------------------------------
 
@@ -148,7 +210,10 @@ CREATE TABLE `paselista` (
 --
 
 INSERT INTO `paselista` (`id_pase`, `id_grupo_fk`, `fecha`, `notas`, `create_at`) VALUES
-(1111, 7, '2022-05-05', 'Inicia el pase a las: 00:30:45', '2022-05-05 05:30:45');
+(220514117, 8, '2022-05-14', 'Inicia el pase a las: 20:41:34', '2022-05-15 01:41:34'),
+(220514377, 9, '2022-05-14', 'Inicia el pase a las: 20:51:03', '2022-05-15 01:51:03'),
+(220514437, 6, '2022-05-14', 'Inicia el pase a las: 20:33:37', '2022-05-15 01:33:37'),
+(220514644, 7, '2022-05-14', 'Inicia el pase a las: 20:35:15\nbfdbdfb', '2022-05-15 01:38:37');
 
 -- --------------------------------------------------------
 
@@ -203,12 +268,16 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `sexo`, `email`, `user_name`, `avatar`, `pw`, `create_at`) VALUES
-(2, 'Christian', 'Hernandez', 'Pioquinto', 0, 'christian@mail.com', 'chris', '../recursos/avatars/defaultAvatar.webp', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-04-26 21:19:34'),
-(92405200618688, 'Christian', 'Perez', 'Pioquinto', 0, 'christian.floppy@gmail.com', 'user', '../recursos/avatars/defaultAvatar.webp', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-04-28 17:51:40'),
-(2372934008636130, 'Juan Perez', 'Sanchez', 'Sanchez', 0, 'mail.@gmailc.om', 'aaaaaan', '../recursos/avatars/defaultAvatar.webp', '202cb962ac59075b964b07152d234b70', '2022-04-26 17:13:52'),
-(2784399672959068, 'Fernando', 'Hernandez', 'Ledezma', 1, 'f@gmail.com', 'Fer', '../recursos/avatars/defaultAvatar.webp', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-04 22:29:10'),
-(6820939877366268, '', '', '', 0, '', '', '../recursos/avatars/defaultAvatar.webp', 'd41d8cd98f00b204e9800998ecf8427e', '2022-05-04 19:12:59'),
-(7391240909317772, 'Christian', 'Narro', 'Robles', 0, 'armando1@gmail.com', 'armandito1', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-05 04:55:50'),
+(2, 'Carlos', 'Cordero', 'Mendoza', 0, 'carlos', 'carlos', 'https://pixelmator.com/community/download/file.php?avatar=17785_1569233053.png', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:53:39'),
+(92405200618688, 'Christian René', 'Pioquinto', 'Hernandez', 0, 'christian.floppy@gmail.com', 'chris', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:55:07'),
+(2372934008636130, 'Juan Perez', 'Sanchez', 'Sanchez', 0, 'mail.@gmailc.om', 'juan', '../recursos/avatars/defaultAvatar.webp', '202cb962ac59075b964b07152d234b70', '2022-05-15 01:53:39'),
+(2784399672959068, 'Fernando', 'Hernandez', 'Ledezma', 1, 'f@gmail.com', 'Fer', 'https://www.pixelmator.com/community/download/file.php?avatar=17458_1555206584.jpeg', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:49:15'),
+(4010125521545205, 'Alfonso', 'Casas', 'Cano', 0, 'algonso@gmail.com', 'alfonso', 'https://pixelmator.com/community/download/file.php?avatar=17526_1634298815.jpg', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:46:53'),
+(4690693011377169, 'Ana Maria', 'Martinez', 'Fernandez', 1, 'ana@gmail.com', 'ana', 'https://pixelmator.com/community/download/file.php?avatar=20501_1573562474.png', 'dcddb75469b4b4875094e14561e573d8', '2022-05-15 01:46:19'),
+(4751276030961502, 'Edith', 'Carmona', 'Castelar', 0, 'edith@gmail.com', 'edith', 'https://www.pixelmator.com/community/download/file.php?avatar=25804_1636103512.png', 'b59c67bf196a4758191e42f76670ceba', '2022-05-15 01:48:01'),
+(6820939877366268, 'Alberto', 'Mendoza', 'Romero', 0, 'albertn@gmail.com', 'alberto', '../recursos/avatars/defaultAvatar.webp', 'd41d8cd98f00b204e9800998ecf8427e', '2022-05-15 01:52:03'),
+(7391240909317772, 'Armando Jr.', 'Valdez', 'Hernandez', 0, 'armando1@gmail.com', 'armandito1', 'https://www.pixelmator.com/community/download/file.php?avatar=23403_1591212815.jpg', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:55:59'),
+(8308296961262499, 'Camen', 'Gonzalez', 'Sanchez', 1, 'carmen@gmail.com', 'carmen', 'https://www.pixelmator.com/community/download/file.php?avatar=21946_1555792779.jpg', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:49:41'),
 (9308202814258365, 'Jennifer', 'Rosas', 'Morales', 0, 'jenni@gmail.com', 'jenni', 'https://avatars.githubusercontent.com/u/57198260?v=4', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-05 04:54:55');
 
 -- --------------------------------------------------------
@@ -305,13 +374,13 @@ ALTER TABLE `profesor`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `id_alumno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220504314;
+  MODIFY `id_alumno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220513944;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_grupo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `periodo`

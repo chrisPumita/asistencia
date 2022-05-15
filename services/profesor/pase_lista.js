@@ -6,18 +6,17 @@ $(document).ready(function() {
 function cargaLista() {
     busca_pase_lista(ID_GPO,FILTER,FECHA,ID_PASE).then(function (response) {
         if(response.response == 0){
-            //aun no ha pasado lista
             preCargaAlumnos();
-            $("#dateToday").html(getDateAhora());
         }
         else{
-            buildTableStartPaseLista(response.data);
-            $("#buttonCancel").html(`<button type="button" class="btn btn-danger btn-sm btn-lg-5" onClick="cancelPaseLista(${response.data[0].id_pase});">Cancelar pase de lista</button>`);
-            $("#btnUpdateNotas").html(`<button type="button" class="btn btn-primary btn-sm btn-lg-5 mt-3" onClick="saveNotas(${response.data[0].id_pase});">Guardar Nota</button>`);
+            ID_PASE = response.data.lista_prepare[0].id_pase_fk;
+            buildTableStartPaseLista(response.data.lista_prepare);
+            $("#buttonCancel").html(`<button type="button" class="btn btn-danger btn-sm btn-lg-5" onClick="cancelPaseLista(${response.data.lista_prepare[0].id_pase_fk});">Cancelar pase de lista</button>`);
+            $("#btnUpdateNotas").html(`<button type="button" class="btn btn-primary btn-sm btn-lg-5 mt-3" onClick="saveNotas(${response.data.lista_prepare[0].id_pase_fk});">Guardar Nota</button>`);
             //conteo SPAN
-            $("#dateToday").html(response.data[0].fecha);
-            $("#textAreaNoatas").html(response.data[0].notas);
-            estadisticaAsistencia(response.data);
+            $("#dateToday").html(response.data.lista_prepare[0].fecha);
+            $("#textAreaNoatas").html(response.data.lista_prepare[0].notas);
+            estadisticaAsistencia(response.data.lista_prepare);
         }
     })
 }
@@ -75,20 +74,20 @@ function buildTablePreview(lista) {
                             </div>`;
             }
         );
-
+        $("#dateToday").html(getDateAhora());
         sweetCustomDesicion("Iniciar Pase de Lista", 'Cuando este listo de clic en INICIAR','<i class="fas fa-check"></i> INICIAR','<i class="fas fa-undo-alt"></i> Cancelar','question', function (confirmed){
             if (confirmed)
             {
                 cargaLista_pase_lista(ID_GPO,ACTION,false).then(function (result) {
-                  //  buildTableStartPaseLista(result.data.lista_prepare);
+                    //  buildTableStartPaseLista(result.data.lista_prepare);
                     location.reload();
+                    //  cargaLista();
                 })
             }
             else{
                 window.location.href = "./";
             }
         });
-
     }
     else{
         template = `<div class="alert alert-warning" role="alert">
@@ -101,24 +100,30 @@ function buildTablePreview(lista) {
 function buildTableStartPaseLista(lista) {
     let template = ``;
     if (lista.length >0) {
+        let contador = 0;
         lista.forEach(
             (alumno)=>
             {
+                contador++;
                 let baja = alumno.estatus_alumno == "0" ? '<i class="fas fa-frown text-danger"></i> BAJA':"";
-                let bg_pendiente = "bg-light";
+                let bg_pendiente = "bg-info";
+                let bg_avatar = "bg-dark";
                 //Logica de la carga
                 let valor = "";
                 if (alumno.confirmada != null){
                         switch (parseInt(alumno.confirmada)) {
                             case 1:
+                                bg_avatar = "bg-success";
                                 valor= `<i class="fas fa-check-circle text-success"></i>
                                 <strong> Presente</strong>`;
                                 break;
                             case 0:
+                                bg_avatar = "bg-warning";
                                 valor= `<i class="fas fa-clock text-warning"></i>
                                 <strong> Retardo</strong>`;
                                 break;
                             case -1:
+                                bg_avatar = "bg-danger";
                                 valor= `<i class="fas fa-times text-danger"></i>
                                 <strong> Falta</strong>`;
                                 break;
@@ -128,15 +133,16 @@ function buildTableStartPaseLista(lista) {
                 else{
                     valor= `<strong><i class="far fa-hand-point-right text-primary"></i> Seleccione...</strong>`;
                 }
-                template += `<div class="card mt-3 ${bg_pendiente}">
+                template += `<div class="card mt-1 ${bg_pendiente}">
                                 <div class="card-body">
                                     <div class="row>
                                     <div class="col-12">
-                                        <div class="row" idAlumnoRow="${alumno.id_pase}||${alumno.id_alumno}">
-                                            <div class="col-2 d-flex justify-content-center align-items-center">
-                                                <img src="${alumno.avatar}" alt="Avatar" class="avatar_list">
+                                        <div class="row" idAlumnoRow="${alumno.id_pase_fk}||${alumno.id_alumno}">
+                                            <div class="col-1 d-flex justify-content-center align-items-center fs-3">${contador}</div>
+                                            <div class="col-2 col-sm-1 d-flex justify-content-center align-items-center">
+                                                <img src="${alumno.avatar}" alt="Avatar" class="avatar_list ${bg_avatar} p-1">
                                             </div>
-                                            <div class="col-6 justify-content-center">
+                                            <div class="col justify-content-center">
                                                 <h6><strong>${alumno.app} ${alumno.apm} ${alumno.nombre}</strong></h6>
                                                 <p class="m-0">
                                                     ${valor}  ${baja}

@@ -53,9 +53,9 @@ function consultaInscAlumno($filtro,$idAlumno){
     return $GA->queryConsultaInscripciones($filtro);
 }
 
-function consultaPasesListaAlumno($filtro, $idAlumno){
+function consultaPasesListaAlumno($filtro, $idAlumno,$id){
     include_once "../model/ASISTENCIA.php";
     $GA = new ASISTENCIA();
     $GA->setIdAlumnoFk($idAlumno);
-    return $GA->consultaPaseListaAlumno($filtro);
+    return $GA->consultaPaseListaAlumno($filtro,$id);
 }

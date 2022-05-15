@@ -1,5 +1,5 @@
 <?php
-//buscamos si hoy ya se genero un pase de lista para cargarla
+//buscamos si hoy ya se genero un pase de lista para cargarla, en este caso solo los PL si  crear lista asistencias
 $idGrupo = $_POST['grupo'];
 $filtro = $_POST['filtro'];
 $dia = $_POST['dia'];
@@ -8,9 +8,9 @@ $idPase = $_POST['idPase'];
 include_once "../control/controlGrupos.php";
 
 $data = consultaPaseLista($idPase, $idGrupo,$filtro,$dia);
-
 if ($data) {
-    $mensaje = "Este grupo ya paso lista el dia de hoy";
+    $mensaje = "Este grupo ya paso lista el dia especificado";
+    $idPase =
     $value = 1;
 } else {
     $mensaje = "Este grupo aun no ha pasado lista";
