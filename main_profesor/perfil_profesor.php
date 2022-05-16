@@ -1,6 +1,7 @@
 <?php
 $titulo = "GRUPOS - Profesor";
-$path = "../"
+$path = "../";
+session_start();
 ?>
 
 <!doctype html>
@@ -24,11 +25,7 @@ $path = "../"
                         <div class="col-2 d-flex justify-content-center align-items-center">
                             <div class="dropdown">
                                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <!-- IMAGEN CON SESIÓN 
-                                    <img src=" <?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
-                                    -->
-                                    <img src="
-                            https://holatelcel.com/wp-content/uploads/2020/12/foto-perfil-whatsapp-.png" alt="Avatar" class="avatar">
+                                    <img src=" <?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">                            
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="menuPerfil">
                                     <li>
@@ -59,7 +56,7 @@ $path = "../"
                         </div>
                         <div class="text-center text-muted mt-3">
                             <h4><span id="nombre_perfil_prof"></span></h4>
-                            <button type="button" class="btn btn-primary">Cambiar</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_avatar">Cambiar</button>
                         </div>
                     </div>
 
@@ -141,6 +138,7 @@ $path = "../"
 <?php
     include "../main_profesor/Modal_profesor/edita_periodo.php";
     include $path."includes_general/js.php";
+    include_once "./Modal_profesor/subir_avatar.php";
 ?>
 
 <script src="services/template.js"></script>

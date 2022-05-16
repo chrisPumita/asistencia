@@ -77,7 +77,6 @@ function consultaDatosProfesor(){
 
 
 function buildHTMLDataProfesor(profesor){
-    console.log(profesor);
     $("#avatar_pr").attr("src",profesor.avatar);
     $("#nombre_perfil_prof").html(profesor.nombre+" "+ profesor.app+ " "+ profesor.apm);
     $("#edit_nombre_profe").val(profesor.nombre);
@@ -92,10 +91,9 @@ function buildHTMLDataProfesor(profesor){
 $("#frm-update-datos-profesor").submit(function (event) {
     var data = $('#frm-update-datos-profesor').serialize();
     let route = "../webhook/profesor_update.php";
-    console.log(data);
     if(peticionAjax(data,route)){
-        console.log("Se ha realizado con exito");
-        consultaDatosProfesor();
+        alertaNotificacion("success","Se ha actualizado con exito");
+        
     }
     event.preventDefault();
 });
