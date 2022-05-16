@@ -55,16 +55,17 @@ $path = "../"
                 <div class="row mt-3">
                     <div class="col-12 col-md-3">
                         <div class="text-center" >
-                            <img class="circular_square" src="../assets/img/defaultAvatar.webp" width="250" height="250" alt="Avatar">
+                            <img class="circular_square" src="" width="250" height="250" alt="Avatar" id="avatar_pr">
                         </div>
                         <div class="text-center text-muted mt-3">
-                            <h4>{Nombre Alumno}</h4>
+                            <h4><span id="nombre_perfil_prof"></span></h4>
                             <button type="button" class="btn btn-primary">Cambiar</button>
                         </div>
                     </div>
 
 
                     <div class="col-12 col-md-9">
+                        <form id="frm-update-datos-profesor">
                         <div class="mb-3">
                             <label class="mb-2 text-muted" for="edit_nombre_profe">Nombre</label>
                             <input id="edit_nombre_profe" type="text" class="form-control" name="edit_nombre_profe" value="" required autofocus>
@@ -77,7 +78,6 @@ $path = "../"
                             <label class="mb-2 text-muted" for="edit_apm_profe">Segundo Apellido</label>
                             <input id="edit_apm_profe" type="text" class="form-control" name="edit_apm_profe" value="" required autofocus>
                         </div>
-
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
@@ -126,9 +126,10 @@ $path = "../"
                             <div class="col col-md-10">
                             </div>
                             <div class="col-12 col-md-2" style="display: flex;justify-content: flex-end;">
-                                <button type="button" class="btn btn-primary btn_ajustable">Actualizar</button>
+                                <button type="submit" class="btn btn-primary btn_ajustable">Actualizar</button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div> 
@@ -143,5 +144,11 @@ $path = "../"
 ?>
 
 <script src="services/template.js"></script>
+<script src="../services/general/perfil.js"></script>
+<script>
+    $(document).ready(function() {
+        consultaDatosProfesor();
+    });
+</script>
 <!-- Initialize Swiper -->
 </html>

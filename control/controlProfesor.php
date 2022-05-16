@@ -31,8 +31,9 @@ function insertProfesor($params){
 function updateProfesor($params){
     include_once "../model/PROFESOR.php";
     $PROFESOR= new PROFESOR();
+    session_start();
     //Este dato se agarra de la session
-    $idPersona=2;
+    $idPersona=$_SESSION['id_persona'];
     $PROFESOR->setIdPersona($idPersona);
     $PROFESOR->setNombre($params['nombre']);
     $PROFESOR->setApp($params['app']);
@@ -42,7 +43,9 @@ function updateProfesor($params){
     if($PROFESOR->queryUpdatePersona()){
         //Si se actualiza la persona, actualizamos al profesor.
         //Igual, el id del profesor se tomará de session
-        $idProfesor=1;
+        $_SESSION['name_complete'] = $PROFESOR->getNombre()." ".$PROFESOR->getApp()." ".$PROFESOR->getApm();
+        $_SESSION['email'] = $PROFESOR->getEmail();
+        $idProfesor=$_SESSION['id_profesor'];
         $PROFESOR->setIdProfesor($idProfesor);
         $PROFESOR->setGradoAcademico($params['gradoAc']);
         $PROFESOR->setCarreraEsp($params['carrera']);

@@ -1,7 +1,3 @@
-$(document).ready(function() {
-    consultaDatosAlumno();
-});
-
 function consultaDatosAlumno(){
     $.ajax({
         type: "POST",
@@ -61,4 +57,45 @@ $("#frm-upload-profile").submit(function (event) {
             }
         }
     );
+});
+
+function consultaDatosProfesor(){
+    $.ajax({
+        type: "POST",
+        url: "../webhook/profesor_data.php",
+        data : {},
+        dataType: "json",
+        success: function (result) {
+            var profesor = result[0];
+            buildHTMLDataProfesor(profesor);
+        },
+        error: function(result){
+            console.log(result);
+        }
+    })
+}
+
+
+function buildHTMLDataProfesor(profesor){
+    console.log(profesor);
+    $("#avatar_pr").attr("src",profesor.avatar);
+    $("#nombre_perfil_prof").html(profesor.nombre+" "+ profesor.app+ " "+ profesor.apm);
+    $("#edit_nombre_profe").val(profesor.nombre);
+    $("#edit_app_profe").val(profesor.app);
+    $("#edit_apm_profe").val(profesor.apm);
+    $("#edit_sexo_profe").val(profesor.sexo);
+    $("#edit_email_profe").val(profesor.email);
+    $("#edit_gradoAc_profe").val(profesor.grado_academico);
+    $("#edit_carrera_profe").val(profesor.carrera_esp);
+}
+
+$("#frm-update-datos-profesor").submit(function (event) {
+    var data = $('#frm-update-datos-profesor').serialize();
+    let route = "../webhook/profesor_update.php";
+    console.log(data);
+    if(peticionAjax(data,route)){
+        console.log("Se ha realizado con exito");
+        consultaDatosProfesor();
+    }
+    event.preventDefault();
 });

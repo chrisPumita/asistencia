@@ -60,20 +60,15 @@ function updateAvatar($archivo1,$nombreFILE1){
         if(!file_exists($carpeta)){
             mkdir($carpeta,0777,true);
         }
-        $hoy= date('Y-m-d-His');
-        $nombre= md5($idPersona.'-'.$hoy);
+        $nombre= md5($idPersona);
         $nombre =str_replace(' ', '', $nombre);
         $ruta1 = $carpeta.'/'.$nombreFILE1; // RUTA1 EXAMPLE: "/24072019.24/e-r.jpg"
         $extension = pathinfo($ruta1, PATHINFO_EXTENSION);
 
         if (move_uploaded_file($archivo1, $ruta1)){
             rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/tarjetaCirc.jpg"
-            //Guardar en el modelo de arhcivo
-
             $path = $carpeta.'/'.$nombre.'.'.$extension;
             $PERSONA->setAvatar($path);
-            //  $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,0);
-            //   return $result;
             if($PERSONA->queryUpdateAvatar()){
                 $_SESSION['avatar'] = $PERSONA->getAvatar();
                 return true;
@@ -99,5 +94,10 @@ function updatePassword($oldPwd,$newPwd){
     }
     return false;
 }
-
+function datosPerfilProfesor($idProfesor){
+    include_once "../model/PROFESOR.php";
+    $PROFESOR = new PROFESOR();
+    $PROFESOR->setIdProfesor($idProfesor);
+    return $PROFESOR->queryDatosProfesor();
+}
 ?>

@@ -116,4 +116,14 @@ where persona.email = '".$this->getEmail()."' and pw = '".$this->getPw()."'";
         $this->close();
         return $result;
     }
+
+    function queryDatosProfesor(){
+        $query = "SELECT `id_profesor`, `grado_academico`, `carrera_esp`, `account_confirm`,`id_persona`, `nombre`, `app`, `apm`, `sexo`, `email`,
+         `user_name`, `avatar`, `create_at` FROM `profesor` INNER JOIN persona ON persona.id_persona=profesor.id_persona_fk 
+         WHERE id_profesor=".$this->getIdProfesor();
+         $this->connect();
+         $result=$this->getData($query);
+         $this->close();
+         return $result;
+    }
 }
