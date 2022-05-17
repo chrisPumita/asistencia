@@ -124,6 +124,9 @@ class PASE_LISTA extends PDODB
             case  "none":
                 $filtro = "";
                 break;
+            case  "DATE":
+                $filtro = " and fecha = '".$dia."'";
+                break;
             default:
                 $filtro = " and fecha LIKE '".$dia."'";
                 break;
@@ -133,7 +136,7 @@ class PASE_LISTA extends PDODB
 
         $query = "select id_pase, id_grupo_fk, fecha, notas, create_at from paselista
                     where id_grupo_fk = ". $this->getIdGrupoFk(). " ".$filtro. $filtroPase;
-      //  echo $query;
+
         $this->connect();
         $result=$this->getData($query);
         $this->close();
@@ -189,13 +192,17 @@ from asistencia asi inner join  paselista pl on pl.id_pase = asi.id_pase_fk
                 break;
         }
         $query = "SELECT pl.id_pase, pl.id_grupo_fk, pl.fecha, pl.notas, pl.create_at,
-        g.id_grupo, grupo, carrera, materia, porcentaje_min, dias,
+       g.id_grupo, grupo, carrera, materia, porcentaje_min, dias,
        is_porcentual, puntaje_final, tipo_puntaje, retardo_is_falta,
        no_clases, codigo_invitacion, link_invitacion, estatus,
        p.id_periodo, p.id_profesor, p.nombre_periodo, p.fecha_inicio, p.fecha_fin,
-       p.tipo, p.estado, p.id_profesor
-        FROM paselista pl inner join grupo g on pl.id_grupo_fk = g.id_grupo
-            inner join periodo p on g.id_periodo_fk = p.id_periodo
+       p.tipo, p.estado, p.id_profesor,
+       (select count(confirmada) from asistencia asi where asi.id_pase_fk = pl.id_pase) AS paseHechos,
+       (select count(confirmada) from asistencia asi where asi.id_pase_fk = pl.id_pase AND confirmada = 1) AS asistencias,
+       (select count(confirmada) from asistencia asi where asi.id_pase_fk = pl.id_pase AND confirmada = -1) AS faltas,
+       (select count(confirmada) from asistencia asi where asi.id_pase_fk = pl.id_pase AND confirmada = 0) AS retardos
+FROM paselista pl inner join grupo g on pl.id_grupo_fk = g.id_grupo
+                  inner join periodo p on g.id_periodo_fk = p.id_periodo
         WHERE p.id_profesor = ".$idProfesor." ".$filtro;
         $this->connect();
         $result=$this->getData($query);

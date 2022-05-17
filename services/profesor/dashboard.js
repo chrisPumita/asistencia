@@ -3,6 +3,7 @@ $(document).ready(function() {
     loadPeriodos("LAST");
     consultaUltimosPaseLista("LAST");
     cargaGruposLista("TODAY");
+    cargaJustificantes();
 });
 
 //descargar los periodos realizados
@@ -240,18 +241,24 @@ function consultaUltimosPaseLista(filtro) {
     historialPaseLista(filtro).then(function (result) {
         let template = ``;
         let pases = result.data;
+        estadisticasCirculo(result.data);
+        estadisticasBarras(result.data);
         if(pases.length > 0){
             template = `<div class="list-group">`;
             pases.forEach(pase =>{
+                let bgRevisado = parseInt(pase.paseHechos) > 0 ? "":"bg-warning";
                 //revisaPaseLista(id_grupo,id_pase,filtro,dia)
                 template += `<a href="#" onClick="revisaPaseLista(${pase.id_grupo},${pase.id_pase},'THIS_DATE','${pase.fecha}',)" 
-                                class="list-group-item list-group-item-action">
+                                class="list-group-item list-group-item-action ${bgRevisado}">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h6 class="mb-1">${pase.carrera} ${pase.grupo}</h6>
                                     <span class="badge bg-info"><i class="fas fa-calendar-check"></i></span>
                                 </div>
                                 <p class="mb-1">${pase.materia}</p>
-                                <small class="text-muted">${pase.fecha}</small>
+                                <small class="text-muted">${pase.fecha}</small> 
+                                <small class="text-success"><i class="far fa-check-circle"></i> ${pase.asistencias}</small> 
+                                <small class="text-danger"><i class="far fa-times-circle"></i></i> ${pase.faltas} </small> 
+                                <small class="text-warning"><i class="far fa-clock"></i> ${pase.retardos} </small> 
                             </a> `;
             });
             template += `</div>`;
@@ -263,6 +270,106 @@ function consultaUltimosPaseLista(filtro) {
     })
 }
 
+function estadisticasBarras(datos) {
+    var asi= [];
+    var fal= [];
+    var ret= [];
+    var fech= [];
+    for (i = 0; i<10; i++){
+            asi.push(parseInt(datos[i].asistencias));
+            fal.push(parseInt(datos[i].faltas));
+            ret.push(parseInt(datos[i].retardos));
+            fech.push([datos[i].materia],[datos[i].fecha]);
+    }
+
+    var options = {
+        series: [{
+            name: 'Asistencias',
+            data: asi
+        }, {
+            name: 'Faltas',
+            data: fal
+        }, {
+            name: 'Retardos',
+            data: ret
+        }],
+        chart: {
+            type: 'bar',
+            height: 350,
+            stacked: true,
+            stackType: '100%'
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        xaxis: {
+            categories: fech
+        },
+        labels: {
+            style: {
+                fontSize: '8px'
+            }
+        },
+        colors: ['#15850d', '#ce2121', '#ff8300'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        fill: {
+            opacity: 1
+        },
+        legend: {
+            position: 'right',
+            offsetX: 0,
+            offsetY: 50
+        },
+    };
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+}
+
+function estadisticasCirculo(datos) {
+    var totalAsistencias = datos.reduce((sum, value) => ( sum + parseInt(value.asistencias) ), 0);
+    var totalFaltas = datos.reduce((sum, value) => ( sum + parseInt(value.faltas) ), 0);
+    var totalRetardos = datos.reduce((sum, value) => ( sum + parseInt(value.retardos) ), 0);
+    var options = {
+        series: [totalAsistencias, totalFaltas, totalRetardos],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        labels: ['ASISTENCIAS', 'FALTAS', 'RETARDOS'],
+        colors: ['#15850d', '#ce2121', '#ff8300'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#circularGrapfic"), options);
+    chart.render();
+}
+
 function buscaPaseListaxFecha() {
     let idGrupo = $("#selectGrupoSearch option:selected").val();
     let fecha = $("#fecha_pase_lista").val();
@@ -270,6 +377,7 @@ function buscaPaseListaxFecha() {
     busca_pase_lista(idGrupo,"DATE",fecha,0).then(function (response) {
         if(response.response == 0){
             //alerta no hay
+            console.log(response)
             mensajeAlerta("error","No encontramos un pase de lista este dia","No se encontro pase de lista")
         }
         else{
@@ -279,5 +387,11 @@ function buscaPaseListaxFecha() {
             alertaNotificacion("success", "Pase de Lista encontrado");
             window.location.href = "./pase_lista.php?start_sesion="+pl.id_grupo_fk+"&action=new&id_pase="+pl.id_pase+"&date="+pl.fecha+"&filter='THIS_DATE'";
         }
+    })
+}
+
+function cargaJustificantes() {
+    consultaJustificantes("PROFESOR").then(result =>{
+        console.log(result)
     })
 }

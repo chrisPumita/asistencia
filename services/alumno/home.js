@@ -136,7 +136,7 @@ function consultaUltimosPaseListaAlumno() {
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-12 col-md-5">
-                                                     <small >${pase.fechaInicioPL}</small>
+                                                     <small >${pase.fecha}</small>
                                                 </div>
                                             </div>
                                         </div>
