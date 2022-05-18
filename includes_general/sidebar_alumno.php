@@ -32,7 +32,7 @@
                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Acerca de</a>
+                                        <a class="dropdown-item" href="./about.php">Acerca de</a>
                                     </li>
                                     <hr>
                                     <li>

@@ -43,11 +43,11 @@ echo '<script>let ID_GPO = '.$id_gpo.';</script>';
                                 <h4 class="card-title text-center">Revisión final</h4>
                                 <div class="text-center">
                                     <h5 class="">Asistencias</h5>
-                                    <h5 class="asfalre" style="color: green;">30</h5>
+                                    <h5 class="asfalre" id="lblAsi" style="color: green;"></h5>
                                     <h6 class="">Faltas</h6>
-                                    <h5 class="asfalre" style="color: red;">30</h5>
+                                    <h5 class="asfalre" id="lblFal" style="color: red;"></h5>
                                     <h6 class="">Retardos</h6>
-                                    <h5 class="asfalre" style="color: orange;">30</h5>
+                                    <h5 class="asfalre" id="lblRet" style="color: orange;"></h5>
                                 </div>
                             </div>
                         </div>
@@ -73,31 +73,5 @@ echo '<script>let ID_GPO = '.$id_gpo.';</script>';
 include $path."includes_general/js.php";
 ?>
 <script src="../services/alumno/info_gpo.js"></script>
-
-<script>
-
-    var options = {
-        series: [44, 55, 13],
-        chart: {
-            width: 380,
-            type: 'pie',
-        },
-        labels: ['ASISTENCIAS', 'FALTAS', 'RETARDOS'],
-        colors: ['#15850d', '#ce2121', '#dbea1a'],
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }]
-    };
-    var chart = new ApexCharts(document.querySelector("#circularGrapfic"), options);
-    chart.render();
-</script>
 
 </html>

@@ -73,7 +73,7 @@ include_once "./sesion_alumno.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-3 d-none">
                             <h5><strong> Buscar pase de lista</strong></h5>
                             <div class="col-12" id="containerBuscaPases">
                             </div>

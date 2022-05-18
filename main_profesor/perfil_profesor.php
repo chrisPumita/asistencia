@@ -23,26 +23,7 @@ session_start();
                             <h3>Mi Perfil</h3>
                         </div>
                         <div class="col-2 d-flex justify-content-center align-items-center">
-                            <div class="dropdown">
-                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src=" <?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">                            
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="menuPerfil">
-                                    <li>
-                                        <a class="dropdown-item" href="perfil_profesor.php">Perfil</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Acerca de</a>
-                                    </li>
-                                    <hr>
-                                    <li>
-                                        <a class="dropdown-item" href="../c_logout.php">Salir</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <?php include "./perfil_menu.php" ;?>
                         </div>  
                     </div> 
                 </div> 
@@ -133,6 +114,7 @@ session_start();
         </div>
     </div>
 </div>
+<?php include_once "../includes_general/footer.php"?>
 </body>
 
 <?php

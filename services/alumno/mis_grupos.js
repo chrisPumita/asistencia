@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("Mis grupos");
     consultaGrupos();
 });
 
@@ -10,34 +9,32 @@ function consultaGrupos() {
             let inscripciones = result.data;
             if (inscripciones.length>0){
                 inscripciones.forEach(gpo=>{
-
-                    console.log(gpo);
                     template += `<div class="col">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row text-center">
-                                            <h5 class="card-title">${gpo.materia} ${gpo.grupo}</h5>
-                                            <h6>${gpo.carrera}</h6>
-                                        </div>
-                                        <div class="row text-center">
-                                            <ul class="list-group list-group-flush">
-                                              <li class="list-group-item">${gpo.tipo} ${gpo.nombre_periodo}</li>
-                                              <li class="list-group-item">${gpo.no_clases} Clases</li>
-                                              <li class="list-group-item">${gpo.dias}</li>
-                                              <li class="list-group-item">Asistencia Minima: ${gpo.porcentaje_min}%</li>
-                                            </ul>
-                                        </div>
-        
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="mt-3" style="display: flex;justify-content: flex-end;">
-                                                    <a href="./info_grupos.php?idGrupo=${gpo.id_grupo}" type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</a>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row text-center">
+                                                <h5 class="card-title">${gpo.materia} ${gpo.grupo}</h5>
+                                                <h6>${gpo.carrera}</h6>
+                                            </div>
+                                            <div class="row text-center">
+                                                <ul class="list-group list-group-flush">
+                                                  <li class="list-group-item">${gpo.tipo} ${gpo.nombre_periodo}</li>
+                                                  <li class="list-group-item">${gpo.no_clases} Clases</li>
+                                                  <li class="list-group-item">${gpo.dias}</li>
+                                                  <li class="list-group-item">Asistencia Minima: ${gpo.porcentaje_min}%</li>
+                                                </ul>
+                                            </div>
+            
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mt-3" style="display: flex;justify-content: flex-end;">
+                                                        <a href="./info_grupos.php?idGrupo=${gpo.id_grupo}" type="button" class="btn btn-success btn-sm fontsizeletrabtn btn_ajustable">Más detalles</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>`;
+                                </div>`;
                 });
             }
             else{

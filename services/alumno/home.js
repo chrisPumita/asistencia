@@ -233,5 +233,4 @@ function showJustificPDF(url,name) {
     let iframe = '<iframe src="'+url+'" width="100%" height="500px"> </iframe>';
     $("#containerPDFView").html(iframe);
     $("#namePDF").html(name);
-
 }

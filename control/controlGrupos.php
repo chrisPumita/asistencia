@@ -109,8 +109,16 @@ function consultaPaseLista($idPase, $id_grupo, $filtro, $dia){
     }
 }
 
-function consultaHistorialPasesLista($idProfesor,$filtro){
+function consultaHistorialPasesLista($idProfesor,$filtro,$id){
     include_once "../model/PASE_LISTA.php";
     $PL = new PASE_LISTA();
-    return $PL->queryHistorialPasesLista($idProfesor,$filtro);
+    return $PL->queryHistorialPasesLista($idProfesor,$filtro,$id);
+}
+
+function archivarGrupo($idGpo){
+    //queryArchivarGpo
+    include_once "../model/GRUPO.php";
+    $GPO = new GRUPO();
+    $GPO -> setIdGrupo($idGpo);
+    return $GPO->queryArchivarGpo();
 }

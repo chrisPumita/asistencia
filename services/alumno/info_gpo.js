@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("Informacion de grupo "+ ID_GPO);
     consultaGpo();
     consultaPaseLista();
 });
@@ -34,11 +33,48 @@ function consultaGpo() {
     )
 }
 
+function creaGrafico(datos) {
+    var asi = datos.filter(value => parseInt(value.confirmada) == 1);
+    var fal = datos.filter(value => parseInt(value.confirmada) == -1);
+    var ret = datos.filter(value => parseInt(value.confirmada) == 0);
+
+    var totalAsistencias = asi.length;
+    var totalFaltas = fal.length;
+    var totalRetardos = ret.length;
+
+    $("#lblAsi").html(totalAsistencias);
+    $("#lblFal").html(totalFaltas);
+    $("#lblRet").html(totalRetardos);
+
+    var options = {
+        series: [totalAsistencias, totalFaltas, totalRetardos],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        labels: ['ASISTENCIAS', 'FALTAS', 'RETARDOS'],
+        colors: ['#15850d', '#ce2121', '#ff8300'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#circularGrapfic"), options);
+    chart.render();
+}
+
 function consultaPaseLista() {
     consultaPasesListaAlumno("GRUPO",ID_GPO).then(result =>{
         let pases = result.data;
+        creaGrafico(pases);
         let template = ``;
-        console.log(pases);
         if (pases.length > 0) {
             template += `<table class="table table-bordered order-table display nowrap table-responsive "
                                        id="paseRealizado">
@@ -51,7 +87,8 @@ function consultaPaseLista() {
                                     </thead>
                                     <tbody id="">`;
             pases.forEach(pase=>{
-                console.log(pase)
+                let justificante = pase.url_justificante != null ? `<a class="btn btn-outline-info btn-sm" href="${pase.url_justificante}" target="_blank"><i class="far fa-eye"></i> Ver</a><br>`+ (pase.estatus_rev_just === "0" ? `Aun no revisado`:`Revisado`)
+                    :` - `;
                 let paseInfo = "";
                 switch (pase.confirmada) {
                     case "1":
@@ -66,9 +103,9 @@ function consultaPaseLista() {
                 }
                 template += `
                                         <tr class="text-center">
-                                            <td data-label="">${pase.fechaInicioPL}</td>
+                                            <td data-label="">${pase.fecha}</td>
                                             <td data-label="">${paseInfo}</td>
-                                            <td data-label="">Ver</td>
+                                            <td data-label="">${justificante} </td>
                                         </tr>`;
             });
 

@@ -1,32 +1,27 @@
-<!-- Modal periodos -->
-<div class="modal fade" id="modal_vista_justificante" tabindex="-1" aria-labelledby="modal_vista_justificante" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<!-- Modal vista justificante -->
+<div class="modal fade" id="Modal_PDF" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-fluid modal-notify modal-info" role="document">
+        <!--Content-->
         <div class="modal-content">
+            <!--Header-->
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Vista de justificante</h5>
-                <button type="button" class="btn-close btnClose_modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                <p class="heading lead" id="namePDF"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <!--Body-->
             <div class="modal-body">
-
-                
-                <div class="content">
-                    <div class="row">
-                        <div class="col-12">
-                            <embed src="https://justificantemedico.com/wp-content/uploads/plantilla-justificante-medico-murcia.pdf" width="100%" height="450px" 
-                            type="application/pdf">
-                        </div>
-                    </div>
-                </div>
+                <input type="hide" id="idJustAlumno">
+                <input type="hide" id="idJustPase">
+                <div id="containerPDFView"></div>
             </div>
-
+            <!--Footer-->
             <div class="modal-footer">
-                <button type="reset" class="btn btn-success m-2">
-                    Aceptar
-                </button>
-                <button type="submit" class="btn btn-danger m-2">
-                    Rechazar
-                </button>
+                <button type="button" class="btn btn-success"  onClick="actionJust('1');" >Aceptar</button>
+                <button type="button" class="btn btn-danger" onClick="actionJust('0');" >Rechazar</button>
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" >Cerrar</button>
             </div>
         </div>
+        <!--/.Content-->
     </div>
 </div>

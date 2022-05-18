@@ -1,6 +1,7 @@
 <?php
 $titulo = "GRUPOS - Profesor";
-$path = "../"
+$path = "../";
+include_once "./sesion_profesor.php";
 ?>
 
 <!doctype html>
@@ -37,30 +38,7 @@ $path = "../"
                                     </div>
                                 </div>
                                 <div class="col-4 col-md-2" style="display: flex;justify-content: flex-end;">
-                                    <div class="dropdown">
-                                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <!-- IMAGEN CON SESIÓN 
-                                            <img src=" <?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
-                                            -->
-                                            <img src="
-                                    https://holatelcel.com/wp-content/uploads/2020/12/foto-perfil-whatsapp-.png" alt="Avatar" class="avatar">
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="menuPerfil">
-                                            <li>
-                                                <a class="dropdown-item" href="perfil_profesor.php">Perfil</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Acerca de</a>
-                                            </li>
-                                            <hr>
-                                            <li>
-                                                <a class="dropdown-item" href="../c_logout.php">Salir</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <?php include "./perfil_menu.php" ;?>
                                 </div> 
                             </div> 
                         </div>
@@ -69,10 +47,10 @@ $path = "../"
             </div>
 
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-9 p-3">
+                <div class="row d-none">
+                    <div class="col-12 p-3">
                         <div class="row">
-                            <h4><strong>Grupos de hoy</strong></h4>
+                            <h4><strong>Periodos Registrados</strong></h4>
                             <div class="col">
                                 <div class="row">
                                     <div class="col-3 col-md-1 creargrupo_center mb-3">
@@ -113,8 +91,14 @@ $path = "../"
                                 </div>
                             </div>
                         <hr>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
                         <div class="row" style="display: flex;justify-content: center;">
-                            <div class="row" id="containerGruposHoy"></div>       
+                            <h4><strong>Grupos de hoy</strong></h4>
+                            <div class="row" id="containerGruposHoy"></div>
                         </div>
                         <hr>
                         <div class="row" style="display: flex;justify-content: center;">
@@ -122,29 +106,12 @@ $path = "../"
                             <div class="row" id="containerGruposAll"></div>
                         </div>
                     </div>
-
-                    <div class="col-12 col-md-3 p-3">
-                        <div class="row">
-                            <h5><strong>Pases de lista de hoy</strong></h5>
-                            <div class="list"> 
-                                <?php for($i = 0; $i<2; $i++){ ?> 
-                                    <a href="#" class="list-group-item list-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">{Grupo}</h5>
-                                        <span class="badge position_per">Hoy</span>
-                                    </div>
-                                    <p class="mb-1">{Materia}</p>
-                                    <small class="text-muted">{11 de Abril de 2022}</small>
-                                    </a> 
-                            <?php } ?>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>   
         </div>
     </div>
 </div>
+<?php include_once "../includes_general/footer.php"?>
 </body>
 
 <?php

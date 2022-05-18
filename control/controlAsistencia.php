@@ -48,9 +48,18 @@ function updateNotaPaseLista($idPase,$nota){
     return $PL->queryUpdateNotasPaseLista();
 }
 
-function procesaJustificanteAlumno1($archivo1,$nombreFILE1,$idPase,$idAlumno)
+function revisaJustificante($idPase, $idAlumno,$action)
 {
-    return true;
+    include_once "../model/ASISTENCIA.php";
+    $ASIS = new ASISTENCIA();
+    $ASIS->setIdAlumnoFk($idAlumno);
+    $ASIS->setIdPaseFk($idPase);
+    $log = date("H:i:s"). ": Revisado como ";
+    $ASIS->setConfirmada($action == 1? "1":"-1");
+    $ASIS->setValue($action == 1? "1":"0");
+    $ASIS->setEstatusRevJust(1);
+    $ASIS->setLog($log. " ".($action == 1 ? " ACEPTADO ":" RECHAZADO "));
+      return $ASIS->queryUpdatePorJustificante();
 }
 
 function procesaJustificanteAlumno($archivo1,$nombreFILE1,$idPase,$idAlumno)
@@ -85,3 +94,4 @@ function cargaJustifiicantesPendientes($filtro,$id){
     $ASI = new ASISTENCIA();
     return  $ASI->queryConsultaJustificantes($filtro,$id);
 }
+

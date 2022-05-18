@@ -238,7 +238,7 @@ $("#frm_new_grpo").submit(function (event)
 
 
 function consultaUltimosPaseLista(filtro) {
-    historialPaseLista(filtro).then(function (result) {
+    historialPaseLista(filtro,0).then(function (result) {
         let template = ``;
         let pases = result.data;
         estadisticasCirculo(result.data);
@@ -322,7 +322,7 @@ function estadisticasBarras(datos) {
             breakpoint: 480,
             options: {
                 chart: {
-                    width: 200
+                    width: 380
                 },
                 legend: {
                     position: 'bottom'
@@ -358,7 +358,7 @@ function estadisticasCirculo(datos) {
             breakpoint: 480,
             options: {
                 chart: {
-                    width: 200
+                    width: 380
                 },
                 legend: {
                     position: 'bottom'
@@ -392,6 +392,63 @@ function buscaPaseListaxFecha() {
 
 function cargaJustificantes() {
     consultaJustificantes("PROFESOR").then(result =>{
-        console.log(result)
+        let template = ``;
+        let justificantes = result.data;
+        if(justificantes.length > 0){
+            template = `<div class="list-group">`;
+            justificantes.forEach(just =>{
+                console.log(just)
+                template += `<div class="row">
+                            <div class="card h-100 card_cursor">
+                                <div class="card-body" role="button" onclick="showJustificPDF('${just.url_justificante}','Base de Datos para Ingenieria 3001',${just.id_pase},${just.id_alumno});">
+                                    <div class="row">
+                                        <div class="col-2 d-flex justify-content-center align-items-center">
+                                        <i class="far fa-file-pdf fs-3"></i>    
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">${just.nombre} ${just.app} ${just.apm}</h6>
+                                                <span class="position-absolute end-0 me-1 p-1  badge rounded-pill bg-warning" style="align-self: end;top: 10px;">Pendiente</span>
+                                            </div>
+                                            <div class="card-text text-muted">
+                                                ${just.materia} ${just.grupo} - ${just.carrera} <br>
+                                                ${just.upload_date_justificante}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> `;
+            })
+            template += `</div>`;
+
+        }
+        else{
+            template = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          <strong>No hay justificantes!</strong> No encontramos justificantes para revisar
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`;
+        }
+        $("#containerJustif").html(template);
+    })
+}
+
+function showJustificPDF(url,name,idPase,idAlumno) {
+    $("#Modal_PDF").modal('show');
+    let iframe = '<iframe src="'+url+'" width="100%" height="500px"> </iframe>';
+    $("#containerPDFView").html(iframe);
+    $("#namePDF").html(name);
+    $("#idJustAlumno").val(idAlumno);
+    $("#idJustPase").val(idPase);
+}
+
+function actionJust(action) {
+    console.log(action)
+    let idAlumno = $("#idJustAlumno").val();
+    let idPase = $("#idJustPase").val();
+    revisaJustificante(action,idPase,idAlumno).then(result=>{
+        alertaNotificacion("success",result.titulo);
+        $("#Modal_PDF").modal('hide');
+        location.reload();
     })
 }

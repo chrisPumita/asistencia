@@ -19,6 +19,7 @@
                     <i class="fas fa-users"></i>
                 </a>
             </li>
+            <!--
             <li>
                 <a href="../main_profesor/historial_grupos.php" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
                     <i class="fas fa-calendar-alt"></i>
@@ -29,6 +30,7 @@
                     <i class="fas fa-file"></i>
                 </a>
             </li>
+            -->
         </ul>
     </div>
 </div>

@@ -2,11 +2,12 @@
 
 //buscamos si hoy ya se genero un pase de lista para cargarla
 $filtro = $_POST['filtro'];
+$id= $_POST['id'];
 session_start();
 $idProfesor = $_SESSION['id_profesor'];
 include_once "../control/controlGrupos.php";
 
-$data = consultaHistorialPasesLista($idProfesor, $filtro);
+$data = consultaHistorialPasesLista($idProfesor, $filtro,$id);
 
 if ($data) {
     $mensaje = "Enviando historial";

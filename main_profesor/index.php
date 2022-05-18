@@ -18,26 +18,7 @@ include_once "./sesion_profesor.php";
                             <h3>¡Hola buenas tardes <strong> <?php echo $_SESSION['name_complete']?> </strong>! </h3>
                         </div>
                         <div class="col-2 d-flex justify-content-center align-items-center">
-                            <div class="dropdown">
-                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src=" <?php echo $_SESSION['avatar'] ?>" alt="Avatar" class="avatar">
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="menuPerfil">
-                                    <li>
-                                        <a class="dropdown-item" href="perfil_profesor.php">Perfil</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Acerca de</a>
-                                    </li>
-                                    <hr>
-                                    <li>
-                                        <a class="dropdown-item" href="../c_logout.php">Salir</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <?php include "./perfil_menu.php" ;?>
                         </div>
                     </div>
                 </div>
@@ -138,21 +119,12 @@ include_once "./sesion_profesor.php";
                     <div class="col-12 col-md-4">
                         <div class="row">
                             <h5>Ultimos pases de lista</h5>
-                            <div id="containerHistorial">
+                            <div id="containerHistorial" style="overflow-y: scroll;height: 500px;">
                             </div>
                         </div>
                         <div class="row pt-5">
-                            <h5>justificantes por revisar</h5>
-                            <div class="list-group"> <?php for($i = 0; $i
-                                <2; $i++){ ?> <a href="#" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">{Nombre alumno}</h5>
-                                        <span class="badge bg-danger">{Grupo}</span>
-                                    </div>
-                                    <p class="mb-1">{Materia}</p>
-                                    <small class="text-muted">{11 de Abril de 2022}</small>
-                                </a> <?php } ?>
-                            </div>
+                            <h5>Justificantes por revisar</h5>
+                            <div id="containerJustif"> </div>
                         </div>
                     </div>
                 </div>
@@ -166,6 +138,7 @@ include_once "./sesion_profesor.php";
 <?php
     include "../main_profesor/Modal_profesor/crear_grupo.php";
     include "../main_profesor/Modal_profesor/periodos_registrados.php";
+    include "../main_profesor/Modal_profesor/vista_justificante.php";
     include $path."includes_general/js.php";
 ?>
 <script src="../services/profesor/dashboard.js"></script>

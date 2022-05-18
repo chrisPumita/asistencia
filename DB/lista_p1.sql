@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2022 a las 20:51:56
+-- Tiempo de generación: 18-05-2022 a las 03:00:53
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -72,6 +72,27 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`id_pase_fk`, `id_alumno_fk`, `confirmada`, `check_retardo`, `value`, `url_justificante`, `upload_date_justificante`, `estatus_rev_just`, `create_at`, `log`) VALUES
+(10053, 220504046, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:53:59', '13:53:59: Marcado como  Asistencia'),
+(10053, 220504307, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:54:01', '13:54:01: Marcado como  Asistencia'),
+(10053, 220504313, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:54:00', '13:54:00: Marcado como  Asistencia'),
+(10053, 220513068, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 18:53:56', '13:53:56: Marcado como  Falta'),
+(10053, 220513174, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:53:59', '13:53:59: Marcado como  Asistencia'),
+(10053, 220513615, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 18:53:57', '13:53:57: Marcado como  Falta'),
+(10053, 220513943, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 18:53:56', '13:53:56: Marcado como  Falta'),
+(10055, 220504046, 0, 1, '0.50', NULL, NULL, 0, '2022-05-17 18:57:51', '13:57:51: Marcado como  Retardo'),
+(10055, 220504307, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:53', '13:57:53: Marcado como  Asistencia'),
+(10055, 220504313, 0, 1, '0.50', NULL, NULL, 0, '2022-05-17 18:57:52', '13:57:52: Marcado como  Retardo'),
+(10055, 220513068, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 18:57:48', '13:57:48: Marcado como  Falta'),
+(10055, 220513174, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:51', '13:57:51: Marcado como  Asistencia'),
+(10055, 220513615, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 18:57:49', '13:57:49: Marcado como  Falta'),
+(10055, 220513943, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 18:57:49', '13:57:49: Marcado como  Falta'),
+(10056, 220504046, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:34', '13:57:34: Marcado como  Asistencia'),
+(10056, 220504307, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:36', '13:57:36: Marcado como  Asistencia'),
+(10056, 220504313, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:35', '13:57:35: Marcado como  Asistencia'),
+(10056, 220513068, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:33', '13:57:33: Marcado como  Asistencia'),
+(10056, 220513174, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:35', '13:57:35: Marcado como  Asistencia'),
+(10056, 220513615, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:34', '13:57:34: Marcado como  Asistencia'),
+(10056, 220513943, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:57:33', '13:57:33: Marcado como  Asistencia'),
 (10057, 220504046, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 17:42:56', '12:42:56: Marcado como  Falta'),
 (10057, 220504307, 0, 1, '0.50', NULL, NULL, 0, '2022-05-17 17:42:58', '12:42:58: Marcado como  Retardo'),
 (10057, 220504313, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 17:42:57', '12:42:57: Marcado como  Falta'),
@@ -91,7 +112,7 @@ INSERT INTO `asistencia` (`id_pase_fk`, `id_alumno_fk`, `confirmada`, `check_ret
 (30057, 220504313, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 16:54:03', '11:54:03: Marcado como  Falta'),
 (30057, 220513068, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 16:54:00', '11:54:00: Marcado como  Falta'),
 (30057, 220513174, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 16:54:02', '11:54:02: Marcado como  Falta'),
-(30057, 220513615, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 16:54:01', '11:54:01: Marcado como  Falta'),
+(30057, 220513615, -1, 0, '0.00', '../justificantes/784d26dbeb82a29216a157dc98eec930.pdf', '2022-05-17 13:58:44', 1, '2022-05-18 00:02:15', '19:02:05: Marcado como  Falta\n19:02:15: Revisado como   RECHAZADO '),
 (30057, 220513943, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 16:54:00', '11:54:00: Marcado como  Falta'),
 (30058, 220504046, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 16:42:57', '11:42:57: Marcado como  Asistencia'),
 (30058, 220504307, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 16:43:00', '11:43:00: Marcado como  Asistencia'),
@@ -126,7 +147,7 @@ INSERT INTO `asistencia` (`id_pase_fk`, `id_alumno_fk`, `confirmada`, `check_ret
 (40058, 220504313, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 16:53:46', '11:53:46: Marcado como  Asistencia'),
 (40058, 220513068, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 16:53:43', '11:53:43: Marcado como  Asistencia'),
 (40058, 220513174, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 16:53:46', '11:53:46: Marcado como  Asistencia'),
-(40058, 220513615, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 16:53:44', '11:53:44: Marcado como  Asistencia'),
+(40058, 220513615, 1, 0, '1.00', '../justificantes/6d936e1cb90bbbbbbeb6fe490667977f.jpg', '2022-05-17 19:01:46', 1, '2022-05-18 00:01:58', '18:58:12: Marcado como  Falta\n19:01:58: Revisado como   ACEPTADO '),
 (40058, 220513943, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 16:53:43', '11:53:43: Marcado como  Asistencia'),
 (220514117, 220504046, -1, 0, '0.00', NULL, NULL, 0, '2022-05-15 01:41:42', '20:41:42: Marcado como  Falta'),
 (220514117, 220504307, 1, 0, '1.00', NULL, NULL, 0, '2022-05-15 01:41:45', '20:41:45: Marcado como  Asistencia'),
@@ -161,7 +182,7 @@ INSERT INTO `asistencia` (`id_pase_fk`, `id_alumno_fk`, `confirmada`, `check_ret
 (220517375, 220504313, -1, 0, '0.00', NULL, NULL, 0, '2022-05-17 18:02:55', '13:02:55: Marcado como  Falta'),
 (220517375, 220513068, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:02:51', '13:02:51: Marcado como  Asistencia'),
 (220517375, 220513174, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:02:54', '13:02:54: Marcado como  Asistencia'),
-(220517375, 220513615, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:02:52', '13:02:52: Marcado como  Asistencia'),
+(220517375, 220513615, -1, 0, '0.00', '../justificantes/36b3e73d79b1c7f2569cb7985c16a96c.pdf', '2022-05-17 18:07:43', 0, '2022-05-18 00:23:02', '19:23:02: Marcado como  Falta'),
 (220517375, 220513943, 1, 0, '1.00', NULL, NULL, 0, '2022-05-17 18:02:52', '13:02:52: Marcado como  Asistencia');
 
 -- --------------------------------------------------------
@@ -507,7 +528,7 @@ CREATE TABLE `persona` (
 
 INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `sexo`, `email`, `user_name`, `avatar`, `pw`, `create_at`) VALUES
 (2, 'Carlos', 'Cordero', 'Mendoza', 0, 'carlos', 'carlos', 'https://pixelmator.com/community/download/file.php?avatar=17785_1569233053.png', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:53:39'),
-(92405200618688, 'Christian René', 'Pioquinto', 'Hernandez', 0, 'christian.floppy@gmail.com', 'chris', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:55:07'),
+(92405200618688, 'Christian René', 'Pioquinto', 'Hernandez', 0, 'christian.floppy@gmail.com', 'chris', '../recursos/avatars/d79bf23d96d66a75b9b166cda00804f4.png', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-18 00:02:47'),
 (2372934008636130, 'Juan Perez', 'Sanchez', 'Sanchez', 0, 'mail.@gmailc.om', 'juan', '../recursos/avatars/defaultAvatar.webp', '202cb962ac59075b964b07152d234b70', '2022-05-15 01:53:39'),
 (2784399672959068, 'Fernando', 'Hernandez', 'Ledezma', 1, 'f@gmail.com', 'Fer', 'https://www.pixelmator.com/community/download/file.php?avatar=17458_1555206584.jpeg', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:49:15'),
 (4010125521545205, 'Alfonso', 'Casas', 'Cano', 0, 'algonso@gmail.com', 'alfonso', 'https://pixelmator.com/community/download/file.php?avatar=17526_1634298815.jpg', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-05-15 01:46:53'),

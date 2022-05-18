@@ -344,7 +344,19 @@ where p.id_profesor = ".$idProfesor." AND  g.estatus > 0 ".$idUnique;
     function queryListaAlumnosGrupo(){
         $query = "select per.id_persona, per.nombre, per.app, per.apm, per.sexo, 
        per.email, per.user_name, per.avatar, per.pw, per.create_at,
-       al.id_alumno, id_persona_fk, no_cta, account_confirm
+       al.id_alumno, id_persona_fk, no_cta, account_confirm,
+       (select count(confirmada) from paselista pl inner join asistencia asi
+        on pl.id_pase = asi.id_pase_fk
+        where id_alumno_fk =al.id_alumno
+        AND id_grupo_fk = ".$this->getIdGrupo()." and confirmada = 1)as count_asi,
+               (select count(confirmada) from paselista pl inner join asistencia asi
+        on pl.id_pase = asi.id_pase_fk
+        where id_alumno_fk =al.id_alumno
+        AND id_grupo_fk = ".$this->getIdGrupo()." and confirmada = -1)as count_fal,
+               (select count(confirmada) from paselista pl inner join asistencia asi
+        on pl.id_pase = asi.id_pase_fk
+        where id_alumno_fk =al.id_alumno
+        AND id_grupo_fk = ".$this->getIdGrupo()." and confirmada = 0)as count_ret
         from persona per
             inner join alumno al
             on per.id_persona = al.id_persona_fk
@@ -354,6 +366,14 @@ where p.id_profesor = ".$idProfesor." AND  g.estatus > 0 ".$idUnique;
         order by per.app, per.apm, per.nombre";
         $this->connect();
         $result=$this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryArchivarGpo(){
+        $query = "UPDATE `grupo` SET `estatus` = '0' WHERE `grupo`.`id_grupo` = ".$this->getIdGrupo();
+        $this->connect();
+        $result=$this->executeInstruction($query);
         $this->close();
         return $result;
     }

@@ -1,6 +1,7 @@
 <?php
 $titulo = "HOME - Profesor";
-$path = "../"
+$path = "../";
+include_once "./sesion_profesor.php";
 ?>
 
 <!doctype html>
@@ -34,6 +35,9 @@ $path = "../"
                                         </div>
                                         <div class="col text-light">
                                             <h5 class="">10 Grupos activos</h5>
+                                        </div>
+                                        <div class="col">
+                                            <?php include "./perfil_menu.php" ;?>
                                         </div>
                                     </div>
                                 </div>
@@ -121,9 +125,8 @@ $path = "../"
         </div>
     </div>
 </div>
+<?php include_once "../includes_general/footer.php"?>
 </body>
-
-
 <?php include $path."includes_general/js.php"?>
 
 <script src="services/template.js"></script>

@@ -106,6 +106,9 @@ else{
                     <div class="col-12 col-md-9">
                         <div class="row py-3" id="listContainer" >
                         </div>
+                        <div class="row justify-content-center py-3">
+                            <a class="btn btn-outline-info" href="./">Terminar</a>
+                        </div>
                     </div>
                     <div class="col-12 col-md-3">
                         <div class="row py-3 mt-3 p-2" style="justify-content: center;">

@@ -180,17 +180,24 @@ from asistencia asi inner join  paselista pl on pl.id_pase = asi.id_pase_fk
         return $result;
     }
 
-    function queryHistorialPasesLista($idProfesor,$filtro){
+    function queryHistorialPasesLista($idProfesor,$filtro,$id){
         switch ($filtro){
             case "LAST":
                 //mostrando los ultimos 10 activos
-                $filtro = " AND p.estado > 0 ORDER BY pl.fecha DESC LIMIT 1000000";
+             //   $filtro = " AND p.estado > 0 ORDER BY pl.fecha DESC LIMIT 1000000";
+                $filtro = " AND p.estado > 0 ORDER BY pl.fecha DESC ";
+                break;
+            case "GRUPO":
+                //mostrando los ultimos 10 activos
+                //   $filtro = " AND p.estado > 0 ORDER BY pl.fecha DESC LIMIT 1000000";
+                $filtro = " AND g.id_grupo = ".$id." ORDER BY pl.fecha DESC ";
                 break;
             default:
                 //Mostrando todos sin excepcion
                 $filtro = " ORDER BY pl.fecha DESC";
                 break;
         }
+
         $query = "SELECT pl.id_pase, pl.id_grupo_fk, pl.fecha, pl.notas, pl.create_at,
        g.id_grupo, grupo, carrera, materia, porcentaje_min, dias,
        is_porcentual, puntaje_final, tipo_puntaje, retardo_is_falta,

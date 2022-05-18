@@ -14,6 +14,11 @@ async function cargaGruposProfe(filtro) {
     let datos = {filtro:filtro};
     return await peticionAjax(datos,route);
 }
+async function archivaGpo(idGpo) {
+    let route = "../webhook/profesor_archiva_grupo.php";
+    let datos = {id_gpo:idGpo};
+    return await peticionAjax(datos,route);
+}
 
 async function cargaLista_pase_lista(grupo,action,preload) {
     let route = "../webhook/profesor_consulta_lista_grupo.php";
@@ -51,9 +56,9 @@ async function updateNotaPaseLista(idPase,nota) {
 }
 
 /* HISTORIAL PASES DE LISTA */
-async function historialPaseLista(filtro) {
+async function historialPaseLista(filtro,id) {
     let route = "../webhook/profesor_historia_pase_lista.php";
-    let datos = {filtro:filtro};
+    let datos = {filtro:filtro,id:id};
     return await peticionAjax(datos,route);
 }
 
@@ -62,6 +67,13 @@ async function consultaJustificantes(filtro) {
     let datos = {filtro:filtro};
     return await peticionAjax(datos,route);
 }
+
+async function revisaJustificante(action,idPase,idAlumno) {
+    let route = "../webhook/profesor_revisa_justificante.php";
+    let datos = {action:action,idPase:idPase,idAlumno:idAlumno};
+    return await peticionAjax(datos,route);
+}
+
 
 /*++++++++++++++++++++++++++++++++++++
 *   a l u m n o s

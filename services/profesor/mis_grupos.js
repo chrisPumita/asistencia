@@ -1,16 +1,13 @@
 $(document).ready(function() {
-    console.log("ESTOY EN MIS GRUPOS");
     cargaMisGrupos();
     cargaMisGruposHoy();
 });
 
 function cargaMisGrupos() {
     cargaGruposProfe("0").then(function (result) {
-            console.log("DATOS OK")
        //     console.log(result.data[0].link_invitacion)
         //filstrar a los de hoy
         let LISTA_HOY = filterItems("",result.data);
-            console.log(LISTA_HOY);
         //todos los no archivados
         buildHTMLCardsMisGrup(result.data);
 
@@ -20,11 +17,8 @@ function cargaMisGrupos() {
 
 function cargaMisGruposHoy() {
     cargaGruposProfe("0").then(function (result) {
-        console.log("DATOS grupos hoy OK")
-       //     console.log(result.data[0].link_invitacion)
         //filstrar a los de hoy
         let LISTA_HOY = filterItems("",result.data);
-        console.log(LISTA_HOY);
         //todos los no archivados
         buildHTMLCardsMisGruphoy(result.data);
 
@@ -32,7 +26,6 @@ function cargaMisGruposHoy() {
 }
 
 function buildHTMLCardsMisGrup(lista) {
-    console.log(lista);
     let template = ``;
     //iterar la lista
     if (lista.length > 0)
@@ -43,7 +36,6 @@ function buildHTMLCardsMisGrup(lista) {
             (curso)=>
             {
               //  console.log(typeof(curso.estatus))
-                console.log(curso)
                 let estadoCurso = parseInt(curso.estatus) === 0 ? "warning": "success";
                 //estatus
                  template += `<div class="col-12 col-md-3 pb-3"> 
@@ -102,7 +94,6 @@ function buildHTMLCardsMisGrup(lista) {
 
 
 function buildHTMLCardsMisGruphoy(lista) {
-    console.log(lista);
     let template = ``;
     //iterar la lista
     if (lista.length > 0)
@@ -112,8 +103,6 @@ function buildHTMLCardsMisGruphoy(lista) {
         lista.forEach(
             (curso)=>
             {
-              //  console.log(typeof(curso.estatus))
-                console.log(curso)
                 //let estadoCurso = parseInt(curso.estatus) === 0 ? "warning": "success";
                 //estatus
                  template += `<div class="col-12 col-md-4 pb-3">
@@ -150,10 +139,9 @@ function buildHTMLCardsMisGruphoy(lista) {
                                         </div>
 
                                         <div class="col-12 col-md-1" style="display: flex;justify-content: center;">
-
-                                                <a href="./detalles_grupo.php?id_grupo=${curso.id_grupo}" type="button" class="btn btn-success btn_ajustable" style="display: flex;align-content: center;justify-content: center;align-items: center;">
+                                                <button onClick="pasarLista(${curso.id_grupo});" href="./detalles_grupo.php?id_grupo=${curso.id_grupo}" type="button" class="btn btn-success btn_ajustable" style="display: flex;align-content: center;justify-content: center;align-items: center;">
                                                     <i class="fas fa-angle-right"></i>
-                                                </a>
+                                                </button>
                                         </div>
                                     </div>
                                 </div>`;
@@ -173,18 +161,22 @@ function buildHTMLCardsMisGruphoy(lista) {
 
 
 function archivarGrupos(id) {
-    alert("cancelar "+ id);
+    Swal.fire({
+        title: 'Archivar grupo',
+        text: "¿Está seguroi que desea archivar este grupo?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Archivar',
+        cancelButtonText: 'regresar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            archivaGpo(id).then((result) => {
+                alertaNotificacion("success",result.mensaje);
+                cargaMisGrupos();
+                cargaMisGruposHoy();
+            })
+        }
+    })
 }
-
-
-
-/*
-        lista.forEach(
-            (curso)=>
-            {
-                console.log(curso)
-                 template += ``;
-            }
-        );
-*
-* */
