@@ -161,7 +161,7 @@
                             <input type="text" class="form-control" id="code_invitacion_md5" name="code_invitacion_md5" readonly>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row d-none">
                         <div class="col-12 col-md-4">
                             <label class="text-muted " for="correos_send">Correos:</label>
                         </div>

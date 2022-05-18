@@ -72,27 +72,7 @@ else{
                             </div>
                         </div>
                         <div class="col-6 col-md-12 mb-2 d-flex justify-content-md-end justify-content-center" style="display: flex;justify-content: flex-end;">
-                            <div class="dropdown">
-                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="
-                            https://holatelcel.com/wp-content/uploads/2020/12/foto-perfil-whatsapp-.png" alt="Avatar" class="avatar">
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="menuPerfil" style="">
-                                    <li>
-                                        <a class="dropdown-item" href="perfil_profesor.php">Perfil</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_nvopass">Cambiar contraseña</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Acerca de</a>
-                                    </li>
-                                    <hr>
-                                    <li>
-                                        <a class="dropdown-item" href="../c_logout.php">Salir</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <?php include "./perfil_menu.php" ;?>
                         </div>
                         </div>
                         

@@ -11,7 +11,7 @@
         <p>Seleccione su justificante en formato PDF</p>
           <form id="frm-upload-file" enctype="multipart/form-data">
               <div class="modal-body">
-                  <input type="text" name="idPase" id="idPase" required="" value="0">
+                  <input type="hidden" name="idPase" id="idPase" required="" value="0">
                   <div class="input-group">
                       <input type="file" class="form-control" accept="image/gif,image/jpeg,.pdf" id="archivo" name="archivo" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                   </div>

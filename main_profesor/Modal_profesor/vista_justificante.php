@@ -11,8 +11,8 @@
             </div>
             <!--Body-->
             <div class="modal-body">
-                <input type="hide" id="idJustAlumno">
-                <input type="hide" id="idJustPase">
+                <input type="hidden" id="idJustAlumno">
+                <input type="hidden" id="idJustPase">
                 <div id="containerPDFView"></div>
             </div>
             <!--Footer-->
