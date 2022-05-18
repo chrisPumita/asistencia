@@ -31,6 +31,7 @@ $("#frm-update-datos-alumno").submit(function (event) {
     var data = $('#frm-update-datos-alumno').serialize();
     let route = "../webhook/alumno_update.php";
     if(peticionAjax(data,route)){
+        alertaNotificacion("success","Se ha actualizado con exito");
         consultaDatosAlumno();
     }
     event.preventDefault();
@@ -93,7 +94,7 @@ $("#frm-update-datos-profesor").submit(function (event) {
     let route = "../webhook/profesor_update.php";
     if(peticionAjax(data,route)){
         alertaNotificacion("success","Se ha actualizado con exito");
-        
+        consultaDatosProfesor();             
     }
     event.preventDefault();
 });
