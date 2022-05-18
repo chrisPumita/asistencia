@@ -102,5 +102,10 @@ include_once "./sesion_alumno.php";
 ?>
 <script src="../services/general/perfil.js"></script>
 <script src="services/template.js"></script>
+<script>
+    $(document).ready(function() {
+        consultaDatosAlumno();
+    });
+</script>
 <!-- Initialize Swiper -->
 </html>
