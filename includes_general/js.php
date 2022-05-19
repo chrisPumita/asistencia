@@ -10,6 +10,7 @@
 
 <script src="<?php echo $path; ?>services/general/alertas.js"></script>
 <script src="<?php echo $path; ?>services/general/async_services.js"></script>
+<script src="<?php echo $path; ?>services/general/password.js"></script>
 
 <?php
 if (isset($_SESSION['tipo']))

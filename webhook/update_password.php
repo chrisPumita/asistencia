@@ -1,9 +1,8 @@
 <?php
-
-if(isset($_POST['oldPassword']) && isset($_POST['newPwd']) && isset($_POST['confPwd'])){
-    if($_POST['newPwd'] == $_POST['confPwd']){
+if(isset($_POST['pass_actual']) && isset($_POST['pass_nvo']) && isset($_POST['pass_nvo_confi'])){
+    if($_POST['pass_nvo'] == $_POST['pass_nvo_confi']){
         include_once "../control/controlCuentas.php";
-        if(updatePassword($_POST['oldPassword'],$_POST['newPwd'])){
+        if(updatePassword($_POST['pass_actual'],$_POST['pass_nvo'])){
             $mensaje = "Se ha actualizado con exito";
             $titulo = "¡HECHO!";
             $value = 1;
